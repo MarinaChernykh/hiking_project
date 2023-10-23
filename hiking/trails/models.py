@@ -102,23 +102,23 @@ class Trail(models.Model):
         verbose_name='Регион',
     )
     level = models.CharField(
-        'Сложность маршрута',
+        'Сложность',
         max_length=6,
         choices=LEVEL_CHOICE,
         blank=True,
     )
     distance = models.FloatField(
-        'Длина маршрута в км',
+        'Длина, км',
         blank=True,
         null=True,
     )
-    time = models.TimeField(
-        'Время на маршрут в часах',
+    time = models.CharField(
+        'Время',
+        max_length=50,
         blank=True,
-        null=True,
     )
     elevation_gain = models.PositiveSmallIntegerField(
-        'Набор высоты в метрах',
+        'Набор высоты, м',
         blank=True,
         null=True,
     )
@@ -188,6 +188,10 @@ class RegionPhoto(models.Model):
         blank=True,
     )
 
+    class Meta:
+        verbose_name = 'Фото региона'
+        verbose_name_plural = 'Фото региона'
+
 
 class TrailPhoto(models.Model):
     trail = models.ForeignKey(
@@ -202,6 +206,9 @@ class TrailPhoto(models.Model):
         blank=True,
     )
 
+    class Meta:
+        verbose_name = 'Фото маршрута'
+        verbose_name_plural = 'Фото маршрута'
 
 class Comment(models.Model):
     RANK_CHOICE = (
