@@ -18,13 +18,29 @@ class Region(models.Model):
         max_length=50,
         unique=True,
     )
-    description = models.TextField(
-        'Описание региона',
+    description_intro = models.TextField(
+        'Общая информация',
         blank=True,
     )
-    image = models.ImageField(
-        'Картинка',
-        upload_to='trails/regions',
+    description_seasons = models.TextField(
+        'Когда лучше ехать',
+        blank=True,
+    )
+    description_geo = models.TextField(
+        'География региона',
+        blank=True,
+    )
+    description_transport = models.TextField(
+        'Как добраться',
+        blank=True,
+    )
+    description_accommodation = models.TextField(
+        'Где остановиться',
+        blank=True,
+    )
+    main_image = models.ImageField(
+        'Главный баннер',
+        upload_to='regions/main',
         blank=True,
     )
 
@@ -50,11 +66,11 @@ class Trail(models.Model):
 
     name = models.CharField(
         'Название трека',
-        max_length=200,
+        max_length=100,
     )
     slug = models.SlugField(
         'Слаг',
-        max_length=50,
+        max_length=100,
         unique=True,
     )
     short_description = models.TextField(
@@ -92,12 +108,12 @@ class Trail(models.Model):
         blank=True,
     )
     distance = models.FloatField(
-        'Продолжительность маршрута в км',
+        'Длина маршрута в км',
         blank=True,
         null=True,
     )
     time = models.TimeField(
-        'Продолжительность маршрута по времени',
+        'Время на маршрут в часах',
         blank=True,
         null=True,
     )
@@ -121,18 +137,57 @@ class Trail(models.Model):
         upload_to='trails/maps',
         blank=True,
     )
+    main_image = models.ImageField(
+        'Главный баннер',
+        upload_to='trails/main',
+        blank=True,
+    )
+    previous_trail = models.ForeignKey(
+        'self',
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        verbose_name='Предыдущий маршрут'
+    )
+    next_trail = models.ForeignKey(
+        'self',
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        verbose_name='Следующий маршрут'
+    )
     created = models.DateTimeField(
         'Дата создания статьи',
         auto_now_add=True,
-        db_index=True,
     )
     is_published = models.BooleanField(
         'Статус публикации',
         default=False
     )
 
+    class Meta:
+        verbose_name = 'Маршрут'
+        verbose_name_plural = 'Маршруты'
 
-class Photo(models.Model):
+    def __str__(self):
+        return self.name
+
+
+class RegionPhoto(models.Model):
+    region = models.ForeignKey(
+        Region,
+        on_delete=models.CASCADE,
+        related_name='photos',
+        verbose_name='Регион',
+    )
+    image = models.ImageField(
+        'Фото региона',
+        upload_to='regions/photos',
+        blank=True,
+    )
+
+
+class TrailPhoto(models.Model):
     trail = models.ForeignKey(
         Trail,
         on_delete=models.CASCADE,
@@ -179,14 +234,16 @@ class Comment(models.Model):
     )
     created = models.DateTimeField(
         'Дата публикации',
-        auto_now_add=True,
         db_index=True,
     )
 
     class Meta:
-        ordering = ('-created',)
         verbose_name = 'Комментарий'
         verbose_name_plural = 'Комментарии'
+        ordering = ('-created',)
+        indexes = [
+            models.Index(fields=['-created',])
+        ]
 
     def __str__(self):
-        return self.text[:15]
+        return f'Автор: {self.author.username}, дата: {self.created}'
