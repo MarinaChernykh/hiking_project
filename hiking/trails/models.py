@@ -40,7 +40,7 @@ class Region(models.Model):
     )
     main_image = models.ImageField(
         'Главный баннер',
-        upload_to='regions/main',
+        upload_to='regions/main/',
         blank=True,
     )
 
@@ -147,6 +147,7 @@ class Trail(models.Model):
         on_delete=models.SET_NULL,
         null=True,
         blank=True,
+        related_name='previous',
         verbose_name='Предыдущий маршрут'
     )
     next_trail = models.ForeignKey(
@@ -154,6 +155,7 @@ class Trail(models.Model):
         on_delete=models.SET_NULL,
         null=True,
         blank=True,
+        related_name='next',
         verbose_name='Следующий маршрут'
     )
     created = models.DateTimeField(
