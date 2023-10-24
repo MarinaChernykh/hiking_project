@@ -307,7 +307,7 @@ body {
 }
 .trails__paginator {
   display: flex;
-  width: 482px;
+  justify-content: center;
   gap: 32px;
   margin-top: 100px;
 }
@@ -415,7 +415,7 @@ body {
   display: flex;
   justify-content: space-between;
   margin-top: 60px;
-  margin-bottom: 80px;
+  margin-bottom: 60px;
 }
 .filters__button {
   display: flex;

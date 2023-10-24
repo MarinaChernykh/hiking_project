@@ -1,4 +1,4 @@
-<a href="{% url 'trails:trail_detail' trail.slug %}" class="trails__card-item">
+<a href="{{ trail.get_absolute_url }}" class="trails__card-item">
     <img src="{{ trail.main_image.url }}" alt="{{ trail.name }}" class="trails__img">
     <div class="trails__content">
         <p class="trails__card-title">{{ trail.name }}</p>
@@ -13,10 +13,10 @@
             </div>
             <div class="trails__detail-value">
                 <p class="trails__detail-val-item">{{ trail.region.name }}</p>
-                <p class="trails__detail-val-item">{{ trail.distance }}</p>
-                <p class="trails__detail-val-item">{{ trail.elevation_gain }}</p>
+                <p class="trails__detail-val-item">{{ trail.distance }} км</p>
+                <p class="trails__detail-val-item">{{ trail.elevation_gain }} м</p>
                 <p class="trails__detail-val-item">{{ trail.time }}</p>
-                <p class="trails__detail-val-item">{{ trail.level }}</p>
+                <p class="trails__detail-val-item">{{ trail.get_level_display }}</p>
                 <p class="trails__detail-val-item">4,5 из 5</p>
             </div>
         </div>

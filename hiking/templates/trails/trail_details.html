@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+  {{ trail.name }}
+{% endblock title %}
+
+{% block main_banner %}
+  <img src="{{ trail.main_image.url }}" alt="{{ trail.name }}" class="top__banner">
+{% endblock main_banner %}
+
+{% block article_title %}
+  {{ trail.name }}
+{% endblock article_title %}
+
+{% block content %}
+<section class="trail-info center">
+    <div class="trail-info__item">
+        <img src="{% static 'img/trail_logos/distance.jpg' %}" alt="Дистанция" class="trail-info__img">
+        <p class="trail-info__name">Общее расстояние</p>
+        <p class="trail-info__value">{{ trail.distance }} км</p>
+    </div>
+    <div class="trail-info__item">
+        <img src="{% static 'img/trail_logos/time.png' %}" alt="Время" class="trail-info__img">
+        <p class="trail-info__name">Общее время</p>
+        <p class="trail-info__value">{{ trail.time }}</p>
+    </div>
+    <div class="trail-info__item">
+        <img src="{% static 'img/trail_logos/altitude.jpg' %}" alt="Высота" class="trail-info__img">
+        <p class="trail-info__name">Набор высоты</p>
+        <p class="trail-info__value">{{ trail.elevation_gain }} м</p>
+    </div>
+    <div class="trail-info__item">
+        <img src="{% static 'img/trail_logos/type.png' %}" alt="Расстояние" class="trail-info__img">
+        <p class="trail-info__name">Тип маршрута</p>
+        <p class="trail-info__value">{{ trail.get_route_type_display }}</p>
+    </div>
+    <div class="trail-info__item">
+        <img src="{% static 'img/trail_logos/ranking.png' %}" alt="Рейтинг" class="trail-info__img">
+        <p class="trail-info__name">Рейтинг маршрута</p>
+        <p class="trail-info__value">4,5 из 5</p>
+    </div>
+    <div class="trail-info__item">
+        <img src="{% static 'img/trail_logos/level.png' %}" alt="Сложность" class="trail-info__img">
+        <p class="trail-info__name">Уровень сложности</p>
+        <p class="trail-info__value">{{ trail.get_level_display }}</p>
+    </div>
+</section>
+
+<section class="intro">
+    <p class="intro__text center">
+        {{ trail.short_description|safe }}
+    </p>
+    {% if trail.previous_trail %}
+    <p class="trail-description__text center">
+        Этот трек является продолжением маршрута
+        <a href="{% url "trails:trail_detail" trail.previous_trail.slug %}" class="trail-description__text underlined">{{ trail.previous_trail.name }}</a>.
+    </p>
+    {% endif %}
+    <p class="intro__text center">
+        <span class="intro__text-bold">Начало маршрута: </span>{{ trail.start_point }}<br>
+        {{ trail.start_point_description|safe }}
+    </p>
+    <p class="intro__text center">
+        <span class="intro__text-bold">Вода на маршруте: </span>{{ trail.aqua|safe }}
+    </p>
+</section>
+
+<section class="photo">
+    <img src="{{ images.0.image.url }}" alt="{{ trail.name }}" class="photo__img">
+    <div class="photo__row">
+        <img src="{{ images.1.image.url }}" alt="{{ trail.name }}" class="photo__img-in-row">
+        <img src="{{ images.2.image.url }}" alt="{{ trail.name }}" class="photo__img-in-row">
+    </div>
+    <img src="{{ images.3.image.url }}" alt="{{ trail.name }}" class="photo__img">
+</section>
+
+<article class="trail-description">
+    <h2 class="trail-description__title">Описание маршрута</h2>
+    <p class="trail-description__text center">
+        {{ trail.full_description|safe }}
+    </p>
+    {% if trail.next_trail %}
+        <p class="trail-description__text center">
+            Если у вас остались силы и желание, то у этого маршрута есть продолжение - трек
+            <a href="{% url "trails:trail_detail" trail.next_trail.slug %}" class="trail-description__text underlined">{{ trail.next_trail.name }}</a>.
+        </p>
+    {% endif %}
+    <img src="{{ trail.route_image.url }}" alt="Карта" class="trail-description__img">
+</article>
+
+{% include "trails/includes/top_trails_list.html" with region=trail.region top_trails=top_trails %}
+
+{% endblock content %}

@@ -16,7 +16,7 @@
       <p class="intro__text center">В этом регионе пока не описан ни один маршрут.<p>
     {% endfor %}
   </div>
-  {% if region %}
+  {% if region and top_trails %}
     <a href="{% url 'trails:region_trails_list' region.slug %}" class="trails__all-trails">
         Показать все маршруты
     </a>

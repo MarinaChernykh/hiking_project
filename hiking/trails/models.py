@@ -181,6 +181,12 @@ class Trail(models.Model):
     def __str__(self):
         return self.name
 
+    def get_absolute_url(self):
+        return reverse(
+            'trails:trail_detail',
+            kwargs={'trail': self.slug}
+        )
+
 
 class RegionPhoto(models.Model):
     region = models.ForeignKey(
