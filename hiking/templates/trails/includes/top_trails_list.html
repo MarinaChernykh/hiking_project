@@ -1,0 +1,26 @@
+<section class="trails center">
+  <h2 class="trails__title">
+    Самые популярные маршруты{% if region %} региона {{ region.name }}{% endif %}
+  </h2>
+
+  {% comment %} <p class="trails__text center">
+    Маршрут проходит по территории Архызского участка Тебердинского заповедника,
+    поэтому снова нужно оплатить рекреационный сбор. На развилке в этот раз
+    нужно повернуть влево и идти по грунтовой дороге вниз по течению реки.
+  </p> {% endcomment %}
+  
+  <div class="trails__cards">
+    {% for trail in top_trails %}
+      {% include "trails/includes/trail_card.html" with trail=trail %}
+    {% endfor %}
+  </div>
+  {% if region %}
+    <a href="{% url 'trails:region_trails_list' region.slug %}" class="trails__all-trails">
+        Показать все маршруты
+    </a>
+  {% else %}
+    <a href="{% url 'trails:trails_list'%}" class="trails__all-trails">
+        Показать все маршруты
+    </a>
+  {% endif %}
+</section>

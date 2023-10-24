@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block title %}
+  Когда сердце в горах
+{% endblock title %}
+
+
+{% block content %}
+  <section class="intro">
+    <p class="intro__text center">
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Possimus tempore quibusdam voluptatibus corrupti a illo, hic odio enim, totam perspiciatis et dolorem praesentium, cumque eligendi veritatis. Non voluptas nesciunt, sunt odio et ipsum numquam labore fugit modi eveniet, quae assumenda. Fugit commodi, asperiores temporibus ratione at ullam ducimus esse, nam rem molestias debitis, ipsam veniam ipsum veritatis et sequi pariatur deserunt iure adipisci autem vero sint exercitationem. Sapiente iste soluta quod beatae aliquam atque vel nisi iusto. Vero quibusdam ipsam exercitationem, laudantium rerum fuga, eum inventore velit aut ullam consectetur similique ea quam, natus nisi! Adipisci at facilis tempore iure?
+    </p>
+  </section>
+  <section class="regions center">
+    <div class="regions__row-1">
+      <div href class="regions__card">
+        <a href="#" class="regions__link-row-1">
+            <img
+            src="img/index/region_dombay.jpg"
+            alt="Домбай"
+            class="regions__img">
+        </a>
+        <p class="regions__title regions__title-center">Домбай</p>
+      </div>
+      <div class="regions__card">
+        <a href="#" class="regions__link-row-1">
+            <img
+            src="img/index/region_arkhyz.jpg"
+            alt="Арзыз"
+            class="regions__img">
+        </a>
+        <p class="regions__title regions__title-center">Архыз</p>
+      </div>
+      <div class="regions__card">
+        <a href="#" class="regions__link-row-1">
+        <img
+            src="img/index/region_bezengi.jpg"
+            alt="Безенги"
+            class="regions__img">
+        </a>
+        <p class="regions__title regions__title-center">Безенги</p>
+      </div>
+    </div>
+    <div class="regions__row-2">
+      <div class="regions__card">
+        <a href="" class="regions__link-row-2"
+          ><img
+            src="img/index/region_elbrus.jpg"
+            alt="Эльбрус"
+            class="regions__img-horiz"
+        /></a>
+        <p class="regions__title regions__title-left">Приэльбрусье</p>
+      </div>
+    </div>
+  </section>
+  {% include "trails/includes/top_trails_list.html" %}
+{% endblock content %}

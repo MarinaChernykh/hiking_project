@@ -1,0 +1,30 @@
+{% load static %}
+<div class="top__buttons">
+  <div class="top__buttons-left-group">
+    <a href="#" class="top__buttons-left-group__enter">Войти</a>
+    <a href="#" class="top__buttons-left-group__registration">Регистрация</a>
+  </div>
+  <div class="top__buttons-right-group">
+    <div class="top__buttons-right-group__search-box">
+      <input
+        type="text"
+        class="top__buttons-right-group__search-field"
+        placeholder="Поиск по описаниям маршрутов"
+      />
+      <img
+        src="{% static 'img/search-icon.jpg' %}"
+        alt="Поиск"
+        class="top__buttons-right-group__search-icon"
+      />
+    </div>
+    <a href="#" class="top__buttons-right-group__search">Поиск</a>
+  </div>
+</div>
+<nav class="top__navigation">
+  <a href="#" class="top__navigation__link">Главная</a>
+  <a href="#" class="top__navigation__link">Архыз</a>
+  <a href="#" class="top__navigation__link">Домбай</a>
+  <a href="#" class="top__navigation__link">Приэльбрусье</a>
+  <a href="#" class="top__navigation__link">Безенги</a>
+  <a href="#" class="top__navigation__link">Все маршруты</a>
+</nav>

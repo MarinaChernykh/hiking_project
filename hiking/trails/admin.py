@@ -23,6 +23,7 @@ class AdminRegion(admin.ModelAdmin):
 @admin.register(Trail)
 class AdminTrail(admin.ModelAdmin):
     list_display = ['name', 'region', 'level', 'distance', 'time', 'elevation_gain', 'is_published']
+    list_editable = ['is_published']
     list_filter = ['region', 'level', 'is_published']
     search_fields = ['name', 'short_description', 'full_description']
     prepopulated_fields = {'slug': ('name',)}
