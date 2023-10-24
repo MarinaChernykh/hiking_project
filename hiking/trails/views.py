@@ -4,7 +4,14 @@ from .models import Region, Trail
 
 
 def index(request):
-    context = {'title': 'Tot'}
+    top_trails = Trail.objects.all()[:6]
+    regions = Region.objects.all()
+    last_region = regions.last()
+    context = {
+        'regions': regions,
+        'last_region': last_region,
+        'top_trails': top_trails
+    }
     return render(request, 'trails/index.html', context=context)
 
 
@@ -12,8 +19,10 @@ def region_detail(request, region):
     region = get_object_or_404(Region, slug=region)
     images = region.photos.all()
     top_trails = region.trails.all()[:3]
+    regions = Region.objects.all()
     context = {
         'region': region,
+        'regions': regions,
         'images': images,
         'top_trails': top_trails
     }

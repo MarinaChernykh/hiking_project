@@ -8,10 +8,12 @@
     поэтому снова нужно оплатить рекреационный сбор. На развилке в этот раз
     нужно повернуть влево и идти по грунтовой дороге вниз по течению реки.
   </p> {% endcomment %}
-  
+
   <div class="trails__cards">
     {% for trail in top_trails %}
       {% include "trails/includes/trail_card.html" with trail=trail %}
+    {% empty %}
+      <p class="intro__text center">В этом регионе пока не описан ни один маршрут.<p>
     {% endfor %}
   </div>
   {% if region %}

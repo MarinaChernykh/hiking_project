@@ -1,9 +1,14 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}
   Когда сердце в горах
 {% endblock title %}
 
+
+{% block article_title %}
+  Когда сердце в горах
+{% endblock article_title %}
 
 {% block content %}
   <section class="intro">
@@ -13,45 +18,31 @@
   </section>
   <section class="regions center">
     <div class="regions__row-1">
-      <div href class="regions__card">
-        <a href="#" class="regions__link-row-1">
-            <img
-            src="img/index/region_dombay.jpg"
-            alt="Домбай"
-            class="regions__img">
-        </a>
-        <p class="regions__title regions__title-center">Домбай</p>
-      </div>
-      <div class="regions__card">
-        <a href="#" class="regions__link-row-1">
-            <img
-            src="img/index/region_arkhyz.jpg"
-            alt="Арзыз"
-            class="regions__img">
-        </a>
-        <p class="regions__title regions__title-center">Архыз</p>
-      </div>
-      <div class="regions__card">
-        <a href="#" class="regions__link-row-1">
-        <img
-            src="img/index/region_bezengi.jpg"
-            alt="Безенги"
-            class="regions__img">
-        </a>
-        <p class="regions__title regions__title-center">Безенги</p>
-      </div>
+      {% for region in regions %}
+        {% if not forloop.last %}
+        <div href class="regions__card">
+          <a href="{{ region.get_absolute_url }}" class="regions__link-row-1">
+              <img
+              src="{% static 'img/' %}{{ region.slug }}.jpg"
+              alt="{{ region.name }}"
+              class="regions__img">
+          </a>
+          <p class="regions__title regions__title-center">{{ region.name }}</p>
+        </div>
+        {% endif %}
+      {% endfor %}
     </div>
     <div class="regions__row-2">
       <div class="regions__card">
-        <a href="" class="regions__link-row-2"
+        <a href="{{ last_region.get_absolute_url }}" class="regions__link-row-2"
           ><img
-            src="img/index/region_elbrus.jpg"
-            alt="Эльбрус"
+          src="{% static 'img/' %}{{ last_region.slug }}.jpg"
+            alt="{{ last_region.name }}"
             class="regions__img-horiz"
         /></a>
-        <p class="regions__title regions__title-left">Приэльбрусье</p>
+        <p class="regions__title regions__title-left">{{ last_region.name }}</p>
       </div>
     </div>
   </section>
-  {% include "trails/includes/top_trails_list.html" %}
+  {% include "trails/includes/top_trails_list.html" with top_trails=top_trails %}
 {% endblock content %}

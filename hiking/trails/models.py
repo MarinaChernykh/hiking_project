@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth import get_user_model
 from django.core import validators
+from django.urls import reverse
 
 from . import constants
 
@@ -50,6 +51,12 @@ class Region(models.Model):
 
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse(
+            'trails:region_detail',
+            kwargs={'region': self.slug}
+        )
 
 
 class Trail(models.Model):
