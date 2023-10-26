@@ -149,3 +149,5 @@ media/
 
 cert.crt
 cert.key
+
+mysite_data.json

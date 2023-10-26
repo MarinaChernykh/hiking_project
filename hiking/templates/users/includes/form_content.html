@@ -1,0 +1,29 @@
+{% load user_filters %}
+{% csrf_token %}
+
+<div class="form-card__form-group">
+  {% for field in form %}
+    <div class="form-card__form-row"
+      {% if field.field.required %}
+        aria-required="true"
+      {% else %}
+        aria-required="false"
+      {% endif %}>
+      <label for="{{ field.id_for_label }}">
+        {{ field.label }}
+        {% if field.field.required %}
+          <span class="form-card__required">*</span>
+        {% endif %}
+      </label>
+      <div class="form-card__input">
+        {{ field|addclass:'form-card__form-input' }}
+        {% if field.help_text %}
+          <br>
+          <small id="{{ field.id_for_label }}-help" class="form-card__help_text">
+            {{ field.help_text|safe }}
+          </small>
+        {% endif %}
+      </div>
+    </div>
+  {% endfor %}
+</div>

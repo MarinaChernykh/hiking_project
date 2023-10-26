@@ -26,6 +26,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'trails.apps.TrailsConfig',
+    'users.apps.UsersConfig',
 ]
 
 MIDDLEWARE = [

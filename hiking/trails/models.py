@@ -114,7 +114,7 @@ class Trail(models.Model):
         choices=LEVEL_CHOICE,
         blank=True,
     )
-    distance = models.FloatField(
+    distance = models.PositiveSmallIntegerField(
         'Длина, км',
         blank=True,
         null=True,

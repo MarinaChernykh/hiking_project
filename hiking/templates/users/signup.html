@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}Регистрация{% endblock %}
+
+{% block users_page_content %}
+
+<div class="form-card center">
+    <h1 class="form-card__title">Регистрация</h1>
+    <div class="form-card__form">
+        {% include 'users/includes/errors_check.html' %}
+        <form method="post" action="{% url 'users:signup' %}" class="form-card__form-and-button">
+            {% include 'users/includes/form_content.html' %}
+
+            <input type="submit" value="Создать аккаунт" class="form-card__button">
+        </form>
+    </div>
+</div>
+{% endblock users_page_content %}
