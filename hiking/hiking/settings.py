@@ -53,6 +53,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'trails.context_processors.regions.regions',
             ],
         },
     },
@@ -120,3 +121,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 OBJECTS_PER_PAGE = 6
 TOP_TRAILS_PER_PAGE = 3
+
+LOGIN_URL = 'users:login'
+LOGIN_REDIRECT_URL = 'trails:index'
+# LOGOUT_REDIRECT_URL = 'trails:index'
+
+EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
+EMAIL_FILE_PATH = BASE_DIR / 'sent_emails'
