@@ -2,36 +2,36 @@
 {% load static %}
 
 {% block title %}
-    Все маршруты
+  Все маршруты
 {% endblock title %}
 
 {% block main_banner %}
-    <img src="{% static 'img/all_trails.jpg' %}" alt="Горы" class="top__banner">
+  <img src="{% static "img/all_trails.jpg" %}" alt="Горы" class="top__banner">
 {% endblock main_banner %}
 
 {% block article_title %}
-    Все маршруты
+  Все маршруты
 {% endblock article_title %}
 
 {% block content %}
   <section class="filters center">
     <a
-      href="{% url 'trails:trails_list' %}"
-      class="filters__button {% if not current_region %}selected{% endif %}">
+      href="{% url "trails:trails_list" %}"
+      class="filters__button {% if not region %}selected{% endif %}">
       Все регионы
     </a>
-      {% for region in regions %}
-        <a
-          href="{% url 'trails:region_trails_list' region.slug %}"
-          class="filters__button {% if current_region and current_region == region %}selected{% endif %}">
-          {{ region.name }}
-        </a>
-      {% endfor %}
+    {% for reg in regions %}
+      <a
+        href="{% url "trails:region_trails_list" reg.slug %}"
+        class="filters__button {% if region and region == reg %}selected{% endif %}">
+        {{ reg.name }}
+      </a>
+    {% endfor %}
   </section>
   <section class="trails center">
     <div class="trails__cards">
       {% for trail in page_obj %}
-        {% include "trails/includes/trail_card.html" with trail=trail %}
+        {% include "trails/includes/trail_card.html" %}
       {% empty %}
         <p class="intro__text center">В этом регионе пока не описан ни один маршрут.<p>
       {% endfor %}

@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load custom_tags %}
 
 {% block title %}
   {{ trail.name }}
@@ -14,14 +15,18 @@
 {% endblock article_title %}
 
 {% block content %}
-    <section class="comments__list">
-        <h2 class="comments__title-intro">Комментарии</h2>
-        <div class="comments center">
-            <div class="comments__user-texts center">
-                {% include "trails/includes/comments.html" with comments=page_obj %}
-            </div>
-        </div>
-        {% include "trails/includes/paginator.html" %}
-    </section>
-    {% include "trails/includes/top_trails_list.html" with region=trail.region top_trails=top_trails %}
+  <section class="comments__list">
+    <h2 class="comments__title-intro">Комментарии</h2>
+    <div class="comments center">
+      <div class="comments__user-texts center">
+        {% include "trails/includes/comments.html" with comments=page_obj %}
+      </div>
+    </div>
+    {% include "trails/includes/paginator.html" %}
+  </section>
+
+  {% with trail.region as region %}
+    {% show_top_trails region %}
+  {% endwith %}
+
 {% endblock content %}

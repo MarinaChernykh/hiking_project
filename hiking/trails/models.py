@@ -56,7 +56,7 @@ class Region(models.Model):
     def get_absolute_url(self):
         return reverse(
             'trails:region_detail',
-            kwargs={'region': self.slug}
+            kwargs={'slug_region': self.slug}
         )
 
 
@@ -185,7 +185,7 @@ class Trail(models.Model):
     def get_absolute_url(self):
         return reverse(
             'trails:trail_detail',
-            kwargs={'trail': self.slug}
+            kwargs={'slug_trail': self.slug}
         )
 
 

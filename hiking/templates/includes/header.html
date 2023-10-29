@@ -27,8 +27,8 @@
 </div>
 <nav class="top__navigation">
   <a href="{% url 'trails:index' %}" class="top__navigation__link">Главная</a>
-  {% for region in regions %}
-    <a href="{{ region.get_absolute_url }}" class="top__navigation__link">{{ region.name }}</a>
+  {% for reg in regions %}
+    <a href="{{ reg.get_absolute_url }}" class="top__navigation__link">{{ reg.name }}</a>
   {% endfor %}
   <a href="{% url 'trails:trails_list' %}" class="top__navigation__link">Все маршруты</a>
 </nav>

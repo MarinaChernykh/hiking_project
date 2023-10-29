@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load custom_tags %}
 
 {% block title %}
   {{ region.name }}
@@ -16,20 +17,20 @@
 {% block content %}
   <!-- Интро -->
   <section class="intro">
-      <p class="intro__text center">
-        {{ region.description_intro|safe }}
-      </p>
+    <p class="intro__text center">
+      {{ region.description_intro|safe }}
+    </p>
   </section>
 
   <section class="photo">
-      <img src="{{ images.0.image.url }}" alt="{{ region.name }}" class="photo__img">
+    <img src="{{ images.0.image.url }}" alt="{{ region.name }}" class="photo__img">
   </section>
 
   <!-- География -->
   <section class="reg-description">
     <h2 class="reg-description__title">Немного географии</h2>
     <p class="reg-description__text center">
-        {{ region.description_geo|safe }}
+      {{ region.description_geo|safe }}
     </p>
   </section>
 
@@ -41,7 +42,7 @@
   <section class="reg-description">
     <h2 class="reg-description__title">Когда ехать</h2>
     <p class="reg-description__text center">
-        {{ region.description_seasons|safe }}
+      {{ region.description_seasons|safe }}
     </p>
   </section>
 
@@ -53,7 +54,7 @@
   <section class="reg-description">
     <h2 class="reg-description__title">Как добраться</h2>
     <p class="reg-description__text center">
-        {{ region.description_transport|safe }}
+      {{ region.description_transport|safe }}
     </p>
   </section>
 
@@ -65,7 +66,7 @@
   <section class="reg-description">
     <h2 class="reg-description__title">Где жить и питаться</h2>
     <p class="reg-description__text center">
-        {{ region.description_accommodation|safe }}
+      {{ region.description_accommodation|safe }}
     </p>
   </section>
 
@@ -74,6 +75,8 @@
   </section>
 
   <!-- Топ-3 трека -->
-  {% include "trails/includes/top_trails_list.html" with region=region top_trails=top_trails %}
+  {% with region as region %}
+    {% show_top_trails region %}
+  {% endwith %}
 
 {% endblock content %}

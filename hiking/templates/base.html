@@ -20,7 +20,7 @@
           <img src="{% static 'img/main.jpg' %}" alt="Горы" class="top__banner">
         {% endblock main_banner %}
         <div class="top__content center">
-          {% include "includes/header.html" with regions=regions %}
+          {% include "includes/header.html" %}
           <h1 class="top__title">
             {% block article_title %}{% endblock article_title %}
           </h1>

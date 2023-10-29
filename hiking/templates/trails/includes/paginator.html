@@ -9,23 +9,25 @@
     {% endif %}
 
     <div class="trails__paginator__numbers">
-        {% for i in page_obj.paginator.page_range %}
-            {% if page_obj.number == i %}
-              <a href="?page={{ i }}" class="trails__paginator__page-link selected">
-                {{ i }}
-              </a>
-            {% else %}
-              <a href="?page={{ i }}" class="trails__paginator__page-link">
-                {{ i }}
-              </a>
-            {% endif %}
-        {% endfor %}
+      {% for i in page_obj.paginator.page_range %}
+        {% if page_obj.number == i %}
+          <a href="?page={{ i }}" class="trails__paginator__page-link selected">
+            {{ i }}
+          </a>
+        {% else %}
+          <a href="?page={{ i }}" class="trails__paginator__page-link">
+            {{ i }}
+          </a>
+        {% endif %}
+      {% endfor %}
     </div>
+
     {% if page_obj.has_next %}
       <a href="?page={{ page_obj.next_page_number }}" class="trails__paginator__page-link-arrow">
         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="33" viewBox="0 0 32 33" fill="none">
         <path d="M13 24.5L21 16.5L13 8.5L11.1333 10.3667L17.2667 16.5L11.1333 22.6333L13 24.5Z" fill="#5B5B5B"/></svg>
       </a>
     {% endif %}
+
   </nav>
 {% endif %}

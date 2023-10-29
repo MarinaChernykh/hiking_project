@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load custom_tags %}
 
 {% block title %}
   Когда сердце в горах
@@ -22,10 +23,10 @@
         {% if not forloop.last %}
         <div href class="regions__card">
           <a href="{{ region.get_absolute_url }}" class="regions__link-row-1">
-              <img
-              src="{% static 'img/' %}{{ region.slug }}.jpg"
-              alt="{{ region.name }}"
-              class="regions__img">
+            <img
+            src="{% static "img/" %}{{ region.slug }}.jpg"
+            alt="{{ region.name }}"
+            class="regions__img">
           </a>
           <p class="regions__title regions__title-center">{{ region.name }}</p>
         </div>
@@ -36,7 +37,7 @@
       <div class="regions__card">
         <a href="{{ last_region.get_absolute_url }}" class="regions__link-row-2"
           ><img
-          src="{% static 'img/' %}{{ last_region.slug }}.jpg"
+          src="{% static "img/" %}{{ last_region.slug }}.jpg"
             alt="{{ last_region.name }}"
             class="regions__img-horiz"
         /></a>
@@ -44,5 +45,7 @@
       </div>
     </div>
   </section>
-  {% include "trails/includes/top_trails_list.html" with top_trails=top_trails %}
+
+  {% show_top_trails %}
+
 {% endblock content %}
