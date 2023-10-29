@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+  {{ trail.name }}
+{% endblock title %}
+
+{% block main_banner %}
+  <img src="{{ trail.main_image.url }}" alt="{{ trail.name }}" class="top__banner">
+{% endblock main_banner %}
+
+{% block article_title %}
+  {{ trail.name }}
+{% endblock article_title %}
+
+{% block content %}
+    <section class="comments__list">
+        <h2 class="comments__title-intro">Комментарии</h2>
+        <div class="comments center">
+            <div class="comments__user-texts center">
+                {% include "trails/includes/comments.html" with comments=page_obj %}
+            </div>
+        </div>
+        {% include "trails/includes/paginator.html" %}
+    </section>
+    {% include "trails/includes/top_trails_list.html" with region=trail.region top_trails=top_trails %}
+{% endblock content %}

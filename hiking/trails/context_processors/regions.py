@@ -1,7 +1,12 @@
+from django.core.cache import cache
+
 from ..models import Region
 
 
 def regions(request):
-    return {
-        'regions': Region.objects.all()
-    }
+    regions_cache_key = 'regions'
+    regions = cache.get(regions_cache_key)
+    if regions is None:
+        regions = Region.objects.all()
+        cache.set(regions_cache_key, regions, 500)
+    return {'regions': regions}

@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models import Q
 from django.contrib.auth import get_user_model
 from django.core import validators
 from django.urls import reverse
@@ -256,7 +257,11 @@ class Comment(models.Model):
     )
     created = models.DateTimeField(
         'Дата публикации',
-        db_index=True,
+        auto_now_add=True,
+    )
+    is_active = models.BooleanField(
+        'Статус публикации',
+        default=True
     )
 
     class Meta:
@@ -265,6 +270,12 @@ class Comment(models.Model):
         ordering = ('-created',)
         indexes = [
             models.Index(fields=['-created',])
+        ]
+        constraints = [
+            models.CheckConstraint(
+                check=(~Q(text__exact='')) | Q(ranking__isnull=False),
+                name='not_both_empty'
+            )
         ]
 
     def __str__(self):

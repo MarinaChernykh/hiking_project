@@ -155,7 +155,6 @@ body {
   font-weight: 300;
   line-height: normal;
 }
-
 .intro {
   margin-top: 60px;
   margin-bottom: 80px;
@@ -658,4 +657,140 @@ body {
   margin-bottom: 5px;
   border: 1px solid transparent;
   border-radius: 5px;
+}
+
+.comments {
+  margin-top: 60px;
+  margin-bottom: 60px;
+}
+.comments__title-intro {
+  color: #3D3E48;
+  text-align: center;
+  font-size: 36px;
+  font-weight: 500;
+  line-height: normal;
+  margin-bottom: 24px;
+}
+.comments__text-intro {
+  width: 800px;
+  color: #3D3E48;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 30px;
+  margin-bottom: 30px;
+}
+.comments__user-texts {
+  width: 920px;
+  border-top: 0.25px solid #5b5b5b52;
+  padding-top: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.comments__title, .comments__text, .comments__no-text, .comments__rank {
+  color: #3D3E48;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 30px;
+  width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.comments__title, .comments__text {
+  margin-bottom: 9px;
+}
+.comments__user, .comments__rank-bold {
+  font-weight: 600;
+}
+.comments__line {
+  width: 800px;
+  margin: 28px auto;
+  height: 0.25px;
+  background: #5b5b5b52;
+}
+.comments__all {
+  color: #3D3E48;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: normal;
+  display: inline-flex;
+  padding: 20px 32px;
+  align-items: flex-start;
+  border-radius: 40px;
+  border: 1px solid #4169E1;
+  margin-top: 60px;
+  transition: 0.25s;
+}
+.comments__all:hover {
+  background-color: #4169E1;
+  color: #FFF;
+}
+.comments__no-text {
+  text-align: center;
+}
+.comments__list {
+  margin-top: 60px;
+}
+.form-comments__form {
+  width: 800px;
+  margin: 10px auto 40px auto;
+
+}
+.form-comment__form-and-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.form-comments__form-group {
+  display: flex;
+  flex-direction: column;
+  width: 800px;
+  gap: 40px;
+  margin-top: 10px;
+}
+
+.form-comments__label {
+  color: #3D3E48;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.form-comments__form-input {
+  border-radius: 15px;
+  border: 0.5px solid #5b5b5b52;
+  width: 800px;
+  font-family: Montserrat;
+  color: #3D3E48;
+  font-size: 18px;
+  font-weight: 400;
+  font-style: normal;
+  line-height: normal;
+  padding: 12px;
+  margin-top: 6px;
+}
+.form-comments__button {
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  color: #3D3E48;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: normal;
+  display: inline-flex;
+  padding: 20px 32px;
+  align-items: flex-start;
+  border-radius: 40px;
+  border: 1px solid #4169E1;
+  background-color: #FFF;
+  margin-top: 36px;
+  transition: 0.25s;
+  cursor: pointer;
+
+
+  transition: 0.25s;
+}
+.form-comments__button:hover {
+  background-color: #4169E1;
+  color: #FFF;
 }

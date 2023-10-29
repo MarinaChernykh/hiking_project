@@ -1,0 +1,17 @@
+{% for comment in comments %}
+    <p class="comments__title">
+        <span class="comments__title comments__user">{{ comment.author.username }}</span>,
+        {{ comment.created }}
+    </p>
+    <p class="comments__text">{{ comment.text }}</p>
+    <p class="comments__rank">
+        <span class="comments__rank-bold">
+            Оценка:
+        </span>{% if comment.ranking %}{{ comment.ranking }} из 5{% else %}---{% endif %}
+    </p>
+    {% if not forloop.last %}
+        <hr class="comments__line">
+    {% endif %}
+    {% empty %}
+        <p class="comments__no-text">Комментариев пока нет.</p>
+{% endfor %}

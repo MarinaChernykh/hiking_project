@@ -89,6 +89,29 @@
     <img src="{{ trail.route_image.url }}" alt="Карта" class="trail-description__img">
 </article>
 
+<section class="comments center">
+    <h2 class="comments__title-intro">Комментарии</h2>
+    <p class="comments__text-intro center">
+        Если вы уже проходили этот маршрут, поделитесь, насколько он вам понравился, поставив оценку. Уверена, что рейтинг маршрута, формирующийся из ваших оценок, поможет другим спланировать свой отпуск и выбрать самые красивые треки!<br><br>
+        Ну и конечно, будем рады вашим рассказам о прогулках по этим маршрутам, оставленных в комментариях. Поделитесь свежими новостями о состоянии трека, актуальных переправах через реки и ручьи и другой полезной информацией - мир скажет вам спасибо :)
+    </p>
+    <div class="form-comments__form">
+        {% include 'users/includes/errors_check.html' %}
+        <form method="post" action="{% url 'trails:add_comment' trail.slug %}" class="form-comment__form-and-button">
+            {% include 'trails/includes/comment_form.html' %}
+            <input type="submit" value="Сохранить" class="form-comments__button">
+        </form>
+    </div>
+    <div class="comments__user-texts center">
+        {% include "trails/includes/comments.html" %}
+        {% if count > 3 %}
+        <a href="{% url 'trails:comments_list' trail.slug %}" class="comments__all">
+           Все комментарии
+        </a>
+        {% endif %}
+    </div>
+</section>
+
 {% include "trails/includes/top_trails_list.html" with region=trail.region top_trails=top_trails %}
 
 {% endblock content %}
