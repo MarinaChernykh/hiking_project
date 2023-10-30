@@ -4,18 +4,18 @@
 
 
 {% block users_page_title %}
-    <h1 class="form-card__title">Войти на сайт</h1>
+  <h1 class="form-card__title">Войти на сайт</h1>
 {% endblock users_page_title %}
 
 {% block users_page_form %}
-    <div class="form-card__form">
-        {% include 'users/includes/errors_check.html' %}
-        <form method="post" action="{% url 'users:login' %}" class="form-card__form-and-button">
-            {% include 'users/includes/form_content.html' %}
-            <div class="form-card__login-reset">
-                <input type="submit" value="Войти" class="form-card__button">
-                <a href="{% url 'users:password_reset' %}" class="form-card__password-reset">Забыли пароль?</a>
-            </div>
-        </form>
+  <div class="form-card__form">
+  {% include 'users/includes/errors_check.html' %}
+  <form method="post" action="{% url 'users:login' %}" class="form-card__form-and-button">
+    {% include 'users/includes/form_content.html' %}
+    <div class="form-card__login-reset">
+      <input type="submit" value="Войти" class="form-card__button">
+      <a href="{% url 'users:password_reset' %}" class="form-card__password-reset">Забыли пароль?</a>
     </div>
+  </form>
+  </div>
 {% endblock users_page_form %}
