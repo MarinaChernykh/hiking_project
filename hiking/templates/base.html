@@ -11,13 +11,13 @@
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static "css/style.css" %}">
     <title>{% block title %}{% endblock title %}</title>
   </head>
   <body>
     <header class="top">
         {% block main_banner %}
-          <img src="{% static 'img/main.jpg' %}" alt="Горы" class="top__banner">
+          <img src="{% static "img/main.jpg" %}" alt="Горы" class="top__banner">
         {% endblock main_banner %}
         <div class="top__content center">
           {% include "includes/header.html" %}

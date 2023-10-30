@@ -1,7 +1,6 @@
 from django.core.paginator import Paginator
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
-from django.views.decorators.http import require_POST
 from django.db.models import Avg
 from django.conf import settings
 
@@ -63,7 +62,6 @@ def trail_detail(request, slug_trail):
     return render(request, 'trails/trail_details.html', context=context)
 
 
-# @require_POST
 @login_required
 def add_comment(request, slug_trail):
     trail = get_object_or_404(Trail, slug=slug_trail, is_published=True)

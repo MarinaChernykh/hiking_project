@@ -2,7 +2,7 @@ from django import template
 from django.db.models import Avg
 from django.conf import settings
 
-from ..models import Trail
+from trails.models import Trail
 
 
 register = template.Library()

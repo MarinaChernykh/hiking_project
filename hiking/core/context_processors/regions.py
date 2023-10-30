@@ -1,6 +1,6 @@
 from django.core.cache import cache
 
-from ..models import Region
+from trails.models import Region
 
 
 def regions(request):

@@ -1,4 +1,4 @@
-{% extends 'users/users_base.html' %}
+{% extends "users/users_base.html" %}
 
 {% block title %}Войти{% endblock %}
 
@@ -9,12 +9,12 @@
 
 {% block users_page_form %}
   <div class="form-card__form">
-  {% include 'users/includes/errors_check.html' %}
-  <form method="post" action="{% url 'users:login' %}" class="form-card__form-and-button">
-    {% include 'users/includes/form_content.html' %}
+  {% include "users/includes/errors_check.html" %}
+  <form method="post" action="{% url "users:login" %}" class="form-card__form-and-button">
+    {% include "users/includes/form_content.html" %}
     <div class="form-card__login-reset">
       <input type="submit" value="Войти" class="form-card__button">
-      <a href="{% url 'users:password_reset' %}" class="form-card__password-reset">Забыли пароль?</a>
+      <a href="{% url "users:password_reset" %}" class="form-card__password-reset">Забыли пароль?</a>
     </div>
   </form>
   </div>

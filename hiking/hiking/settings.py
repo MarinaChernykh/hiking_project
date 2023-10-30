@@ -13,7 +13,10 @@ SECRET_KEY = 'django-insecure-%fs6d9gq@na^v^f3l+&atrt$@g)ya%u1#kkp1434m_2%vriyf+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1',
+]
 
 
 # Application definition
@@ -27,6 +30,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'trails.apps.TrailsConfig',
     'users.apps.UsersConfig',
+    'core.apps.CoreConfig',
 ]
 
 MIDDLEWARE = [
@@ -53,7 +57,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'trails.context_processors.regions.regions',
+                'core.context_processors.regions.regions',
             ],
         },
     },
@@ -130,3 +134,5 @@ LOGOUT_REDIRECT_URL = 'trails:index'
 
 EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
 EMAIL_FILE_PATH = BASE_DIR / 'sent_emails'
+
+CSRF_FAILURE_VIEW = 'core.views.csrf_failure'
