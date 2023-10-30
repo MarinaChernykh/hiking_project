@@ -63,7 +63,7 @@ def trail_detail(request, slug_trail):
     return render(request, 'trails/trail_details.html', context=context)
 
 
-@require_POST
+# @require_POST
 @login_required
 def add_comment(request, slug_trail):
     trail = get_object_or_404(Trail, slug=slug_trail, is_published=True)
