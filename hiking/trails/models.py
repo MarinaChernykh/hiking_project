@@ -1,10 +1,9 @@
 from django.db import models
 from django.db.models import Q
 from django.contrib.auth import get_user_model
+from django.conf import settings
 from django.core import validators
 from django.urls import reverse
-
-from . import constants
 
 
 User = get_user_model()
@@ -98,7 +97,7 @@ class Trail(models.Model):
         max_length=25,
         validators=[
             validators.RegexValidator(
-                regex=constants.COORDINATES)],
+                regex=settings.COORDINATES_FORMAT)],
         blank=True,
     )
     region = models.ForeignKey(

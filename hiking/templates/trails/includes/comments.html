@@ -1,7 +1,10 @@
 {% for comment in comments %}
   <p class="comments__title">
     <span class="comments__title comments__user">{{ comment.author.username }}</span>,
-    {{ comment.created }}
+    {% load tz %}
+    {% localtime on %}
+      {{ comment.created }}
+    {% endlocaltime %}
   </p>
   <p class="comments__text">{{ comment.text }}</p>
   <p class="comments__rank">
