@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'trails.apps.TrailsConfig',
     'users.apps.UsersConfig',
+    'about.apps.AboutConfig',
     'core.apps.CoreConfig',
     'debug_toolbar',
 ]
