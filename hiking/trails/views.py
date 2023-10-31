@@ -34,7 +34,7 @@ def trails_list(request, slug_region=None):
               .select_related('region')
               .annotate(avg_rank = Avg('comments__ranking'))
               .order_by('-avg_rank'))
-    paginator = Paginator(trails, settings.TRAILS_PER_PAGE)
+    paginator = Paginator(trails, settings.TRAILS_NUMBER_ALL_TRAILS_PAGE)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     context = {
@@ -56,7 +56,7 @@ def trail_detail(request, slug_trail):
         'trail': trail,
         'average_rating': agregate_comments['ranking__avg'],
         'count': agregate_comments['id__count'],
-        'comments': comments[:settings.COMMENTS_ON_TRAIL_PAGE],
+        'comments': comments[:settings.COMMENTS_NUMBER_TRAIL_PAGE],
         'form': form,
     }
     return render(request, 'trails/trail_details.html', context=context)
@@ -80,7 +80,7 @@ def comments_list(request, slug_trail):
         slug=slug_trail, is_published=True
     )
     comments = trail.comments.filter(is_active=True).select_related('author')
-    paginator = Paginator(comments, settings.COMMENTS_PER_PAGE)
+    paginator = Paginator(comments, settings.COMMENTS_NUMBER_COMMENTS_PAGE)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     context = {

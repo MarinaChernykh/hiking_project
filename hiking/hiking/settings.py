@@ -126,14 +126,18 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-TOP_TRAILS_PER_PAGE = 3
-TRAILS_PER_PAGE = 6
-COMMENTS_ON_TRAIL_PAGE = 3
-COMMENTS_PER_PAGE = 5
+TRAILS_NUMBER_INDEX_PAGE = 9
+TRAILS_NUMBER_REGION_PAGE = 6
+TRAILS_NUMBER_ALL_TRAILS_PAGE = 6
+TRAILS_NUMBER_TRAIL_PAGE = 3
+
+COMMENTS_NUMBER_TRAIL_PAGE = 3
+COMMENTS_NUMBER_COMMENTS_PAGE = 5
+
 
 LOGIN_URL = 'users:login'
 LOGIN_REDIRECT_URL = 'trails:index'
-# LOGOUT_REDIRECT_URL = 'trails:index'
+LOGOUT_REDIRECT_URL = 'trails:index'
 
 EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
 EMAIL_FILE_PATH = BASE_DIR / 'sent_emails'
@@ -143,3 +147,5 @@ CSRF_FAILURE_VIEW = 'core.views.csrf_failure'
 INTERNAL_IPS = [
     '127.0.0.1',
 ]
+
+# AUTH_USER_MODEL = 'users.CustomUser'

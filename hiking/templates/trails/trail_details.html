@@ -114,7 +114,7 @@
   </div>
   <div class="comments__user-texts center">
     {% include "trails/includes/comments.html" %}
-    {% if count > COMMENTS_ON_TRAIL_PAGE %}
+    {% if count > COMMENTS_NUMBER_TRAIL_PAGE %}
     <a href="{% url "trails:comments_list" trail.slug %}" class="comments__all">
       Все комментарии
     </a>
@@ -124,7 +124,7 @@
 </section>
 
 {% with trail.region as region %}
-  {% show_top_trails region %}
+  {% show_top_trails TRAILS_NUMBER_TRAIL_PAGE region %}
 {% endwith %}
 
 {% endblock content %}
