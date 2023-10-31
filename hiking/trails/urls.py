@@ -24,5 +24,6 @@ urlpatterns = [
     path('trails/',
          views.trails_list,
          name='trails_list'),
+    path('search/', views.trails_search, name='trails_search'),
     path('', views.index, name='index'),
 ]

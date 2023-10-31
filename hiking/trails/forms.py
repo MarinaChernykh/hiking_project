@@ -19,3 +19,7 @@ class CommentForm(forms.ModelForm):
         text = self.cleaned_data.get('text')
         if ranking is None and text.strip() == '':
             raise ValidationError('Вы должны заполнить хотя бы одно поле')
+
+
+class SearchForm(forms.Form):
+    query = forms.CharField()

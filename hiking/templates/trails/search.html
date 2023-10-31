@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}Результаты поиска{% endblock title %}
+
+{% block article_title %}
+  <h1 class="top__title">Результаты поиска</h1>
+{% endblock article_title %}
+
+{% block content %}
+  <section class="search center">
+    {% if  query %}
+    <h2 class="search__title">
+        Результаты поиска по запросу "{{ query }}"
+    </h2>
+      {% for trail in results %}
+        <a href="{{ trail.get_absolute_url }}" class="search__result" target="_blank">
+          <p class="search__result-title">
+            {{ trail.name }}
+          </p>
+          <p class="search__result-text">
+            {{ trail.short_description|truncatewords_html:30 }}
+          </p>
+        </a>
+      {% empty %}
+        <p class="search__result-text search__no-result">
+          По вашему запросу ничего не найдено.
+        </p>
+      {% endfor %}
+    {% else %}
+      <p class="search__result-text search__no-result">
+        По вашему запросу ничего не найдено.
+      </p>
+    {% endif %}
+  </section>
+{% endblock %}

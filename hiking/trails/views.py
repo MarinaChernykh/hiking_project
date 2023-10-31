@@ -1,11 +1,12 @@
-from django.core.paginator import Paginator
-from django.shortcuts import render, get_object_or_404, redirect
-from django.contrib.auth.decorators import login_required
 from django.db.models import Avg, Count
+from django.core.paginator import Paginator
+from django.contrib.auth.decorators import login_required
+from django.contrib.postgres.search import SearchVector
+from django.shortcuts import render, get_object_or_404, redirect
 from django.conf import settings
 
 from .models import Region, Trail
-from .forms import CommentForm
+from .forms import CommentForm, SearchForm
 
 
 def index(request):
@@ -88,3 +89,25 @@ def comments_list(request, slug_trail):
         'page_obj': page_obj,
     }
     return render(request, 'trails/comments_list.html', context=context)
+
+
+def trails_search(request):
+    form = SearchForm()
+    query = None
+    results = []
+    if 'query' in request.GET:
+        form = SearchForm(request.GET)
+        if form.is_valid():
+            query = form.cleaned_data['query']
+            results = (Trail.objects
+                       .filter(is_published=True)
+                       .annotate(search=SearchVector(
+                           'name', 'short_description', 'full_description',
+                           'start_point_description', 'aqua'),)
+                       .filter(search=query))
+    context = {
+        'form': form,
+        'query': query,
+        'results': results,
+    }
+    return render(request, 'trails/search.html', context=context)

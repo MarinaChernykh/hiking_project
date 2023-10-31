@@ -10,23 +10,20 @@
     {% endif %}
   </div>
   <div class="top__buttons-right-group">
-    <form method="get" action="{% url 'trails:trails_search' %}">
-      <div class="top__buttons-right-group__search-box">
-        <input
-          type="text"
-          class="top__buttons-right-group__search-field"
-          placeholder="Поиск по описаниям маршрутов"
-          name="query"
-          required
-        />
-        <img
-          src="{% static 'img/search-icon.jpg' %}"
-          alt="Поиск"
-          class="top__buttons-right-group__search-icon"
-        />
-      </div>
-      <input type="submit" value="Поиск" class="top__buttons-right-group__search">
-    </form>
+    <div class="top__buttons-right-group__search-box">
+      <input
+        type="text"
+        class="top__buttons-right-group__search-field"
+        placeholder="Поиск по описаниям маршрутов"
+      />
+      <img
+        src="{% static 'img/search-icon.jpg' %}"
+        alt="Поиск"
+        class="top__buttons-right-group__search-icon"
+      />
+    </div>
+    <a href="#" class="top__buttons-right-group__search">Поиск</a>
+  </div>
 </div>
 <nav class="top__navigation">
   <a href="{% url 'trails:index' %}" class="top__navigation__link">Главная</a>
