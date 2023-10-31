@@ -11,7 +11,7 @@
 {% endblock main_banner %}
 
 {% block article_title %}
-  {{ region.name }}
+  <h1 class="top__title">{{ region.name }}</h1>
 {% endblock article_title %}
 
 {% block content %}
@@ -75,7 +75,7 @@
     <img src="{{ images.4.image.url }}" alt="{{ region.name }}" class="photo__img">
   </section>
   {% endwith %}
-  
+
   <!-- Топ-3 трека -->
   {% with region as region %}
     {% show_top_trails region %}

@@ -133,7 +133,7 @@ COMMENTS_PER_PAGE = 5
 
 LOGIN_URL = 'users:login'
 LOGIN_REDIRECT_URL = 'trails:index'
-LOGOUT_REDIRECT_URL = 'trails:index'
+# LOGOUT_REDIRECT_URL = 'trails:index'
 
 EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
 EMAIL_FILE_PATH = BASE_DIR / 'sent_emails'
