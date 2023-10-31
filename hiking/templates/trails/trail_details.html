@@ -89,9 +89,9 @@
   </p>
   {% if trail.next_trail %}
     <p class="trail-description__text center">
-      Если у вас остались силы и желание, то у этого маршрута есть продолжение - трек
+      Если у вас остались силы, время и желание, то у этого маршрута есть продолжение - трек
       <a
-        ref="{% url "trails:trail_detail" trail.next_trail.slug %}"
+        href="{% url "trails:trail_detail" trail.next_trail.slug %}"
         class="trail-description__text underlined">{{ trail.next_trail.name }}
      </a>.
     </p>

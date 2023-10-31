@@ -33,7 +33,7 @@
       {% for trail in page_obj %}
         {% include "trails/includes/trail_card.html" %}
       {% empty %}
-        <p class="intro__text center">В этом регионе пока не описан ни один маршрут.<p>
+        <p class="intro__text center-text">В этом регионе пока не описан ни один маршрут.<p>
       {% endfor %}
     </div>
     {% include "trails/includes/paginator.html" %}

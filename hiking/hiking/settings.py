@@ -60,7 +60,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'core.context_processors.regions.regions',
-                'core.context_processors.settings_constants.get_constants',
+                'core.context_processors.settings_constants.constants',
             ],
         },
     },

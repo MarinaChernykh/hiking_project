@@ -168,6 +168,9 @@ body {
   line-height: 30px;
   margin-bottom: 30px;
 }
+.center-text {
+  text-align: center;
+}
 .intro__text-bold {
   font-weight: 600;
 }
@@ -244,7 +247,7 @@ body {
 .trails__cards {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: flex-start;
   gap: 40px;
 }
 .trails__card-item {

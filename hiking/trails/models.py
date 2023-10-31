@@ -150,6 +150,11 @@ class Trail(models.Model):
         upload_to='trails/main',
         blank=True,
     )
+    card_image = models.ImageField(
+        'Фото для карточки маршрута',
+        upload_to='trails/cards',
+        blank=True,
+    )
     previous_trail = models.ForeignKey(
         'self',
         on_delete=models.SET_NULL,
