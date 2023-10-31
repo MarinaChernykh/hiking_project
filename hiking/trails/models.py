@@ -228,6 +228,7 @@ class TrailPhoto(models.Model):
         verbose_name = 'Фото маршрута'
         verbose_name_plural = 'Фото маршрута'
 
+
 class Comment(models.Model):
     RANK_CHOICE = (
         (1, '1 - Совсем не понравился'),

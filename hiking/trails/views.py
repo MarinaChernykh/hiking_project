@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Avg, Count
 from django.conf import settings
 
-from .models import Region, Trail, Comment
+from .models import Region, Trail
 from .forms import CommentForm
 
 
@@ -32,7 +32,7 @@ def trails_list(request, slug_region=None):
         trails = Trail.objects.filter(is_published=True)
     trails = (trails
               .select_related('region')
-              .annotate(avg_rank = Avg('comments__ranking'))
+              .annotate(avg_rank=Avg('comments__ranking'))
               .order_by('-avg_rank'))
     paginator = Paginator(trails, settings.TRAILS_NUMBER_ALL_TRAILS_PAGE)
     page_number = request.GET.get('page')

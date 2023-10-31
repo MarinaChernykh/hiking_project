@@ -47,7 +47,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'hiking.urls'
 
-TEMPLATES_DIR = BASE_DIR /'templates'
+TEMPLATES_DIR = BASE_DIR / 'templates'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',

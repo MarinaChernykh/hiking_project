@@ -17,6 +17,6 @@ def show_top_trails(obj_number, region=None):
 
     top_trails = (top_trails
                   .select_related('region')
-                  .annotate(avg_rank = Avg('comments__ranking'))
+                  .annotate(avg_rank=Avg('comments__ranking'))
                   .order_by('-avg_rank'))[:obj_number]
     return {'top_trails': top_trails, 'region': region}
