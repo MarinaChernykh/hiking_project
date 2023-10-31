@@ -22,6 +22,7 @@
     </p>
   </section>
 
+  {% with region.photos.all as images %}
   <section class="photo">
     <img src="{{ images.0.image.url }}" alt="{{ region.name }}" class="photo__img">
   </section>
@@ -73,7 +74,8 @@
   <section class="photo">
     <img src="{{ images.4.image.url }}" alt="{{ region.name }}" class="photo__img">
   </section>
-
+  {% endwith %}
+  
   <!-- Топ-3 трека -->
   {% with region as region %}
     {% show_top_trails region %}

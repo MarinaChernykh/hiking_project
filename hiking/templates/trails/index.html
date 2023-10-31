@@ -35,6 +35,7 @@
     </div>
     <div class="regions__row-2">
       <div class="regions__card">
+        {% with regions|last as last_region %}
         <a href="{{ last_region.get_absolute_url }}" class="regions__link-row-2"
           ><img
           src="{% static "img/" %}{{ last_region.slug }}.jpg"
@@ -42,6 +43,7 @@
             class="regions__img-horiz"
         /></a>
         <p class="regions__title regions__title-left">{{ last_region.name }}</p>
+        {% endwith %}
       </div>
     </div>
   </section>

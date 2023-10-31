@@ -72,12 +72,14 @@
 </section>
 
 <section class="photo">
-  <img src="{{ images.0.image.url }}" alt="{{ trail.name }}" class="photo__img">
-  <div class="photo__row">
-    <img src="{{ images.1.image.url }}" alt="{{ trail.name }}" class="photo__img-in-row">
-    <img src="{{ images.2.image.url }}" alt="{{ trail.name }}" class="photo__img-in-row">
-  </div>
-  <img src="{{ images.3.image.url }}" alt="{{ trail.name }}" class="photo__img">
+  {% with trail.photos.all as images %}
+    <img src="{{ images.0.image.url }}" alt="{{ trail.name }}" class="photo__img">
+    <div class="photo__row">
+      <img src="{{ images.1.image.url }}" alt="{{ trail.name }}" class="photo__img-in-row">
+      <img src="{{ images.2.image.url }}" alt="{{ trail.name }}" class="photo__img-in-row">
+    </div>
+    <img src="{{ images.3.image.url }}" alt="{{ trail.name }}" class="photo__img">
+  {% endwith %}
 </section>
 
 <article class="trail-description">
@@ -112,11 +114,12 @@
   </div>
   <div class="comments__user-texts center">
     {% include "trails/includes/comments.html" %}
-    {% if count > 3 %}
+    {% if count > COMMENTS_ON_TRAIL_PAGE %}
     <a href="{% url "trails:comments_list" trail.slug %}" class="comments__all">
       Все комментарии
     </a>
     {% endif %}
+
   </div>
 </section>
 

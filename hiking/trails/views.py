@@ -1,7 +1,7 @@
 from django.core.paginator import Paginator
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
-from django.db.models import Avg
+from django.db.models import Avg, Count
 from django.conf import settings
 
 from .models import Region, Trail, Comment
@@ -9,19 +9,16 @@ from .forms import CommentForm
 
 
 def index(request):
-    last_region = Region.objects.last()
-    context = {
-        'last_region': last_region,
-    }
-    return render(request, 'trails/index.html', context=context)
+    return render(request, 'trails/index.html')
 
 
 def region_detail(request, slug_region):
-    region = get_object_or_404(Region, slug=slug_region)
-    images = region.photos.all()
+    region = get_object_or_404(
+        Region.objects.prefetch_related('photos'),
+        slug=slug_region
+    )
     context = {
         'region': region,
-        'images': images,
     }
     return render(request, 'trails/region_detail.html', context=context)
 
@@ -33,31 +30,34 @@ def trails_list(request, slug_region=None):
     else:
         region = None
         trails = Trail.objects.filter(is_published=True)
-    trails = trails.annotate(avg_rank = Avg('comments__ranking')).order_by('-avg_rank')
+    trails = (trails
+              .select_related('region')
+              .annotate(avg_rank = Avg('comments__ranking'))
+              .order_by('-avg_rank'))
     paginator = Paginator(trails, settings.TRAILS_PER_PAGE)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     context = {
         'page_obj': page_obj,
-        'region': region
+        'region': region,
     }
     return render(request, 'trails/trails_list.html', context)
 
 
 def trail_detail(request, slug_trail):
-    trail = get_object_or_404(Trail, slug=slug_trail, is_published=True)
-    average_rating = trail.comments.aggregate(Avg('ranking'))['ranking__avg']
-    images = trail.photos.all()
+    trail = get_object_or_404(
+        Trail.objects.select_related('region').prefetch_related('photos'),
+        slug=slug_trail, is_published=True
+    )
     form = CommentForm()
-    comments = trail.comments.filter(is_active=True)
-    count = comments.count()
+    comments = trail.comments.filter(is_active=True).select_related('author')
+    agregate_comments = comments.aggregate(Avg('ranking'), Count('id'))
     context = {
         'trail': trail,
-        'average_rating': average_rating,
-        'images': images,
-        'form': form,
+        'average_rating': agregate_comments['ranking__avg'],
+        'count': agregate_comments['id__count'],
         'comments': comments[:settings.COMMENTS_ON_TRAIL_PAGE],
-        'count': count,
+        'form': form,
     }
     return render(request, 'trails/trail_details.html', context=context)
 
@@ -75,8 +75,11 @@ def add_comment(request, slug_trail):
 
 
 def comments_list(request, slug_trail):
-    trail = get_object_or_404(Trail, slug=slug_trail, is_published=True)
-    comments = trail.comments.filter(is_active=True)
+    trail = get_object_or_404(
+        Trail.objects.select_related('region'),
+        slug=slug_trail, is_published=True
+    )
+    comments = trail.comments.filter(is_active=True).select_related('author')
     paginator = Paginator(comments, settings.COMMENTS_PER_PAGE)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
