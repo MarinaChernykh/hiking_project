@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   gap: 16px;
-  margin-top: 100px;
+  margin-top: 60px;
 }
 .paginator__numbers {
   display: flex;
