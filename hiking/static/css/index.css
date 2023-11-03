@@ -1,0 +1,30 @@
+/* general page styles */
+@import url(./blocks/page.css);
+
+/* header + footer */
+@import url(./blocks/header.css);
+@import url(./blocks/footer.css);
+
+/* main page */
+@import url(./blocks/main.css);
+
+/* users comments */
+@import url(./blocks/comments.css);
+@import url(./blocks/comments_form.css);
+
+/* regions */
+@import url(./blocks/region.css);
+
+/* trails */
+@import url(./blocks/trail.css);
+@import url(./blocks/trail_cards.css);
+
+/* search results page */
+@import url(./blocks/search.css);
+
+/* users authorisation etc */
+@import url(./blocks/users.css);
+
+/* other components */
+@import url(./blocks/paginator.css);
+@import url(./blocks/form_allerts.css);

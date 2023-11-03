@@ -1,26 +1,26 @@
-<a href="{{ trail.get_absolute_url }}" class="trails__card-item">
-  <img src="{{ trail.card_image.url }}" alt="{{ trail.name }}" class="trails__img">
-  <div class="trails__content">
-    <p class="trails__card-title">{{ trail.name }}</p>
-    <div class="trails__card-details">
-      <div class="trails__detail-name">
-        <p class="trails__detail-name-item">Регион:</p>
-        <p class="trails__detail-name-item">Расстояние:</p>
-        <p class="trails__detail-name-item">Набор высоты:</p>
-        <p class="trails__detail-name-item">Время:</p>
-        <p class="trails__detail-name-item">Сложность:</p>
-        <p class="trails__detail-name-item">Рейтинг:</p>
+<a href="{{ trail.get_absolute_url }}" class="trail-card">
+  <img src="{{ trail.card_image.url }}" alt="{{ trail.name }}" class="trail-card__img">
+  <div class="trail-card__content">
+    <p class="trail-card__title card-title">{{ trail.name }}</p>
+    <div class="trail-card__details card-text">
+      <div class="trail-card__detail-name">
+        <p>Регион:</p>
+        <p>Расстояние:</p>
+        <p>Набор высоты:</p>
+        <p>Время:</p>
+        <p>Сложность:</p>
+        <p>Рейтинг:</p>
       </div>
-      <div class="trails__detail-value">
-        <p class="trails__detail-val-item">{{ trail.region.name }}</p>
-        <p class="trails__detail-val-item">{{ trail.distance }} км</p>
-        <p class="trails__detail-val-item">{{ trail.elevation_gain }} м</p>
-        <p class="trails__detail-val-item">{{ trail.time }}</p>
-        <p class="trails__detail-val-item">{{ trail.get_level_display }}</p>
+      <div class="trail-card__detail-value">
+        <p>{{ trail.region.name }}</p>
+        <p>{{ trail.distance }} км</p>
+        <p>{{ trail.elevation_gain }} м</p>
+        <p>{{ trail.time }}</p>
+        <p>{{ trail.get_level_display }}</p>
         {% if trail.avg_rank %}
-          <p class="trails__detail-val-item">{{ trail.avg_rank|floatformat:1 }} из 5</p>
+          <p>{{ trail.avg_rank|floatformat:1 }} из 5</p>
         {% else %}
-          <p class="trails__detail-val-item">---</p>
+          <p>---</p>
         {% endif %}
       </div>
     </div>

@@ -7,119 +7,120 @@
 {% endblock title %}
 
 {% block main_banner %}
-  <img src="{{ trail.main_image.url }}" alt="{{ trail.name }}" class="top__banner">
+  <img src="{{ trail.main_image.url }}" alt="{{ trail.name }}" class="main-banner">
 {% endblock main_banner %}
 
 {% block article_title %}
-  <h1 class="top__title">{{ trail.name }}</h1>
+  <h1 class="top__title main-title">{{ trail.name }}</h1>
 {% endblock article_title %}
 
 {% block content %}
 <section class="trail-info center">
   <div class="trail-info__item">
     <img src="{% static "img/trail_logos/distance.jpg" %}" alt="Дистанция" class="trail-info__img">
-    <p class="trail-info__name">Общее расстояние</p>
-    <p class="trail-info__value">{{ trail.distance }} км</p>
+    <p class="trail-info__name text-medi-bold">Общее расстояние</p>
+    <p class="trail-info__value text">{{ trail.distance }} км</p>
   </div>
   <div class="trail-info__item">
     <img src="{% static "img/trail_logos/time.png" %}" alt="Время" class="trail-info__img">
-    <p class="trail-info__name">Общее время</p>
-    <p class="trail-info__value">{{ trail.time }}</p>
+    <p class="trail-info__name text-medi-bold">Общее время</p>
+    <p class="trail-info__value text">{{ trail.time }}</p>
   </div>
   <div class="trail-info__item">
     <img src="{% static "img/trail_logos/altitude.jpg" %}" alt="Высота" class="trail-info__img">
-    <p class="trail-info__name">Набор высоты</p>
-    <p class="trail-info__value">{{ trail.elevation_gain }} м</p>
+    <p class="trail-info__name text-medi-bold">Набор высоты</p>
+    <p class="trail-info__value text">{{ trail.elevation_gain }} м</p>
   </div>
   <div class="trail-info__item">
     <img src="{% static "img/trail_logos/type.png" %}" alt="Расстояние" class="trail-info__img">
-    <p class="trail-info__name">Тип маршрута</p>
-    <p class="trail-info__value">{{ trail.get_route_type_display }}</p>
+    <p class="trail-info__name text-medi-bold">Тип маршрута</p>
+    <p class="trail-info__value text">{{ trail.get_route_type_display }}</p>
   </div>
   <div class="trail-info__item">
     <img src="{% static "img/trail_logos/ranking.png" %}" alt="Рейтинг" class="trail-info__img">
-    <p class="trail-info__name">Рейтинг маршрута</p>
+    <p class="trail-info__name text-medi-bold">Рейтинг маршрута</p>
     {% if average_rating %}
-      <p class="trail-info__value">{{ average_rating|floatformat:1 }} из 5</p>
+      <p class="trail-info__value text">{{ average_rating|floatformat:1 }} из 5</p>
     {% else %}
-      <p class="trail-info__value">---</p>
+      <p class="trail-info__value text">---</p>
     {% endif %}
   </div>
   <div class="trail-info__item">
     <img src="{% static "img/trail_logos/level.png" %}" alt="Сложность" class="trail-info__img">
-    <p class="trail-info__name">Уровень сложности</p>
-    <p class="trail-info__value">{{ trail.get_level_display }}</p>
+    <p class="trail-info__name text-medi-bold">Уровень сложности</p>
+    <p class="trail-info__value text">{{ trail.get_level_display }}</p>
   </div>
 </section>
 
-<section class="intro">
-  <p class="intro__text center">
-    {{ trail.short_description|safe }}
-  </p>
-  {% if trail.previous_trail %}
-  <p class="trail-description__text center">
-    Этот трек является продолжением маршрута
-    <a href="{% url "trails:trail_detail" trail.previous_trail.slug %}" class="trail-description__text underlined">{{ trail.previous_trail.name }}</a>.
-  </p>
-  {% endif %}
-  <p class="intro__text center">
-    <span class="intro__text-bold">Начало маршрута: </span>{{ trail.start_point }}<br>
-    {{ trail.start_point_description|safe }}
-  </p>
-  <p class="intro__text center">
-    <span class="intro__text-bold">Вода на маршруте: </span>{{ trail.aqua|safe }}
-  </p>
-</section>
-
-<section class="photo">
-  {% with trail.photos.all as images %}
-    <img src="{{ images.0.image.url }}" alt="{{ trail.name }}" class="photo__img">
-    <div class="photo__row">
-      <img src="{{ images.1.image.url }}" alt="{{ trail.name }}" class="photo__img-in-row">
-      <img src="{{ images.2.image.url }}" alt="{{ trail.name }}" class="photo__img-in-row">
-    </div>
-    <img src="{{ images.3.image.url }}" alt="{{ trail.name }}" class="photo__img">
-  {% endwith %}
-</section>
-
-<article class="trail-description">
-  <h2 class="trail-description__title">Описание маршрута</h2>
-  <p class="trail-description__text center">
-    {{ trail.full_description|safe }}
-  </p>
-  {% if trail.next_trail %}
-    <p class="trail-description__text center">
-      Если у вас остались силы, время и желание, то у этого маршрута есть продолжение - трек
-      <a
-        href="{% url "trails:trail_detail" trail.next_trail.slug %}"
-        class="trail-description__text underlined">{{ trail.next_trail.name }}
-     </a>.
+<article class="article center">
+  <main class="trail-intro">
+    <p class="text article-text">
+      {{ trail.short_description|safe }}
     </p>
-  {% endif %}
-  <img src="{{ trail.route_image.url }}" alt="Карта" class="trail-description__img">
+    {% if trail.previous_trail %}
+    <p class="text article-text">
+      Этот трек является продолжением маршрута
+      <a href="{% url "trails:trail_detail" trail.previous_trail.slug %}" class="text-underlined">{{ trail.previous_trail.name }}</a>.
+    </p>
+    {% endif %}
+    <p class="text article-text">
+      <span class="text-bold">Начало маршрута: </span>{{ trail.start_point }}<br>
+      {{ trail.start_point_description|safe }}
+    </p>
+    <p class="text article-text">
+      <span class="text-bold">Вода на маршруте: </span>{{ trail.aqua|safe }}
+    </p>
+  </main>
+  <div class="photo-gallery">
+    {% with trail.photos.all as images %}
+      <img src="{{ images.0.image.url }}" alt="{{ trail.name }}" class="large_image">
+      <div class="photo-gallery__row">
+        <img src="{{ images.1.image.url }}" alt="{{ trail.name }}" class="small_image">
+        <img src="{{ images.2.image.url }}" alt="{{ trail.name }}" class="small_image">
+      </div>
+      <img src="{{ images.3.image.url }}" alt="{{ trail.name }}" class="large_image">
+    {% endwith %}
+  </div>
+  <section class="trail-description">
+    <h2 class="trail-description__title title">Описание маршрута</h2>
+    <p class="text article-text">
+      {{ trail.full_description|safe }}
+    </p>
+    {% if trail.next_trail %}
+      <p class="text article-text">
+        Если у вас остались силы, время и желание, то у этого маршрута есть продолжение - трек
+        <a
+          href="{% url "trails:trail_detail" trail.next_trail.slug %}"
+          class="trail-description__text underlined">{{ trail.next_trail.name }}
+      </a>.
+      </p>
+    {% endif %}
+  </section>
+  <div class="trail-map">
+    <img src="{{ trail.route_image.url }}" alt="Карта" class="large_image">
+  </div>
 </article>
 
-<section class="comments center">
-  <h2 class="comments__title-intro">Комментарии</h2>
-  <p class="comments__text-intro center">
+<section class="comments article center">
+  <h2 class="comments__title title">Комментарии</h2>
+  <p class="text article-text">
     Если вы уже проходили этот маршрут, поделитесь, насколько он вам понравился, поставив оценку. Уверена, что рейтинг маршрута, формирующийся из ваших оценок, поможет другим спланировать свой отпуск и выбрать самые красивые треки!<br><br>
     Ну и конечно, будем рады вашим рассказам о прогулках по этим маршрутам, оставленных в комментариях. Поделитесь свежими новостями о состоянии трека, актуальных переправах через реки и ручьи и другой полезной информацией - мир скажет вам спасибо :)
   </p>
   <div class="form-comments__form">
     {% include 'users/includes/errors_check.html' %}
-    <form method="post" action="{% url 'trails:add_comment' trail.slug %}" class="form-comment__form-and-button">
+    <form method="post" action="{% url 'trails:add_comment' trail.slug %}" class="form-comments__form-and-button">
       {% include 'trails/includes/comment_form.html' %}
-      <input type="submit" value="Сохранить" class="form-comments__button">
+      <input type="submit" value="Сохранить" class="body-button form-button form-button-text">
     </form>
   </div>
-  <div class="comments__user-texts center">
+  <div class="comments__user-texts">
     {% include "trails/includes/comments.html" %}
     {% if count > COMMENTS_NUMBER_TRAIL_PAGE %}
-    <a href="{% url "trails:comments_list" trail.slug %}" class="comments__all">
+    <a href="{% url "trails:comments_list" trail.slug %}" class="comments__button body-button body-button-text">
       Все комментарии
     </a>
     {% endif %}
-
   </div>
 </section>
 

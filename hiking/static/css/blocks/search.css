@@ -1,0 +1,25 @@
+.search {
+    margin-top: 60px;
+    margin-bottom: 60px;
+}
+.search__title {
+  margin-bottom: 12px;
+}
+.search__result {
+  border-bottom: #5b5b5b52 .25px solid;
+  margin-top: 20px;
+}
+.search__result-title {
+  display: inline-block;
+  width: 800px;
+  margin-bottom: 6px;
+  text-decoration: underline;
+}
+.search__result-text {
+  width: 800px;
+  margin-bottom: 20px;
+}
+.search__no-result {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}

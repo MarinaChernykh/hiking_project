@@ -1,0 +1,42 @@
+.intro {
+  margin-top: 60px;
+  margin-bottom: 60px;
+}
+
+.regions {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+.regions__card {
+  position: relative;
+}
+.regions__img {
+  border-radius: 15px;
+  width: 368px;
+  transition: 0.5s;
+}
+.regions__img-horiz {
+  width: 1184px;
+  border-radius: 15px;
+  transition: 0.5s;
+}
+.regions__img:hover, .regions__img-horiz:hover {
+  box-shadow: 1px 2px 12px 1px rgb(0, 0, 0);
+}
+.regions__row-1 {
+  display: flex;
+  gap: 40px;
+}
+.regions__title-center {
+  position: absolute;
+  top: 45px;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+.regions__title-left {
+  position: absolute;
+  top: 45px;
+  left: 48px;
+}

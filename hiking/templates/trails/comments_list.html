@@ -8,16 +8,16 @@
 {% endblock title %}
 
 {% block main_banner %}
-  <img src="{{ trail.main_image.url }}" alt="{{ trail.name }}" class="top__banner">
+  <img src="{{ trail.main_image.url }}" alt="{{ trail.name }}" class="main-banner">
 {% endblock main_banner %}
 
 {% block article_title %}
-  <h1 class="top__title">{{ trail.name }}</h1>
+  <h1 class="top__title main-title">{{ trail.name }}</h1>
 {% endblock article_title %}
 
 {% block content %}
   <section class="comments__list">
-    <h2 class="comments__title-intro">Комментарии</h2>
+    <h2 class="comments__title title">Комментарии</h2>
     <div class="comments center">
       <div class="comments__user-texts center">
         {% include "trails/includes/comments.html" with comments=page_obj %}

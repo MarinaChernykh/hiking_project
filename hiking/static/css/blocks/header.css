@@ -1,0 +1,82 @@
+.top {
+  width: 100vw;
+  height: 100vh;
+  max-width: 100%;
+}
+
+.top__buttons {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  top: 41px;
+  margin-bottom: 41px;
+}
+.top__buttons-left, .top__buttons-right {
+  display: flex;
+  gap: 16px;
+}
+.top__buttons-left__signin {
+  width: 167px;
+  height: 53px;
+  display: inline-flex;
+  align-items: center;
+}
+.top__buttons-left__signin:hover {
+  text-decoration: underline;
+}
+.top__buttons-right__search-box {
+  width: 410px;
+  height: 53px;
+  display: flex;
+  align-items: center;
+  background-color: #FFF;
+  border-radius: 40px;
+  border: none;
+}
+.top__buttons-right__search-icon {
+  width: 20px;
+  height: 20px;
+  margin: 0px 10px;
+  order: -1;
+}
+.top__buttons-right__search-field {
+  width: 340px;
+  border: none;
+}
+.top__buttons-right__search-field:focus {
+  outline: none;
+}
+.top__buttons-right__search-button {
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  border: transparent;
+  cursor: pointer;
+}
+
+.top__nav {
+  position: absolute;
+  top: 127px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 890px;
+  display: flex;
+  justify-content: space-between;
+  border-top: rgba(255, 255, 255, 0.7) 1px solid;
+}
+.top__nav__link {
+  padding-top: 35px;
+}
+.top__nav__link:hover {
+  text-decoration: underline;
+}
+
+.top__title {
+  width: 660px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-40%);
+  left: 0;
+  right: 0;
+  margin: auto;
+}

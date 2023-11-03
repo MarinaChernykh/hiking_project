@@ -1,0 +1,30 @@
+.form-comments__form {
+  width: 800px;
+  margin: 40px auto;
+}
+.form-comments__form-and-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 36px;
+}
+.form-comments__form-group {
+  display: flex;
+  flex-direction: column;
+  width: 800px;
+  gap: 40px;
+  margin-top: 10px;
+}
+.form-comments__input {
+  font-family: "Montserrat", sans-serif;
+  color: #3D3E48;
+  font-size: 18px;
+  font-weight: 400;
+  font-style: normal;
+  line-height: normal;
+  border-radius: 15px;
+  border: 0.5px solid #5b5b5b52;
+  width: 800px;
+  padding: 12px;
+  margin-top: 6px;
+}

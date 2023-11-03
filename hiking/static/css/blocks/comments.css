@@ -1,0 +1,28 @@
+.comments {
+  margin-top: 60px;
+  margin-bottom: 120px;
+}
+.comments__title {
+  margin-bottom: 24px;
+}
+.comments__user-texts {
+  width: 920px;
+  border-top: 0.25px solid #5b5b5b52;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.comments__article {
+  padding: 28px 0px;
+  border-bottom: 0.25px solid #5b5b5b52;
+}
+.comments__article-title {
+  margin-bottom: 18px;
+}
+.comments__button {
+  margin-top: 60px;
+}
+.comments__list {
+  margin-top: 60px;
+  margin-bottom: 60px;
+}

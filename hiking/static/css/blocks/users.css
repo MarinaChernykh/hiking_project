@@ -1,0 +1,141 @@
+.form-card__title {
+  width: 770px;
+  position: absolute;
+  top: 27%;
+  left: 0;
+  right: 0;
+  margin: auto;
+  color: #FFF;
+  text-align: center;
+  font-size: 36px;
+  font-weight: 300;
+  line-height: normal;
+}
+.form-card__title-only {
+  width: 770px;
+  position: absolute;
+  top: 45%;
+  left: 0;
+  right: 0;
+  margin: auto;
+  color: #FFF;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 300;
+  line-height: normal;
+  background-color: rgba(255, 255, 255, 0.15);
+  padding: 30px;
+  border-radius: 16px;
+}
+
+.form-card__form {
+  width: 770px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-25%);
+  left: 0;
+  right: 0;
+  margin: auto;
+  border-radius: 16px;
+  border: 1px solid transparent;
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.25);
+  padding: 20px 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.form-card__form-and-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+.form-card__form-group {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 10px;
+  margin-top: 10px;
+}
+.form-card__form-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #FFF;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: normal;
+}
+.form-card__label {
+  width: 170px;
+}
+.form-card__input {
+  width: 450px;
+}
+.form-card__required {
+  color: #FFF;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: normal;
+}
+.form-card__help_text {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 10px;
+  font-weight: 300;
+  line-height: normal;
+
+}
+.form-card__form-input {
+  width: 100%;
+  height: 30px;
+  border-radius: 6px;
+  border: 0.5px solid transparent;
+  background: rgba(255, 255, 255, 0.7);
+  font-family: Montserrat;
+  color: #5B5B5B;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: normal;
+  padding: 12px;
+  margin-bottom: 2px;
+}
+.form-card__form-input:focus {
+  outline: none;
+}
+.form-card__button {
+  height: 40px;
+  width: 206px;
+  border-radius: 40px;
+  border: #4169E1 1px solid;
+  background: #FFF;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #4169E1;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: normal;
+  margin-top: 24px;
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  cursor: pointer;
+  transition: 0.25s;
+}
+.form-card__button:hover {
+  background-color: #4169E1;
+  color: #FFF;
+}
+.form-card__login-reset {
+  display: flex;
+  gap: 10px;
+}
+.form-card__password-reset {
+  margin-top: 24px;
+  height: 40px;
+  width: 206px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: underline;
+}

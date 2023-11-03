@@ -1,0 +1,65 @@
+.trails {
+  margin-top: 60px;
+  margin-bottom: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.trails__cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 40px;
+}
+
+.trail-card {
+  width: 368px;
+  height: 500px;
+  border-radius: 15px;
+  background: #FFF;
+  box-shadow: 1px 2px 12px 1px rgba(0, 0, 0, 0.25);
+  padding: 10px;
+  transition: 0.5s;
+}
+.trail-card:hover {
+  box-shadow: 1px 2px 12px 1px rgba(0, 0, 0, 0.6);
+}
+.trail-card__img {
+  width: 348px;
+  height: auto;
+  border-radius: 15px;
+}
+.trail-card__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.trail-card__title {
+  width: 300px;
+  margin-top: 18px;
+  margin-bottom: 18px;
+}
+.trail-card__details {
+  width: 230px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.top-trails__title {
+  margin-bottom: 40px;
+}
+.top-trails__button {
+  margin-top: 60px;
+}
+
+.filters {
+  width: 1000px;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 60px;
+  margin-bottom: 60px;
+}
+.selected-filter {
+  background: #4169E1;
+  color: #FFF;
+}

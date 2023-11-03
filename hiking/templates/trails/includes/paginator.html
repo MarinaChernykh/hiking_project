@@ -1,21 +1,21 @@
 {% if page_obj.has_other_pages %}
-  <nav class="trails__paginator center">
+  <nav class="paginator center">
 
     {% if page_obj.has_previous %}
-      <a href="?page={{ page_obj.previous_page_number }}" class="trails__paginator__page-link-arrow">
+      <a href="?page={{ page_obj.previous_page_number }}" class="paginator__arrow">
         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="33" viewBox="0 0 32 33" fill="none">
         <path d="M19 24.5L11 16.5L19 8.5L20.8667 10.3667L14.7333 16.5L20.8667 22.6333L19 24.5Z" fill="#5B5B5B"/></svg>
       </a>
     {% endif %}
 
-    <div class="trails__paginator__numbers">
+    <div class="paginator__numbers">
       {% for i in page_obj.paginator.page_range %}
         {% if page_obj.number == i %}
-          <a href="?page={{ i }}" class="trails__paginator__page-link selected">
+          <a href="?page={{ i }}" class=" selected-page paginator__button body-button-text">
             {{ i }}
           </a>
         {% else %}
-          <a href="?page={{ i }}" class="trails__paginator__page-link">
+          <a href="?page={{ i }}" class=" paginator__button body-button-text">
             {{ i }}
           </a>
         {% endif %}
@@ -23,7 +23,7 @@
     </div>
 
     {% if page_obj.has_next %}
-      <a href="?page={{ page_obj.next_page_number }}" class="trails__paginator__page-link-arrow">
+      <a href="?page={{ page_obj.next_page_number }}" class="paginator__arrow">
         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="33" viewBox="0 0 32 33" fill="none">
         <path d="M13 24.5L21 16.5L13 8.5L11.1333 10.3667L17.2667 16.5L11.1333 22.6333L13 24.5Z" fill="#5B5B5B"/></svg>
       </a>

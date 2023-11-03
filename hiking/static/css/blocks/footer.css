@@ -1,0 +1,17 @@
+.footer {
+  background: #3D3E48;
+  height: 130px;
+}
+.footer__content {
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer__left {
+  display: flex;
+  gap: 36px;
+}
+.footer__link:hover {
+  text-decoration: underline;
+}

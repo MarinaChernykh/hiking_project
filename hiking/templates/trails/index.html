@@ -8,12 +8,12 @@
 
 
 {% block article_title %}
-  <h1 class="top__title">Когда сердце в горах</h1>
+  <h1 class="top__title main-title">Когда сердце в горах</h1>
 {% endblock article_title %}
 
 {% block content %}
   <section class="intro">
-    <p class="intro__text center">
+    <p class="text article-text center">
         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Possimus tempore quibusdam voluptatibus corrupti a illo, hic odio enim, totam perspiciatis et dolorem praesentium, cumque eligendi veritatis. Non voluptas nesciunt, sunt odio et ipsum numquam labore fugit modi eveniet, quae assumenda. Fugit commodi, asperiores temporibus ratione at ullam ducimus esse, nam rem molestias debitis, ipsam veniam ipsum veritatis et sequi pariatur deserunt iure adipisci autem vero sint exercitationem. Sapiente iste soluta quod beatae aliquam atque vel nisi iusto. Vero quibusdam ipsam exercitationem, laudantium rerum fuga, eum inventore velit aut ullam consectetur similique ea quam, natus nisi! Adipisci at facilis tempore iure?
     </p>
   </section>
@@ -28,7 +28,7 @@
             alt="{{ region.name }}"
             class="regions__img">
           </a>
-          <p class="regions__title regions__title-center">{{ region.name }}</p>
+          <p class="regions__title-center title-strong">{{ region.name }}</p>
         </div>
         {% endif %}
       {% endfor %}
@@ -42,7 +42,7 @@
             alt="{{ last_region.name }}"
             class="regions__img-horiz"
         /></a>
-        <p class="regions__title regions__title-left">{{ last_region.name }}</p>
+        <p class="regions__title-left title-strong">{{ last_region.name }}</p>
         {% endwith %}
       </div>
     </div>

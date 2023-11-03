@@ -1,5 +1,5 @@
 from django import template
-from django.db.models import Avg
+from django.db.models import Avg, F
 # from django.conf import settings
 
 from trails.models import Trail
@@ -18,5 +18,6 @@ def show_top_trails(obj_number, region=None):
     top_trails = (top_trails
                   .select_related('region')
                   .annotate(avg_rank=Avg('comments__ranking'))
-                  .order_by('-avg_rank'))[:obj_number]
+                  .order_by(
+                      F('avg_rank').desc(nulls_last=True))[:obj_number])
     return {'top_trails': top_trails, 'region': region}
