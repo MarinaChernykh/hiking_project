@@ -31,5 +31,21 @@
 }
 
 @media (max-width: 767px) {
+  .footer {
+    height: 75px;
 
+  }
+  .footer__content {
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .footer__left {
+    gap: 10px;
+  }
+  .footer__link {
+    text-align: center;
+  }
 }

@@ -161,6 +161,7 @@ body {
 /* изображения */
 
 .main-banner {
+  display: block;
   width: 100vw;
   height: 100vh;
   max-width: 100%;
@@ -175,6 +176,9 @@ body {
   margin-right: auto;
   background: rgb(40,100,177);
   background: linear-gradient(180deg, rgba(40,100,177,0.8) 0%, rgba(40,100,177,0.25) 50%, rgba(40,100,177,0) 100%);
+}
+.main-banner-mobile {
+  display: none;
 }
 .large_image {
     width: 100%;
@@ -253,28 +257,88 @@ body {
   .footer-text {
     font-size: 14px;
   }
-  .main-banner {
-    width: 100vw;
-    display: block;
-    /* height: 100vh; */
-    /* max-width: 100%; */
-    z-index: -1;
-  }
-  .main-banner-gradient {
-    width: 100vw;
-    /* height: 100vh; */
-    /* max-width: 100%; */
-    display: flex;
-    margin-left: auto;
-    margin-right: auto;
-    background: rgb(40,100,177);
-    background: linear-gradient(180deg, rgba(40,100,177,0.8) 0%, rgba(40,100,177,0.25) 50%, rgba(40,100,177,0) 100%);
-  }
 }
 
 @media (max-width: 767px) {
   .center {
     width: 320px;
+  }
+  .main-banner {
+    display: none;
+  }
+  .main-banner-mobile {
+    display: block;
+    width: 100vw;
+    height: auto;
+    max-width: 100%;
+    z-index: -1;
+  }
+  .main-title {
+    font-size: 34px;
+  }
+  .title {
+    font-size: 24px;
+  }
+  .text {
+    font-size: 14px;
+    line-height: 20px;
+  }
+  .text-medi-bold {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: normal;
+  }
+  .text-bold {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 26px;
+  }
+  .card-title {
+    font-size: 16px;
+  }
+  .card-text {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+  }
+  .nav-link-text {
+    font-size: 12px;
+  }
+  .nav-button-text {
+    font-size: 12px;
+  }
+  .body-button-text {
+    font-size: 12px;
+  }
+  .form-button-text {
+    font-size: 14px;
+  }
+  .input-search-text {
+    font-size: 12px;
+  }
+  .article-text {
+    width: 315px;
+  }
+  .title-strong {
+    font-size: 26px;
+    font-weight: 300;
+  }
+  .nav-button {
+    width: 52px;
+    height: 24px;
+  }
+  .body-button {
+    /* padding: 20px 32px; */
+    padding: 12px 28px;
+  }
+
+  .filter-button {
+    font-size: 14px;
+    width: 130px;
+    padding: 8px 0px;
+  }
+  .footer-text {
+    font-size: 12px;
   }
 
 }

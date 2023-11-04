@@ -150,13 +150,13 @@
 @media (max-width: 1023px) {
   .form-card__title {
     width: 500px;
-    top: 17%;
+    top: 150px;
     font-size: 20px;
   }
   .form-card__form {
     width: 600px;
-    top: 28%;
-    transform: translateY(-25%);
+    top: calc(80px + 100vw * 9 / 16 / 2);
+    transform: translateY(-50%);
     padding: 5px 20px;
   }
   .form-card__form-group {
@@ -199,7 +199,7 @@
   }
   .form-card__title-only {
     width: 600px;
-    top: 27%;
+    top: 50%;
     font-size: 16px;
   }
 }

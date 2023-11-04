@@ -7,6 +7,7 @@
 
 {% block main_banner %}
   <img src="{% static "img/all_trails.jpg" %}" alt="Горы" class="main-banner">
+  <img src="{% static "img/all_trails_mobile.jpg" %}" alt="Горы" class="main-banner-mobile">
 {% endblock main_banner %}
 
 {% block article_title %}
@@ -23,7 +24,7 @@
     {% for reg in regions %}
       <a
         href="{% url "trails:region_trails_list" reg.slug %}"
-        class="filter-button body-button-text {% if region and region == reg %}selected{% endif %}">
+        class="filter-button body-button-text {% if region and region == reg %}selected-filter{% endif %}">
         {{ reg.name }}
       </a>
     {% endfor %}

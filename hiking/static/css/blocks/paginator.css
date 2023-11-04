@@ -34,3 +34,17 @@
 .paginator__arrow:hover path {
   fill: #4169E1;
 }
+
+@media (max-width: 767px) {
+  .paginator {
+    gap: 8px;
+    margin-top: 50px;
+  }
+  .paginator__numbers {
+    gap: 8px;
+  }
+  .paginator__button, .paginator__arrow {
+    width: 40px;
+    height: 40px;
+  }
+}
