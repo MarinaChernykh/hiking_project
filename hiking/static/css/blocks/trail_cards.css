@@ -1,6 +1,6 @@
 .trails {
   margin-top: 50px;
-  margin-bottom: 85px;
+  margin-bottom: 70px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -62,4 +62,22 @@
 .selected-filter {
   background: #4169E1;
   color: #FFF;
+}
+
+
+@media (max-width: 1199px) {
+
+}
+
+@media (max-width: 1023px) {
+  .trails__cards {
+    gap: 12px;
+  }
+  .filters {
+    width: 700px;
+  }
+}
+
+@media (max-width: 767px) {
+
 }

@@ -142,3 +142,68 @@
   color: #FFF;
   font-size: 14px;
 }
+
+@media (max-width: 1199px) {
+
+}
+
+@media (max-width: 1023px) {
+  .form-card__title {
+    width: 500px;
+    top: 17%;
+    font-size: 20px;
+  }
+  .form-card__form {
+    width: 600px;
+    top: 28%;
+    transform: translateY(-25%);
+    padding: 5px 20px;
+  }
+  .form-card__form-group {
+    gap: 5px;
+  }
+  .form-card__form-row {
+    font-size: 12px;
+  }
+  .form-card__label {
+    width: 150px;
+  }
+  .form-card__input {
+    width: 450px;
+  }
+  .form-card__required {
+    font-size: 12px;
+  }
+  .form-card__help_text {
+    font-size: 8px;
+  }
+  .form-card__form-input {
+    height: 20px;
+    font-size: 12px;
+    padding: 5px;
+  }
+  .form-card__button {
+    height: 27px;
+    width: 130px;
+    font-size: 12px;
+    margin-top: 5px;
+  }
+  .form-card__login-reset {
+    gap: 10px;
+  }
+  .form-card__password-reset {
+    margin-top: 5px;
+    height: 30px;
+    width: 130px;
+    font-size: 12px;
+  }
+  .form-card__title-only {
+    width: 600px;
+    top: 27%;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 767px) {
+
+}

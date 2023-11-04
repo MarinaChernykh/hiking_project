@@ -1,6 +1,6 @@
 {% for comment in comments %}
 <div class="comments__article article-text">
-  <p class="comments__article-title text">
+  <p class="text">
     <span class="text-bold">{{ comment.author.username }}</span>,
     {% load tz %}
     {% localtime on %}

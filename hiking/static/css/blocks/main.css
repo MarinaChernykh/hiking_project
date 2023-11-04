@@ -6,6 +6,7 @@
 .regions {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 40px;
 }
 .regions__card {
@@ -14,10 +15,12 @@
 .regions__img {
   border-radius: 15px;
   width: 368px;
+  height: auto;
   transition: 0.5s;
 }
 .regions__img-horiz {
   width: 1184px;
+  height: auto;
   border-radius: 15px;
   transition: 0.5s;
 }
@@ -39,4 +42,34 @@
   position: absolute;
   top: 45px;
   left: 48px;
+}
+
+@media (max-width: 1199px) {
+
+}
+
+@media (max-width: 1023px) {
+  .regions {
+    gap: 10px;
+  }
+  .regions__row-1 {
+    gap: 10px;
+  }
+  .regions__img {
+    width: 240px;
+  }
+  .regions__img-horiz {
+    width: 740px;
+  }
+  .regions__title-center {
+    top: 30px;
+  }
+  .regions__title-left {
+    top: 30px;
+    left: 48px;
+  }
+}
+
+@media (max-width: 767px) {
+
 }

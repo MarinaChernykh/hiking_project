@@ -15,14 +15,28 @@
 .comments__article {
   padding: 28px 0px;
   border-bottom: 0.25px solid #5b5b5b52;
-}
-.comments__article-title {
-  margin-bottom: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 .comments__button {
-  margin-top: 60px;
+  margin-top: 40px;
 }
 .comments__list {
   margin-top: 50px;
   margin-bottom: 100px;
+}
+
+@media (max-width: 1199px) {
+
+}
+
+@media (max-width: 1023px) {
+  .comments__user-texts {
+    width: 700px;
+  }
+}
+
+@media (max-width: 767px) {
+
 }

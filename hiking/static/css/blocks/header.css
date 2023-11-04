@@ -80,3 +80,52 @@
   right: 0;
   margin: auto;
 }
+
+@media (max-width: 1199px) {
+
+}
+
+@media (max-width: 1023px) {
+  .top {
+    width: 100vw;
+    height: auto;
+    max-width: 100%;
+  }
+  .top__buttons-left__signin {
+    width: 150px;
+    height: 36px;
+  }
+  .top__buttons-right__search-box {
+    width: 300px;
+    height: 36px;
+  }
+  .top__buttons-right__search-field {
+    width: 260px;
+  }
+  .top__buttons-left, .top__buttons-right {
+    gap: 12px;
+  }
+  .top__buttons {
+    top: 28px;
+    margin-bottom: 28px;
+  }
+  .top__nav {
+    top: 85px;
+    width: 700px;
+  }
+  .top__nav__link {
+    padding-top: 18px;
+  }
+  .top__title {
+    width: 500px;
+    top: 32%;
+    transform: translateY(-40%);
+  }
+  .top__content {
+    height: 0px;
+  }
+}
+
+@media (max-width: 767px) {
+
+}

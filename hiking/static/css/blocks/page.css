@@ -196,3 +196,85 @@ body {
 .center-text {
     text-align: center;
   }
+
+@media (max-width: 1199px) {
+
+}
+
+@media (max-width: 1023px) {
+  .center {
+    width: 757px;
+  }
+  .main-banner {
+    width: 100vw;
+    height: auto;
+    max-width: 100%;
+    z-index: -1;
+  }
+  .main-banner-gradient {
+    width: 100vw;
+    height: auto;
+    max-width: 100%;
+  }
+  .main-title {
+    font-size: 42px;
+  }
+  .nav-link-text {
+    font-size: 14px;
+  }
+  .nav-button-text {
+    font-size: 14px;
+  }
+  .body-button-text {
+    font-size: 16px;
+  }
+  .form-button-text {
+    font-size: 16px;
+  }
+  .input-search-text {
+    font-size: 14px;
+  }
+  .nav-button {
+    width: 80px;
+    height: 36px;
+  }
+  .article-text {
+    width: 700px;
+  }
+  .title-strong {
+    font-size: 28px;
+    font-weight: 300;
+  }
+  .filter-button {
+    font-size: 14px;
+    width: 130px;
+    padding: 15px 0px;
+  }
+  .footer-text {
+    font-size: 14px;
+  }
+  .main-banner {
+    width: 100vw;
+    display: block;
+    /* height: 100vh; */
+    /* max-width: 100%; */
+    z-index: -1;
+  }
+  .main-banner-gradient {
+    width: 100vw;
+    /* height: 100vh; */
+    /* max-width: 100%; */
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    background: rgb(40,100,177);
+    background: linear-gradient(180deg, rgba(40,100,177,0.8) 0%, rgba(40,100,177,0.25) 50%, rgba(40,100,177,0) 100%);
+  }
+}
+
+@media (max-width: 767px) {
+  .center {
+    width: 320px;
+  }
+
+}

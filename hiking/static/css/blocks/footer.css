@@ -15,3 +15,21 @@
 .footer__link:hover {
   text-decoration: underline;
 }
+
+@media (max-width: 1199px) {
+
+}
+
+@media (max-width: 1023px) {
+  .footer {
+    height: 75px;
+  }
+  .footer__left {
+    display: flex;
+    gap: 24px;
+  }
+}
+
+@media (max-width: 767px) {
+
+}

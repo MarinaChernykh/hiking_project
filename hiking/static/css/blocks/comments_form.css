@@ -28,3 +28,26 @@
   padding: 12px;
   margin-top: 6px;
 }
+.form-comments__input:focus {
+  outline: none;
+}
+
+@media (max-width: 1199px) {
+
+}
+
+@media (max-width: 1023px) {
+  .form-comments__form {
+    width: 700px;
+  }
+  .form-comments__form-group {
+    width: 700px;
+  }
+  .form-comments__input {
+    width: 700px;
+  }
+}
+
+@media (max-width: 767px) {
+
+}
