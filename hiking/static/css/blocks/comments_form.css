@@ -49,5 +49,18 @@
 }
 
 @media (max-width: 767px) {
-
+  .form-comments__form {
+    width: 300px;
+  }
+  .form-comments__form-group {
+    width: 300px;
+  }
+  .form-comments__input {
+    width: 300px;
+  }
+  .form-comments__input {
+    font-size: 14px;
+    padding: 8px;
+    margin-top: 6px;
+  }
 }

@@ -10,7 +10,7 @@ class CommentForm(forms.ModelForm):
         fields = ('ranking', 'text')
         labels = {
             'ranking': 'Насколько вам понравился маршрут?',
-            'text': 'Поделитесь впечатлениями о прогулке (при желании)'
+            'text': 'Поделитесь впечатлениями о прогулке'
         }
 
     def clean(self):

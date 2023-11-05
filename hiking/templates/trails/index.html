@@ -18,36 +18,18 @@
     </p>
   </section>
   <section class="regions center">
-    <div class="regions__row-1">
-      {% for region in regions %}
-        {% if not forloop.last %}
-        <div href class="regions__card">
-          <a href="{{ region.get_absolute_url }}" class="regions__link-row-1">
-            <img
-            src="{% static "img/" %}{{ region.slug }}.jpg"
-            alt="{{ region.name }}"
-            class="regions__img">
-          </a>
-          <p class="regions__title-center title-strong">{{ region.name }}</p>
-        </div>
-        {% endif %}
-      {% endfor %}
-    </div>
-    <div class="regions__row-2">
-      <div class="regions__card">
-        {% with regions|last as last_region %}
-        <a href="{{ last_region.get_absolute_url }}" class="regions__link-row-2"
-          ><img
-          src="{% static "img/" %}{{ last_region.slug }}.jpg"
-            alt="{{ last_region.name }}"
-            class="regions__img-horiz"
-        /></a>
-        <p class="regions__title-left title-strong">{{ last_region.name }}</p>
-        {% endwith %}
+    {% for region in regions %}
+      <div href class="regions__card">
+        <a href="{{ region.get_absolute_url }}" class="regions__link">
+          <img
+          src="{% static "img/" %}{{ region.slug }}.jpg"
+          alt="{{ region.name }}"
+          class="regions__img">
+        </a>
+        <p class="regions__title-center title-strong">{{ region.name }}</p>
       </div>
-    </div>
+    {% endfor %}
   </section>
-
   {% show_top_trails TRAILS_NUMBER_INDEX_PAGE %}
 
 {% endblock content %}

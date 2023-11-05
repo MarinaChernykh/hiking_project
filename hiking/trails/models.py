@@ -44,10 +44,16 @@ class Region(models.Model):
         upload_to='regions/main/',
         blank=True,
     )
+    mobile_image = models.ImageField(
+        'Главный баннер для мобильных',
+        upload_to='regions/main/',
+        blank=True,
+    )
 
     class Meta:
         verbose_name = 'Регион'
         verbose_name_plural = 'Регионы'
+        ordering = ('id',)
 
     def __str__(self):
         return self.name
@@ -139,13 +145,17 @@ class Trail(models.Model):
         choices=TRAIL_TYPE_CHOICE,
         blank=True,
     )
-    route_image = models.ImageField(
+    route_image = models.URLField(
         'Карта маршрута',
-        upload_to='trails/maps',
         blank=True,
     )
     main_image = models.ImageField(
         'Главный баннер',
+        upload_to='trails/main',
+        blank=True,
+    )
+    mobile_image = models.ImageField(
+        'Главный баннер для мобильных',
         upload_to='trails/main',
         blank=True,
     )

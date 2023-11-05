@@ -53,7 +53,13 @@
 .trail-description__title {
   margin-bottom: 24px;
 }
-
+.trail-map iframe {
+  width: 1200px;
+  height: 700px;
+  display: block;
+  max-width: 100%;
+  margin-top: 30px;
+}
 
 @media (max-width: 1199px) {
 
@@ -74,8 +80,45 @@
     width: 100px;
     font-size: 14px;
   }
+  .trail-map iframe {
+    width: 650px;
+  }
+  .trail-description {
+    margin-bottom: 0px;
+  }
 }
 
 @media (max-width: 767px) {
-
+  .trail-info {
+    width: 300px;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 7px;
+    margin-top: 50px;
+    margin-bottom: 10px;
+  }
+  .trail-info__img {
+    height: 35px;
+  }
+  .trail-info__name {
+    width: 95px;
+    margin-top: 18px;
+    margin-bottom: 12px;
+  }
+  .trail-info__value {
+    width: 95px;
+    font-size: 12px;
+  }
+  .trail-intro {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    gap: 20px;
+  }
+  .trail-description {
+    margin-top: 30px;
+    margin-bottom: 40px;
+  }
+  .trail-map iframe {
+    width: 300px;
+  }
 }

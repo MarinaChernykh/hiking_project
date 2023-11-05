@@ -35,7 +35,7 @@ body {
 }
 .title-strong {
   color: #FFF;
-  font-size: 36px;
+  font-size: 24px;
   font-weight: 300;
   line-height: normal;
   text-align: center;
@@ -284,14 +284,11 @@ body {
     line-height: 20px;
   }
   .text-medi-bold {
-    font-size: 16px;
-    font-weight: 500;
-    line-height: normal;
+    font-size: 14px;
   }
   .text-bold {
-    font-size: 16px;
-    font-weight: 600;
-    line-height: 26px;
+    font-size: 14px;
+    line-height: 20px;
   }
   .card-title {
     font-size: 16px;
@@ -308,7 +305,7 @@ body {
     font-size: 12px;
   }
   .body-button-text {
-    font-size: 12px;
+    font-size: 14px;
   }
   .form-button-text {
     font-size: 14px;
@@ -328,7 +325,6 @@ body {
     height: 24px;
   }
   .body-button {
-    /* padding: 20px 32px; */
     padding: 12px 28px;
   }
 

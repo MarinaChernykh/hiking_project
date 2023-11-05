@@ -9,6 +9,7 @@
 {% block main_banner %}
 <div class="main-banner-gradient">
   <img src="{{ region.main_image.url }}" alt="{{ region.name }}" class="main-banner">
+  <img src="{{ region.mobile_image.url }}" alt="{{ region.name }}" class="main-banner-mobile">
 </div>
 {% endblock main_banner %}
 
@@ -17,7 +18,6 @@
 {% endblock article_title %}
 
 {% block content %}
-  <!-- Интро -->
   <section class="article center">
     <main class="reg-intro">
       <p class="text article-text">
@@ -30,7 +30,6 @@
       <img src="{{ images.0.image.url }}" alt="{{ region.name }}" class="large_image">
     </div>
 
-    <!-- География -->
     <article class="reg-description">
       <h2 class="reg-description__title title">Немного географии</h2>
       <p class="text article-text">
@@ -42,7 +41,6 @@
       <img src="{{ images.1.image.url }}" alt="{{ region.name }}" class="large_image">
     </div>
 
-    <!-- Когда ехать -->
     <article class="reg-description">
       <h2 class="reg-description__title title">Когда ехать</h2>
       <p class="text article-text">
@@ -54,7 +52,6 @@
       <img src="{{ images.2.image.url }}" alt="{{ region.name }}" class="large_image">
     </div>
 
-    <!-- Как добраться -->
     <article class="reg-description">
       <h2 class="reg-description__title title">Как добраться</h2>
       <p class="text article-text">
@@ -66,7 +63,6 @@
       <img src="{{ images.3.image.url }}" alt="{{ region.name }}" class="large_image">
     </div>
 
-    <!-- Жилье и питание -->
     <article class="reg-description">
       <h2 class="reg-description__title title">Где жить и питаться</h2>
       <p class="text article-text">
@@ -80,7 +76,6 @@
     {% endwith %}
   </section>
 
-  <!-- Топ-3 трека -->
   {% with region as region %}
     {% show_top_trails TRAILS_NUMBER_REGION_PAGE region %}
   {% endwith %}

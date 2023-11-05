@@ -38,5 +38,15 @@
 }
 
 @media (max-width: 767px) {
-
+  .comments {
+    margin-top: 30px;
+    margin-bottom: 40px;
+  }
+  .comments__user-texts {
+    width: 315px;
+  }
+  .comments__article {
+    padding: 20px 0px;
+    gap: 8px;
+  }
 }

@@ -7,7 +7,10 @@
 {% endblock title %}
 
 {% block main_banner %}
-  <img src="{{ trail.main_image.url }}" alt="{{ trail.name }}" class="main-banner">
+  <div class="main-banner-gradient">
+    <img src="{{ trail.main_image.url }}" alt="{{ trail.name }}" class="main-banner">
+    <img src="{{ trail.mobile_image.url }}" alt="{{ trail.name }}" class="main-banner-mobile">
+  </div>
 {% endblock main_banner %}
 
 {% block article_title %}
@@ -88,24 +91,28 @@
     </p>
     {% if trail.next_trail %}
       <p class="text article-text">
-        Если у вас остались силы, время и желание, то у этого маршрута есть продолжение - трек
+        Если у&nbsp;вас остались силы, время и&nbsp;желание, то&nbsp;у&nbsp;этого маршрута есть продолжение&nbsp;&mdash; трек
         <a
           href="{% url "trails:trail_detail" trail.next_trail.slug %}"
           class="trail-description__text underlined">{{ trail.next_trail.name }}
       </a>.
       </p>
     {% endif %}
+    <div class="trail-map">
+      {% if trail.route_image %}
+        <iframe
+        src="{{ trail.route_image }}" title="Embeded MapMagic map with routes" frameBorder="0" allowFullScreen="">
+        </iframe>
+      {% endif %}
+    </div>
   </section>
-  <div class="trail-map">
-    <img src="{{ trail.route_image.url }}" alt="Карта" class="large_image">
-  </div>
 </article>
 
 <section class="comments article center">
   <h2 class="comments__title title">Комментарии</h2>
   <p class="text article-text">
-    Если вы уже проходили этот маршрут, поделитесь, насколько он вам понравился, поставив оценку. Уверена, что рейтинг маршрута, формирующийся из ваших оценок, поможет другим спланировать свой отпуск и выбрать самые красивые треки!<br><br>
-    Ну и конечно, будем рады вашим рассказам о прогулках по этим маршрутам, оставленных в комментариях. Поделитесь свежими новостями о состоянии трека, актуальных переправах через реки и ручьи и другой полезной информацией - мир скажет вам спасибо :)
+    Если вы&nbsp;уже проходили этот маршрут, поделитесь, насколько он&nbsp;вам понравился, поставив оценку. Уверена, что рейтинг маршрута поможет другим спланировать свой отпуск и&nbsp;выбрать самые красивые треки!<br><br>
+    Ну&nbsp;и&nbsp;конечно, будем рады вашим рассказам о&nbsp;прогулках по&nbsp;этим маршрутам, оставленным в&nbsp;комментариях. Поделитесь свежими новостями о&nbsp;состоянии трека, актуальных переправах через реки и&nbsp;ручьи и&nbsp;другой полезной информацией&nbsp;&mdash; мир скажет вам спасибо :)
   </p>
   <div class="form-comments__form">
     {% include 'users/includes/errors_check.html' %}

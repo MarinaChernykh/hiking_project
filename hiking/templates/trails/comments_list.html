@@ -8,7 +8,10 @@
 {% endblock title %}
 
 {% block main_banner %}
-  <img src="{{ trail.main_image.url }}" alt="{{ trail.name }}" class="main-banner">
+  <div class="main-banner-gradient">
+    <img src="{{ trail.main_image.url }}" alt="{{ trail.name }}" class="main-banner">
+    <img src="{{ trail.mobile_image.url }}" alt="{{ trail.name }}" class="main-banner-mobile">
+  </div>
 {% endblock main_banner %}
 
 {% block article_title %}
@@ -25,6 +28,8 @@
     </div>
     {% include "trails/includes/paginator.html" %}
   </section>
+</section>
+
 
   {% with trail.region as region %}
     {% show_top_trails TRAILS_NUMBER_TRAIL_PAGE region %}

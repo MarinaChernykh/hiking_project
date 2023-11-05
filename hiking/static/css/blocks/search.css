@@ -17,9 +17,38 @@
 }
 .search__result-text {
   width: 800px;
+  display: inline-block;
   margin-bottom: 20px;
 }
 .search__no-result {
   margin-top: 20px;
   margin-bottom: 20px;
+}
+
+@media (max-width: 1023px) {
+  .search__result {
+    width: 700px;
+  }
+  .search__result-title {
+    width: 700px;
+  }
+  .search__result-text {
+    width: 700px;
+  }
+}
+
+@media (max-width: 767px) {
+  .search {
+    margin-top: 40px;
+    margin-bottom: 60px;
+  }
+  .search__result {
+    width: 315px;
+  }
+  .search__result-title {
+    width: 315px;
+  }
+  .search__result-text {
+    width: 315px;
+  }
 }

@@ -95,7 +95,6 @@
   }
   .top-trails__button {
     margin-top: 40px;
-    font-size: 14px;
   }
   .filters {
     width: 270px;
@@ -107,5 +106,8 @@
   }
   .filter-button:first-child {
     width: 100%;
+  }
+  .top-trails__title {
+    margin-bottom: 30px;
   }
 }

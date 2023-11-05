@@ -131,9 +131,6 @@
     max-width: 100%;
     position: relative;
   }
-  /* .top__buttons-left .nav-button {
-    order: 2;
-  } */
   .top__buttons-left__signin {
     width: 82px;
     height: 24px;
@@ -152,22 +149,14 @@
   }
   .top__buttons-right__search-icon {
     display: none;
-    /* width: 16px;
-    height: 16px;
-    margin: 0px 10px;
-    order: -1; */
   }
   .top__buttons-left, .top__buttons-right {
     gap: 6px;
-    /* justify-content: flex-end; */
-    /* align-items: center; */
   }
   .top__buttons {
     top: 20px;
     margin-bottom: 15px;
     display: flex;
-    /* flex-direction: column; */
-    /* gap: 5px; */
     justify-content: space-between;
   }
   .top__nav {
@@ -178,12 +167,9 @@
     gap: 12px;
     padding-top: 20px;
   }
-  /* .top__nav__link:first-child {
-    width: 100%;
-  } */
   .top__nav__link {
     padding-top: 0px;
-    font-size: 14px;
+    font-size: 12px;
   }
   .top__title {
     width: 295px;
