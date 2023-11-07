@@ -143,11 +143,13 @@
   font-size: 14px;
 }
 
-@media (max-width: 1199px) {
+@media (max-width:1365px) {
+  /* Горизонтальные планшеты + Desktop с низким разрешением */
 
 }
 
-@media (max-width: 1023px) {
+@media (max-width:1023px) {
+  /* Горизонтальные мобильные (800-900) */
   .form-card__title {
     width: 500px;
     top: 150px;
@@ -202,17 +204,28 @@
     top: 50%;
     font-size: 16px;
   }
+
 }
 
-@media (max-width: 767px) {
+@media (max-width:779px) {
+  /* Самый популярный планшет (768 х 1024), вертикаль */
+
+}
+
+@media (max-width:767px) {
+
+}
+
+@media (max-width:746px) {
+  /* Большие мобильные (они в основном в интервале 410-415), вертикаль */
   .form-card__title {
     width: 300px;
-    top: 180px;
+    top: 225px;
     font-size: 14px;
   }
   .form-card__form {
     width: 300px;
-    top: calc(270px + 100vw * 9 / 16 / 2);
+    top: calc(325px + 100vw * 9 / 19 / 2);
     transform: translateY(-50%);
     padding: 5px 10px;
   }
@@ -250,4 +263,15 @@
     top: 45%;
     font-size: 14px;
   }
+
+}
+
+@media (max-width:409px) {
+  /* Самые популярные мобильные, вертикаль */
+
+}
+
+@media (max-width:359px) {
+  /* Маленькие мобильные, вертикаль */
+
 }

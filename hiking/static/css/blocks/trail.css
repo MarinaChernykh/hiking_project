@@ -1,6 +1,6 @@
 .trail-info {
   margin-top: 80px;
-  margin-bottom: 20px;
+  width: 1000px;
   display: flex;
   justify-content: space-between;
 }
@@ -45,7 +45,6 @@
 
 .trail-description {
   margin-top: 40px;
-  margin-bottom: 60px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -61,41 +60,53 @@
   margin-top: 30px;
 }
 
-@media (max-width: 1199px) {
+
+@media (max-width:1365px) {
+  /* Горизонтальные планшеты + Desktop с низким разрешением */
+  .trail-info {
+    width: 900px;
+  }
+}
+
+@media (max-width:1023px) {
+  /* Горизонтальные мобильные (800-900) */
 
 }
 
-@media (max-width: 1023px) {
-  .trail-info__img {
-    height: 45px;
-  }
+@media (max-width:779px) {
+  /* Самый популярный планшет (768 х 1024), вертикаль */
   .trail-info {
+    margin-top: 50px;
     width: 700px;
   }
+  .trail-info__img {
+    height: 35px;
+  }
   .trail-info__name {
-    width: 100px;
-    font-size: 14px;
+    width: 95px;
+    margin-top: 18px;
+    margin-bottom: 12px;
   }
   .trail-info__value {
-    width: 100px;
-    font-size: 14px;
-  }
-  .trail-map iframe {
-    width: 650px;
-  }
-  .trail-description {
-    margin-bottom: 0px;
+    width: 95px;
+    font-size: 12px;
   }
 }
 
-@media (max-width: 767px) {
+@media (max-width:767px) {
+  .trail-info {
+    width: 600px;
+  }
+}
+
+@media (max-width:746px) {
+  /* Большие мобильные (они в основном в интервале 410-415), вертикаль */
   .trail-info {
     width: 300px;
     flex-wrap: wrap;
     justify-content: center;
     gap: 7px;
-    margin-top: 50px;
-    margin-bottom: 10px;
+    margin-top: 80px;
   }
   .trail-info__img {
     height: 35px;
@@ -116,9 +127,54 @@
   }
   .trail-description {
     margin-top: 30px;
-    margin-bottom: 40px;
   }
   .trail-map iframe {
     width: 300px;
   }
+
+}
+
+@media (max-width:409px) {
+  /* Самые популярные мобильные, вертикаль */
+  .trail-description {
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width:359px) {
+  /* Маленькие мобильные, вертикаль */
+
+}
+
+
+
+
+
+
+
+/* @media (max-width: 1023px) {
+  .trail-info__img {
+    height: 45px;
+  }
+  .trail-info {
+    width: 700px;
+  }
+  .trail-info__name {
+    width: 100px;
+    font-size: 14px;
+  }
+  .trail-info__value {
+    width: 100px;
+    font-size: 14px;
+  }
+  .trail-map iframe {
+    width: 650px;
+  }
+  .trail-description {
+    margin-bottom: 0px;
+  }
+} */
+
+@media (max-width: 767px) {
+
 }

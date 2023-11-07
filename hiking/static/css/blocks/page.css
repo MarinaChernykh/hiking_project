@@ -20,7 +20,7 @@ body {
 .center {
   margin-left: auto;
   margin-right: auto;
-  width: 1184px;
+  width: 1320px;
 }
 
 /* стили текстовых элементов */
@@ -94,7 +94,7 @@ body {
 .body-button-text {
   color: #5B5B5B;
   font-size: 16px;
-  font-weight: 400;
+  font-weight: 500;
   line-height: normal;
 }
 .form-button-text {
@@ -102,7 +102,7 @@ body {
   font-style: normal;
   color: #5B5B5B;
   font-size: 16px;
-  font-weight: 400;
+  font-weight: 500;
   line-height: normal;
 }
 .input-search-text {
@@ -196,32 +196,94 @@ body {
 }
 .article-text {
     width: 800px;
+    margin-left: auto;
+    margin-right: auto;
 }
 .center-text {
     text-align: center;
   }
 
-@media (max-width: 1199px) {
 
-}
-
-@media (max-width: 1023px) {
+@media (max-width:1365px) {
+  /* Горизонтальные планшеты + Desktop с низким разрешением */
   .center {
-    width: 757px;
+    width: 960px;
   }
   .main-banner {
     width: 100vw;
     height: auto;
-    max-width: 100%;
-    z-index: -1;
   }
   .main-banner-gradient {
     width: 100vw;
     height: auto;
-    max-width: 100%;
   }
   .main-title {
-    font-size: 42px;
+    font-size: 54px;
+  }
+}
+
+@media (max-width:1023px) {
+  /* Горизонтальные мобильные (800-900) */
+  .center {
+    width: 740px;
+  }
+  .main-title {
+    font-size: 38px;
+  }
+  .article-text {
+    width: 700px;
+  }
+  .filter-button {
+    width: 140px;
+    padding: 12px 0px;
+  }
+}
+
+@media (max-width:779px) {
+  /* Самый популярный планшет (768 х 1024), вертикаль */
+  .center {
+    width: 720px;
+  }
+  /* .main-banner {
+    width: 100vw;
+    height: auto;
+  } */
+  .main-banner-gradient {
+    width: 100vw;
+    height: auto;
+  }
+  .article-text {
+    width: 700px;
+  }
+  .filter-button {
+    width: 125px;
+  }
+  .input-search-text {
+    font-size: 14px;
+  }
+}
+
+@media (max-width:767px) {
+  /* Iphone 13 pro horizontal */
+  .center {
+    width: 700px;
+  }
+  .main-title {
+    font-size: 36px;
+  }
+  .title {
+    font-size: 24px;
+  }
+  .text, .text-medi-bold, .text-bold, .footer-text {
+    font-size: 14px;
+    line-height: 1.4;
+  }
+  .card-title {
+    font-size: 16px;
+  }
+  .card-text {
+    font-size: 14px;
+    line-height: 1.4;
   }
   .nav-link-text {
     font-size: 14px;
@@ -230,38 +292,32 @@ body {
     font-size: 14px;
   }
   .body-button-text {
-    font-size: 16px;
+    font-size: 14px;
   }
   .form-button-text {
-    font-size: 16px;
+    font-size: 14px;
   }
   .input-search-text {
-    font-size: 14px;
-  }
-  .nav-button {
-    width: 80px;
-    height: 36px;
+    font-size: 12px;
   }
   .article-text {
-    width: 700px;
+    width: 600px;
   }
-  .title-strong {
-    font-size: 28px;
-    font-weight: 300;
+  .body-button {
+    padding: 12px 28px;
   }
   .filter-button {
-    font-size: 14px;
-    width: 130px;
-    padding: 15px 0px;
-  }
-  .footer-text {
-    font-size: 14px;
+    width: 116px;
+    padding: 8px 0px;
+
   }
 }
 
-@media (max-width: 767px) {
+
+@media (max-width:746px) {
+  /* Большие мобильные (они в основном в интервале 410-415), вертикаль */
   .center {
-    width: 320px;
+    width: 390px;
   }
   .main-banner {
     display: none;
@@ -274,35 +330,27 @@ body {
     z-index: -1;
   }
   .main-title {
-    font-size: 34px;
+    font-size: 36px;
   }
   .title {
     font-size: 24px;
   }
-  .text {
+  .text, .text-medi-bold, .text-bold, .footer-text {
     font-size: 14px;
-    line-height: 20px;
-  }
-  .text-medi-bold {
-    font-size: 14px;
-  }
-  .text-bold {
-    font-size: 14px;
-    line-height: 20px;
+    line-height: 1.4;
   }
   .card-title {
     font-size: 16px;
   }
   .card-text {
     font-size: 14px;
-    font-weight: 400;
-    line-height: 20px;
+    line-height: 1.4;
   }
   .nav-link-text {
-    font-size: 12px;
+    font-size: 14px;
   }
   .nav-button-text {
-    font-size: 12px;
+    font-size: 14px;
   }
   .body-button-text {
     font-size: 14px;
@@ -314,7 +362,58 @@ body {
     font-size: 12px;
   }
   .article-text {
-    width: 315px;
+    width: 340px;
+  }
+  .body-button {
+    padding: 12px 28px;
+  }
+  .filter-button {
+    width: 160px;
+    padding: 8px 0px;
+
+  }
+  .filter-button:first-child {
+    width: 100%;
+  }
+
+}
+
+@media (max-width:409px) {
+  /* Самые популярные мобильные, вертикаль */
+  .center {
+    width: 340px;
+  }
+  .footer-text {
+    font-size: 12px;
+  }
+  .article-text {
+    width: 330px;
+  }
+
+}
+
+@media (max-width:359px) {
+  /* Маленькие мобильные, вертикаль */
+  .center {
+    width: 320px;
+  }
+  .main-title {
+    font-size: 34px;
+  }
+  .title {
+    font-size: 24px;
+  }
+  .nav-link-text {
+    font-size: 12px;
+  }
+  .nav-button-text {
+    font-size: 12px;
+  }
+  .body-button-text {
+    font-size: 14px;
+  }
+  .article-text {
+    width: 310px;
   }
   .title-strong {
     font-size: 26px;
@@ -327,7 +426,6 @@ body {
   .body-button {
     padding: 12px 28px;
   }
-
   .filter-button {
     font-size: 14px;
     width: 130px;
@@ -338,3 +436,6 @@ body {
   }
 
 }
+
+
+

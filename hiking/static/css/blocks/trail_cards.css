@@ -1,5 +1,5 @@
 .trails {
-  margin-top: 50px;
+  margin-top: 60px;
   margin-bottom: 70px;
   display: flex;
   flex-direction: column;
@@ -8,13 +8,14 @@
 .trails__cards {
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
-  gap: 40px;
+  /* justify-content: flex-start; */
+  justify-content: center;
+  gap: 26px;
 }
 
 .trail-card {
-  width: 368px;
-  height: 500px;
+  width: 310px;
+  height: 450px;
   border-radius: 15px;
   background: #FFF;
   box-shadow: 1px 2px 12px 1px rgba(0, 0, 0, 0.25);
@@ -25,7 +26,7 @@
   box-shadow: 1px 2px 12px 1px rgba(0, 0, 0, 0.6);
 }
 .trail-card__img {
-  width: 348px;
+  width: 100%;
   height: auto;
   border-radius: 15px;
 }
@@ -62,29 +63,113 @@
 .selected-filter {
   background: #4169E1;
   color: #FFF;
+  font-weight: 400;
 }
 
 
-@media (max-width: 1199px) {
-
-}
-
-@media (max-width: 1023px) {
+@media (max-width:1365px) {
+  /* Горизонтальные планшеты + Desktop с низким разрешением */
   .trails__cards {
-    gap: 12px;
+    gap: 20px;
+  }
+  .trail-card {
+    width: 305px;
+  }
+  .filters {
+    width: 960px;
+  }
+}
+
+@media (max-width:1023px) {
+  /* Горизонтальные мобильные (800-900) */
+  .trail-card {
+    width: 360px;
+    height: 490px;
+  }
+  .filters {
+    width: 740px;
+  }
+}
+
+@media (max-width:779px) {
+  /* Самый популярный планшет (768 х 1024), вертикаль */
+  .trails__cards {
+    gap: 10px;
+  }
+  .trail-card {
+    width: 350px;
+    height: 480px;
   }
   .filters {
     width: 700px;
   }
+  .filter-button {
+    font-size: 14px;
+  }
+}
+@media (max-width:767px) {
+  /* Iphone 13 pro horizontal */
+  .trail-card {
+    width: 300px;
+    height: 430px;
+  }
+  .trails__cards {
+    gap: 10px;
+  }
+  .filters {
+    width: 600px;
+  }
 }
 
-@media (max-width: 767px) {
+@media (max-width:746px) {
+  /* Большие мобильные (они в основном в интервале 410-415), вертикаль */
+  .top-trails__title {
+    width: 350px;
+  }
+  .top-trails__button {
+    margin-top: 50px;
+  }
+  .filters {
+    width: 330px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .trail-card {
+    width: 350px;
+    height: 480px;
+  }
+
+}
+
+@media (max-width:409px) {
+  /* Самые популярные мобильные, вертикаль */
+  .top-trails__title {
+    width: 330px;
+  }
+  .trail-card {
+    width: 340px;
+    height: 480px;
+  }
+  .filters {
+    margin-top: 45px;
+    margin-bottom: 30px;
+  }
   .trails {
-    margin-top: 40px;
+    margin-top: 30px;
+    margin-bottom: 50px;
+  }
+
+}
+
+@media (max-width:359px) {
+  /* Маленькие мобильные, вертикаль */
+  .trails {
+    margin-top: 30px;
     margin-bottom: 50px;
   }
   .trail-card {
-    width: 315px;
+    width: 310px;
     height: 435px;
     padding: 10px;
 
@@ -111,3 +196,5 @@
     margin-bottom: 30px;
   }
 }
+
+

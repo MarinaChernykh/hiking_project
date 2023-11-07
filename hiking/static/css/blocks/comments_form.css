@@ -18,7 +18,7 @@
 .form-comments__input {
   font-family: "Montserrat", sans-serif;
   color: #3D3E48;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 400;
   font-style: normal;
   line-height: normal;
@@ -48,7 +48,19 @@
   }
 }
 
-@media (max-width: 767px) {
+@media (max-width:767px) {
+  .form-comments__form {
+    width: 600px;
+  }
+  .form-comments__form-group {
+    width: 600px;
+  }
+  .form-comments__input {
+    width: 600px;
+  }
+}
+
+@media (max-width: 746px) {
   .form-comments__form {
     width: 300px;
   }

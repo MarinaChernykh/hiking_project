@@ -10,7 +10,7 @@
   <section class="search article center">
     {% if  query %}
     <h2 class="search__title title">
-        Результаты поиска по запросу "{{ query }}"
+        Результаты&nbsp;поиска по&nbsp;запросу "{{ query }}"
     </h2>
       {% for trail in results %}
         <a href="{{ trail.get_absolute_url }}" class="search__result" target="_blank">
@@ -23,7 +23,7 @@
         </a>
       {% empty %}
         <p class="search__no-result text center-text">
-          По вашему запросу ничего не найдено.
+          По&nbsp;вашему запросу ничего не&nbsp;найдено.
         </p>
       {% endfor %}
     {% else %}

@@ -16,11 +16,9 @@
   text-decoration: underline;
 }
 
-@media (max-width: 1199px) {
 
-}
-
-@media (max-width: 1023px) {
+@media (max-width:779px) {
+  /* Самый популярный планшет (768 х 1024), вертикаль */
   .footer {
     height: 75px;
   }
@@ -29,11 +27,13 @@
     gap: 24px;
   }
 }
+@media (max-width:767px) {
+}
 
-@media (max-width: 767px) {
+@media (max-width:746px) {
+  /* Большие мобильные (они в основном в интервале 410-415), вертикаль */
   .footer {
-    height: 75px;
-
+    height: 100px;
   }
   .footer__content {
     justify-content: center;
@@ -43,9 +43,21 @@
     flex-wrap: wrap;
   }
   .footer__left {
-    gap: 10px;
+    gap: 18px;
   }
   .footer__link {
     text-align: center;
   }
+}
+
+@media (max-width:409px) {
+  /* Самые популярные мобильные, вертикаль */
+  .footer__left {
+    gap: 16px;
+  }
+}
+
+@media (max-width:359px) {
+  /* Маленькие мобильные, вертикаль */
+
 }

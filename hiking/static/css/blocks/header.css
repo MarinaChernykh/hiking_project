@@ -74,48 +74,21 @@
 .top__title {
   width: 660px;
   position: absolute;
-  top: 50%;
+  top: 54%;
   transform: translateY(-50%);
   left: 0;
   right: 0;
   margin: auto;
 }
 
-@media (max-width: 1199px) {
 
-}
 
-@media (max-width: 1023px) {
+@media (max-width:1365px) {
+  /* Горизонтальные планшеты + Desktop с низким разрешением */
   .top {
     width: 100vw;
     height: calc(100vw * 9 / 16);
-    max-width: 100%;
     position: relative;
-  }
-  .top__buttons-left__signin {
-    width: 150px;
-    height: 36px;
-  }
-  .top__buttons-right__search-box {
-    width: 300px;
-    height: 36px;
-  }
-  .top__buttons-right__search-field {
-    width: 260px;
-  }
-  .top__buttons-left, .top__buttons-right {
-    gap: 12px;
-  }
-  .top__buttons {
-    top: 28px;
-    margin-bottom: 28px;
-  }
-  .top__nav {
-    top: 85px;
-    width: 700px;
-  }
-  .top__nav__link {
-    padding-top: 18px;
   }
   .top__title {
     width: 500px;
@@ -124,24 +97,93 @@
   }
 }
 
-@media (max-width: 767px) {
+@media (max-width:1023px) {
+  /* Горизонтальные мобильные (800-900) */
+  .top__title {
+    width: 550px;
+    top: calc(15px + 100vw * 9 / 16 / 2);
+  }
+  .top__buttons {
+    top: 23px;
+    margin-bottom: 28px;
+  }
+  .nav-button {
+    width: 100px;
+    height: 35px;
+  }
+  .top__buttons-left__signin {
+    width: 150px;
+    height: 35px;
+  }
+  .top__buttons-right__search-box {
+    width: 330px;
+    height: 35px;
+  }
+  .top__buttons-right__search-field {
+    width: 285px;
+  }
+  .top__nav {
+    top: 76px;
+    width: 740px;
+  }
+}
+
+@media (max-width:779px) {
+  /* Самый популярный планшет (768 х 1024), вертикаль */
+  .top__nav {
+    width: 720px;
+  }
+}
+
+@media (max-width:767px) {
+  /* Iphone 13 pro horizontal */
+
+  .top__buttons-right__search-box {
+    width: 250px;
+  }
+  .top__buttons-right__search-field {
+    width: 210px;
+  }
+  .top__nav {
+    top: 80px;
+    width: 600px;
+    gap: 18px;
+    padding-top: 5px;
+  }
+}
+
+@media (max-width:746px) {
+  /* Большие мобильные (они в основном в интервале 410-415), вертикаль */
   .top {
     width: 100vw;
-    height: calc(100vw * 1280 / 720);
+    height: calc(100vw * 19 / 9);
     max-width: 100%;
     position: relative;
   }
+  .top__buttons {
+    top: 36px;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .top__buttons-left, .top__buttons-right {
+    gap: 8px;
+  }
+  .nav-button {
+    width: 60px;
+    height: 32px;
+  }
   .top__buttons-left__signin {
     width: 82px;
-    height: 24px;
+    height: 32px;
   }
   .top__buttons-right__search-box {
-    width: 105px;
-    height: 24px;
+    width: 120px;
+    height: 32px;
     justify-content: center;
   }
   .top__buttons-right__search-field {
-    width: 92px;
+    width: 110px;
   }
   .top__buttons-right__search-field::placeholder{
     color: transparent;
@@ -150,31 +192,46 @@
   .top__buttons-right__search-icon {
     display: none;
   }
-  .top__buttons-left, .top__buttons-right {
-    gap: 6px;
-  }
-  .top__buttons {
-    top: 20px;
-    margin-bottom: 15px;
-    display: flex;
-    justify-content: space-between;
-  }
   .top__nav {
-    top: 60px;
-    width: 310px;
+    top: 100px;
+    width: 390px;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 12px;
-    padding-top: 20px;
+    gap: 18px;
+    padding-top: 30px;
+  }
+  .top__title {
+    width: 300px;
+    top: 55%;
+    transform: translateY(-50%);
   }
   .top__nav__link {
     padding-top: 0px;
-    font-size: 12px;
   }
-  .top__title {
-    width: 295px;
-    top: 55%;
-    transform: translateY(-50%);
+}
+
+@media (max-width:409px) {
+  /* Самые популярные мобильные, вертикаль */
+  .top__buttons-right__search-box {
+    width: 100px;
+    height: 32px;
+    justify-content: center;
+  }
+  .top__buttons-right__search-field {
+    width: 70px;
+  }
+  .top__nav {
+    width: 340px;
+  }
+}
+
+@media (max-width:359px) {
+  /* Маленькие мобильные, вертикаль */
+  .top__buttons-left, .top__buttons-right {
+    gap: 2px;
+  }
+  .top__nav {
+    width: 310px;
   }
 
 }

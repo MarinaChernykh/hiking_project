@@ -27,26 +27,55 @@
   margin-bottom: 100px;
 }
 
-@media (max-width: 1199px) {
+
+@media (max-width:1365px) {
+  /* Горизонтальные планшеты + Desktop с низким разрешением */
+
 
 }
 
-@media (max-width: 1023px) {
+@media (max-width:1023px) {
+  /* Горизонтальные мобильные (800-900) */
   .comments__user-texts {
     width: 700px;
   }
+
 }
 
-@media (max-width: 767px) {
+@media (max-width:779px) {
+  /* Самый популярный планшет (768 х 1024), вертикаль */
+
+}
+
+@media (max-width:767px) {
+
+}
+
+@media (max-width:746px) {
+  /* Большие мобильные (они в основном в интервале 410-415), вертикаль */
   .comments {
     margin-top: 30px;
     margin-bottom: 40px;
   }
   .comments__user-texts {
-    width: 315px;
+    width: 340px;
   }
   .comments__article {
     padding: 20px 0px;
     gap: 8px;
   }
+  .comments__list {
+    margin-top: 75px;
+  }
 }
+
+@media (max-width:409px) {
+  /* Самые популярные мобильные, вертикаль */
+
+}
+
+@media (max-width:359px) {
+  /* Маленькие мобильные, вертикаль */
+
+}
+

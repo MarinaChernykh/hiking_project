@@ -12,7 +12,7 @@
 }
 .regions__img {
   border-radius: 15px;
-  width: 285px;
+  width: 310px;
   height: auto;
   transition: 0.5s;
 }
@@ -27,38 +27,64 @@
   margin: auto;
 }
 
-@media (max-width: 1199px) {
 
+@media (max-width:1365px) {
+  /* Горизонтальные планшеты + Desktop с низким разрешением */
+  .regions__img {
+    width: 230px;
+  }
 }
 
-@media (max-width: 1023px) {
+@media (max-width:1023px) {
+  /* Горизонтальные мобильные (800-900) */
+  .regions__img {
+    width: 320px;
+  }
   .regions {
     justify-content: center;
     flex-wrap: wrap;
     gap: 10px;
   }
+}
+
+@media (max-width:779px) {
+  /* Самый популярный планшет (768 х 1024), вертикаль */
   .regions__img {
-    width: 370px;
+    width: 350px;
   }
-  .regions__title-center {
-    top: 32px;
+
+}
+@media (max-width:767px) {
+  /* Iphone 13 pro horizontal */
+  .regions__img {
+    width: 300px;
   }
 }
 
-@media (max-width: 767px) {
+@media (max-width:746px) {
+  /* Большие мобильные (они в основном в интервале 410-415), вертикаль */
   .intro {
-    margin-top: 40px;
     margin-bottom: 40px;
   }
-  .regions__row-1 {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
-  }
   .regions__img {
-    width: 300px;
-  }
-  .regions__img-horiz {
-    width: 300px;
+    width: 350px;
   }
 }
+
+@media (max-width:409px) {
+  /* Самые популярные мобильные, вертикаль */
+  .regions__img {
+    width: 100%;
+  }
+}
+
+@media (max-width:359px) {
+  /* Маленькие мобильные, вертикаль */
+  .regions__img {
+    width: 310px;
+  }
+}
+
+
+
+
