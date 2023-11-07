@@ -21,7 +21,7 @@ def region_detail(request, slug_region):
     context = {
         'region': region,
     }
-    return render(request, 'trails/region_detail.html', context=context)
+    return render(request, 'trails/region_details.html', context=context)
 
 
 def trails_list(request, slug_region=None):
