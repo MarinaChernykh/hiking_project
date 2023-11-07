@@ -5,10 +5,11 @@ from django.test import TestCase, Client
 
 from trails.models import Region, Trail
 
+
 User = get_user_model()
 
 
-class TaskURLTests(TestCase):
+class TrailsURLTests(TestCase):
     fixtures = ['mysite_data.json']
 
     @classmethod
