@@ -1,6 +1,5 @@
 from django import template
 from django.db.models import Avg, F
-# from django.conf import settings
 
 from trails.models import Trail
 

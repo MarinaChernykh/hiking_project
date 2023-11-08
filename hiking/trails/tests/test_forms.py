@@ -47,9 +47,9 @@ class CommentCreateFormTests(TestCase):
             is_published=True,
         )
         cls.comment = Comment.objects.create(
-            trail = cls.trail,
-            author = cls.user,
-            ranking = 5
+            trail=cls.trail,
+            author=cls.user,
+            ranking=5
         )
         cls.form = CommentForm()
 
@@ -59,34 +59,48 @@ class CommentCreateFormTests(TestCase):
         shutil.rmtree(TEMP_MEDIA_ROOT, ignore_errors=True)
 
     def test_create_comment(self):
-        """Валидная форма создает запись в Comment."""
+        """Post request with valid data creates new comment."""
         comments_count = Comment.objects.count()
         form_data = {
             'ranking': 5,
             'text': 'Тестовый комментарий'
         }
         response = self.authorized_client.post(
-            reverse('trails:add_comment', kwargs={'slug_trail': self.trail.slug}),
+            reverse(
+                'trails:add_comment', kwargs={'slug_trail': self.trail.slug}
+            ),
             data=form_data,
             follow=True
         )
         last_comment = Comment.objects.latest('created')
-        self.assertRedirects(response, reverse('trails:trail_detail', kwargs={'slug_trail': self.trail.slug}))
+        self.assertRedirects(
+            response,
+            reverse(
+                'trails:trail_detail', kwargs={'slug_trail': self.trail.slug}
+            ))
         self.assertEqual(Comment.objects.count(), comments_count + 1)
         self.assertEqual(last_comment.ranking, 5)
         self.assertEqual(last_comment.text, 'Тестовый комментарий')
 
     def test_not_create_comment_with_both_fields_empty(self):
-        """Комментарий, где оба поля пустые, не добавляется в базу."""
+        """
+        Post request with invalid data (both fields are empty)
+        doesn't create new comment.
+        """
         comments_count = Comment.objects.count()
         form_data = {}
         response = self.authorized_client.post(
-            reverse('trails:add_comment', kwargs={'slug_trail': self.trail.slug}),
+            reverse(
+                'trails:add_comment', kwargs={'slug_trail': self.trail.slug}),
             data=form_data,
             follow=True
         )
         last_comment = Comment.objects.latest('created')
-        self.assertRedirects(response, reverse('trails:trail_detail', kwargs={'slug_trail': self.trail.slug}))
+        self.assertRedirects(
+            response,
+            reverse(
+                'trails:trail_detail', kwargs={'slug_trail': self.trail.slug}
+            ))
         self.assertEqual(Comment.objects.count(), comments_count)
         self.assertEqual(last_comment.ranking, 5)
         self.assertEqual(last_comment.text, '')

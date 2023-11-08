@@ -10,6 +10,7 @@ User = get_user_model()
 
 
 class TrailsURLTests(TestCase):
+    """URLs tests."""
     fixtures = ['mysite_data.json']
 
     @classmethod
@@ -21,6 +22,9 @@ class TrailsURLTests(TestCase):
         cls.authorized_client.force_login(cls.user)
 
     def test_urls_exist_at_desired_locations(self):
+        """
+        All urls, based on slugs from real db ficture data, are available.
+        """
         regions = Region.objects.all()
         trails = Trail.objects.all()
         urls = {
@@ -31,7 +35,8 @@ class TrailsURLTests(TestCase):
             'trails_list_by_reg': map(
                 lambda region: f'/trails/{region.slug}/all/', regions
             ),
-            'comments': map(lambda trail: f'/trails/{trail.slug}/comments/', trails),
+            'comments': map(
+                lambda trail: f'/trails/{trail.slug}/comments/', trails),
             '/search/': ['/search/'],
         }
         for url_group in urls:
@@ -40,9 +45,10 @@ class TrailsURLTests(TestCase):
                     response = self.guest_client.get(url)
                     self.assertEqual(response.status_code, HTTPStatus.OK)
 
-
     def test_urls_uses_correct_template(self):
-        """URL-адрес использует соответствующий шаблон."""
+        """
+        URLs uses correct templates.
+        """
         region = Region.objects.first()
         trail = Trail.objects.first()
 
@@ -61,18 +67,32 @@ class TrailsURLTests(TestCase):
                 self.assertTemplateUsed(response, template)
 
     def test_add_comment_url_redirect_anonimous_to_login(self):
+        """
+        Anonimous user is redirected to login when trying to post comment.
+        """
         trail = Trail.objects.first()
-        response = self.guest_client.get(f'/trails/{trail.slug}/comment/', follow=True)
+        response = self.guest_client.get(
+            f'/trails/{trail.slug}/comment/', follow=True
+        )
         self.assertRedirects(
-                    response, (f'/auth/login/?next=/trails/{trail.slug}/comment/')
+                    response,
+                    (f'/auth/login/?next=/trails/{trail.slug}/comment/')
                 )
 
     def test_add_comment_url_trail_page_redirect_for_auth_user(self):
+        """
+        Authorized user is redirected to trail page with comment post form.
+        """
         trail = Trail.objects.first()
-        response = self.authorized_client.get(f'/trails/{trail.slug}/comment/', follow=True)
+        response = self.authorized_client.get(
+            f'/trails/{trail.slug}/comment/', follow=True
+        )
         self.assertRedirects(response, (f'/trails/{trail.slug}/'))
 
     def test_incorrect_url_returns_404_and_use_correct_template(self):
+        """
+        Incorrect URL returns 404 status code and uses custom template.
+        """
         incorrect_url = '/some_url/'
         response = self.authorized_client.get(incorrect_url)
         self.assertEqual(response.status_code, HTTPStatus.NOT_FOUND)
