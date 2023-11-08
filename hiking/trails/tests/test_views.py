@@ -32,7 +32,6 @@ uploaded = SimpleUploadedFile(
 
 @override_settings(MEDIA_ROOT=TEMP_MEDIA_ROOT)
 class TrailsViewsTests(TestCase):
-    # fixtures = ['mysite_data.json']
 
     @classmethod
     def setUpClass(cls):
@@ -84,7 +83,6 @@ class TrailsViewsTests(TestCase):
             with self.subTest(reverse_name=reverse_name):
                 response = self.guest_client.get(reverse_name)
                 self.assertTemplateUsed(response, template)
-
 
     def test_region_detail_page_show_correct_context(self):
         """Шаблон task_detail сформирован с правильным контекстом."""
@@ -154,3 +152,82 @@ class TrailsViewsTests(TestCase):
         self.assertEqual(search_result[0].name, 'Тестовый трек')
         self.assertIsInstance(response.context.get('form').fields['query'], forms.fields.CharField)
 
+
+
+# Проверяем работу паджинатора
+@override_settings(MEDIA_ROOT=TEMP_MEDIA_ROOT)
+class PaginatorViewsTest(TestCase):
+
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        cls.guest_client = Client()
+        cls.user = User.objects.create_user(username='Test User')
+        cls.authorized_client = Client()
+        cls.authorized_client.force_login(cls.user)
+        cls.region = Region.objects.create(
+            name='Тестовый регион',
+            slug='test-region-slug',
+            main_image=uploaded,
+            mobile_image=uploaded,
+        )
+        cls.trails_qty = 7
+        trails = [
+            Trail(
+                name=f'Тестовый трек {i}',
+                slug=f'test-trail-{i}',
+                region=cls.region,
+                main_image=uploaded,
+                mobile_image=uploaded,
+                card_image=uploaded,
+                is_published=True)
+            for i in range(cls.trails_qty)
+        ]
+        Trail.objects.bulk_create(trails)
+
+    @classmethod
+    def tearDownClass(cls):
+        super().tearDownClass()
+        shutil.rmtree(TEMP_MEDIA_ROOT, ignore_errors=True)
+
+    def test_pages_contains_correct_qty_of_trails(self):
+        """
+        Паджинатор отображает корректное кол-во треков
+        на 1 и 2 страницах.
+        """
+        objects_per_page = {
+            reverse('trails:region_trails_list', kwargs={'slug_region': self.region.slug}): 4,
+            reverse('trails:trails_list'): 4,
+        }
+        for reverse_name, qty in objects_per_page.items():
+            with self.subTest(reverse_name=reverse_name):
+                response = self.authorized_client.get(reverse_name)
+                self.assertEqual(len(response.context['page_obj']), qty)
+                response = self.authorized_client.get(f'{reverse_name}?page=2')
+                self.assertEqual(len(response.context['page_obj']), self.trails_qty - qty)
+
+    def test_pages_contains_correct_qty_of_comments(self):
+        """
+        Паджинатор отображает корректное кол-во комментариев
+        на 1 и 2 страницах.
+        """
+        trail = Trail.objects.first()
+        comments_qty = 8
+        comments = [
+            Comment(
+                trail = trail,
+                author = self.user,
+                ranking = 5)
+            for _ in range(comments_qty)
+        ]
+        Comment.objects.bulk_create(comments)
+
+        objects_per_page = {
+            reverse('trails:comments_list', kwargs={'slug_trail': trail.slug}): 5,
+        }
+        for reverse_name, qty in objects_per_page.items():
+            with self.subTest(reverse_name=reverse_name):
+                response = self.authorized_client.get(reverse_name)
+                self.assertEqual(len(response.context['page_obj']), qty)
+                response = self.authorized_client.get(f'{reverse_name}?page=2')
+                self.assertEqual(len(response.context['page_obj']), comments_qty - qty)
