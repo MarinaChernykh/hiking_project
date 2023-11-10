@@ -11,7 +11,7 @@ User = get_user_model()
 
 class TrailsURLTests(TestCase):
     """URLs tests."""
-    fixtures = ['mysite_data.json']
+    fixtures = ['test_data.json']
 
     @classmethod
     def setUpClass(cls):

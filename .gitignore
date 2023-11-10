@@ -150,4 +150,6 @@ media/
 cert.crt
 cert.key
 
-mysite_data.json
+dump.json
+docker-compose-local.yaml
+.env.prod
