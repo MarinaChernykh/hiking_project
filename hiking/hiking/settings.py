@@ -14,7 +14,7 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['45.12.73.72', 'hi-hiking.ru', '127.0.0.1', 'localhost']
 
-CSRF_TRUSTED_ORIGINS = ['http://45.12.73.72', 'http://127.0.0.1']
+CSRF_TRUSTED_ORIGINS = ['https://45.12.73.72', 'https://hi-hiking.ru']
 
 # Application definition
 
