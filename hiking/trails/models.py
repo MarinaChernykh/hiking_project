@@ -42,12 +42,10 @@ class Region(models.Model):
     main_image = models.ImageField(
         'Главный баннер',
         upload_to='regions/main/',
-        blank=True,
     )
     mobile_image = models.ImageField(
         'Главный баннер для мобильных',
         upload_to='regions/main/',
-        blank=True,
     )
 
     class Meta:
@@ -152,17 +150,14 @@ class Trail(models.Model):
     main_image = models.ImageField(
         'Главный баннер',
         upload_to='trails/main',
-        blank=True,
     )
     mobile_image = models.ImageField(
         'Главный баннер для мобильных',
         upload_to='trails/main',
-        blank=True,
     )
     card_image = models.ImageField(
         'Фото для карточки маршрута',
         upload_to='trails/cards',
-        blank=True,
     )
     previous_trail = models.ForeignKey(
         'self',

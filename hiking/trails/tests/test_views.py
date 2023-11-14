@@ -518,7 +518,7 @@ class PaginatorViewsTest(TestCase):
             main_image=uploaded,
             mobile_image=uploaded,
         )
-        cls.trails_qty = 7
+        cls.trails_qty = 15
         trails = [
             Trail(
                 name=f'Тестовый трек {i}',
@@ -544,8 +544,8 @@ class PaginatorViewsTest(TestCase):
         objects_per_page = {
             reverse(
                 'trails:region_trails_list',
-                kwargs={'slug_region': self.region.slug}): 4,
-            reverse('trails:trails_list'): 4,
+                kwargs={'slug_region': self.region.slug}): 12,
+            reverse('trails:trails_list'): 12,
         }
         for reverse_name, qty in objects_per_page.items():
             with self.subTest(reverse_name=reverse_name):
