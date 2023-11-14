@@ -39,5 +39,5 @@ jobs:
           DB_PORT: 5432
       run: |
         cd hiking/
-        python flake8
+        python -m flake8
         python manage.py test
