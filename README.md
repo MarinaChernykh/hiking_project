@@ -27,7 +27,7 @@
 * Django 4.2
 * PostgreSQL 15.0
 * Gunicorn 21.2
-* Nginx
+* Nginx 1.22
 
 
 ## Как запустить проект на удаленном сервере
