@@ -1,5 +1,5 @@
 [![HIKING_Status](https://github.com/MarinaChernykh/hiking_project/actions/workflows/main.yml/badge.svg)](https://github.com/MarinaChernykh/hiking_project/actions/workflows/main.yml)
-# Проект hi-hiking (Когда сердце в горах)
+# Проект hi-hiking ("Когда сердце в горах")
 
 Проект доступен по адресу:
 <https://hi-hiking.ru/>
@@ -21,6 +21,8 @@
 * Python 3.11
 * Django 4.2
 * PostgreSQL 15.0
+* Gunicorn 21.2
+* Nginx
 
 
 ## Как запустить проект на удаленном сервере
@@ -51,10 +53,11 @@ PASSPHRASE
 ```
 TELEGRAM_TO
 TELEGRAM_TOKEN
-```
-где TELEGRAM_TO - это id вашего личного аккаунта, можно узнать у телеграм-бота @userinfobot.
 
-TELEGRAM_TOKEN - токен вашего телеграм-бота. Получить этот токен можно у телеграм-бота @BotFather.
+# TELEGRAM_TO - это id вашего личного аккаунта, можно узнать у телеграм-бота @userinfobot.
+# TELEGRAM_TOKEN - токен вашего телеграм-бота. Получить этот токен можно у телеграм-бота @BotFather.
+```
+
 
 4. Подготовьте сервер. На нем должен быть установлен docker и docker compose, а также nginx. Настройте nginx так, чтобы он пробрасывал все входящие запросы на http://127.0.0.1:8000.
 ```
