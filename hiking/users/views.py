@@ -5,6 +5,7 @@ from .forms import CreationForm
 
 
 class SignUp(CreateView):
+    """New user creation view."""
     form_class = CreationForm
     success_url = reverse_lazy('trails:index')
     template_name = 'users/signup.html'

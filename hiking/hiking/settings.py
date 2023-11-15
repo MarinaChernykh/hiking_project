@@ -17,6 +17,7 @@ ALLOWED_HOSTS = ['*']
 
 CSRF_TRUSTED_ORIGINS = ['https://45.12.73.72', 'https://hi-hiking.ru', 'http://127.0.0.1', 'https://127.0.0.1']
 
+
 # Application definition
 
 INSTALLED_APPS = [

@@ -10,6 +10,7 @@ User = get_user_model()
 
 
 class Region(models.Model):
+    """Information about regions."""
     name = models.CharField(
         'Название региона',
         max_length=50,
@@ -64,6 +65,7 @@ class Region(models.Model):
 
 
 class Trail(models.Model):
+    """Information about trails."""
 
     LEVEL_CHOICE = (
         ('easy', 'Простой'),
@@ -199,6 +201,7 @@ class Trail(models.Model):
 
 
 class RegionPhoto(models.Model):
+    """Contains regions images."""
     region = models.ForeignKey(
         Region,
         on_delete=models.CASCADE,
@@ -217,6 +220,7 @@ class RegionPhoto(models.Model):
 
 
 class TrailPhoto(models.Model):
+    """Contains trails images."""
     trail = models.ForeignKey(
         Trail,
         on_delete=models.CASCADE,
@@ -235,6 +239,7 @@ class TrailPhoto(models.Model):
 
 
 class Comment(models.Model):
+    """Contains users rankings and comments to trails."""
     RANK_CHOICE = (
         (1, '1 - Совсем не понравился'),
         (2, '2 - Скорее не понравился'),

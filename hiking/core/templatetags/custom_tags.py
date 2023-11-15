@@ -9,6 +9,7 @@ register = template.Library()
 
 @register.inclusion_tag('trails/includes/top_trails_list.html')
 def show_top_trails(obj_number, region=None):
+    """Creates tag to insert top-trails block."""
     if region:
         top_trails = Trail.objects.filter(is_published=True, region=region)
     else:

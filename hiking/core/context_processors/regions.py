@@ -4,6 +4,7 @@ from trails.models import Region
 
 
 def regions(request):
+    """Regions list for navigation menu."""
     regions = list(Region.objects.all())
     regions_cache_key = 'regions'
     regions = cache.get(regions_cache_key)

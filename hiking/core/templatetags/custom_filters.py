@@ -6,4 +6,5 @@ register = template.Library()
 
 @register.filter
 def addclass(field, css):
+    """Uses to add class to input field in forms."""
     return field.as_widget(attrs={'class': css})

@@ -5,6 +5,9 @@ from .models import Comment
 
 
 class CommentForm(forms.ModelForm):
+    """
+    Form for users to set rating for trail and leave text comment.
+    """
     class Meta:
         model = Comment
         fields = ('ranking', 'text')
@@ -14,6 +17,7 @@ class CommentForm(forms.ModelForm):
         }
 
     def clean(self):
+        """Validates whether at least one field is filled in."""
         super().clean()
         ranking = self.cleaned_data.get('ranking')
         text = self.cleaned_data.get('text')
@@ -22,4 +26,5 @@ class CommentForm(forms.ModelForm):
 
 
 class SearchForm(forms.Form):
+    """Form to enter search query."""
     query = forms.CharField()

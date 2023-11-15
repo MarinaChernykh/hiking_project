@@ -33,6 +33,7 @@ class AdminTrail(admin.ModelAdmin):
     inlines = [TrailPhotoInline]
 
     def get_avg_ranking(self, obj):
+        """Calculates avg ranking for each trail."""
         avg_ranking = (obj.comments
                        .filter(is_active=True)
                        .aggregate(Avg('ranking'))['ranking__avg'])
@@ -54,6 +55,7 @@ class AdminComment(admin.ModelAdmin):
     search_fields = ['text']
 
     def get_short_text(self, obj):
+        """Returns short version of comment text."""
         return obj.text[:50]
 
     get_short_text.short_description = 'Текст комментария'

@@ -10,10 +10,20 @@ from .forms import CommentForm, SearchForm
 
 
 def index(request):
+    """
+    Renders index page.
+    Gets all regions list (navigation) and top trails list
+    from context processor and inclusion tag.
+    """
     return render(request, 'trails/index.html')
 
 
 def region_detail(request, slug_region):
+    """
+    Renders page with detailed information about region.
+    Gets all regions list (navigation) and top region trails
+    from context processor and inclusion tag.
+    """
     region = get_object_or_404(
         Region.objects.prefetch_related('photos'),
         slug=slug_region
@@ -25,6 +35,11 @@ def region_detail(request, slug_region):
 
 
 def trails_list(request, slug_region=None):
+    """
+    Renders page with trails list for selected region (if slug_region)
+    or total list (if slug_region is None).
+    Gets all regions list (navigation) from context processor.
+    """
     if slug_region:
         region = get_object_or_404(Region, slug=slug_region)
         trails = region.trails.filter(is_published=True)
@@ -47,6 +62,11 @@ def trails_list(request, slug_region=None):
 
 
 def trail_detail(request, slug_trail):
+    """
+    Renders page with detailed information about trail.
+    Gets all regions list (navigation) and top region trails
+    from context processor and inclusion tag.
+    """
     trail = get_object_or_404(
         Trail.objects.select_related('region').prefetch_related('photos'),
         slug=slug_trail, is_published=True
@@ -66,6 +86,9 @@ def trail_detail(request, slug_trail):
 
 @login_required
 def add_comment(request, slug_trail):
+    """
+    Creates new comment if user is authenticated or redirects to login.
+    """
     trail = get_object_or_404(Trail, slug=slug_trail, is_published=True)
     form = CommentForm(request.POST)
     if form.is_valid():
@@ -77,6 +100,11 @@ def add_comment(request, slug_trail):
 
 
 def comments_list(request, slug_trail):
+    """
+    Renders comments to trail paginated list.
+    Gets all regions list (navigation) and top region trails
+    from context processor and inclusion tag.
+    """
     trail = get_object_or_404(
         Trail.objects.select_related('region'),
         slug=slug_trail, is_published=True
@@ -93,6 +121,7 @@ def comments_list(request, slug_trail):
 
 
 def trails_search(request):
+    """Postgres full text search in trails text data."""
     form = SearchForm()
     query = None
     results = []
