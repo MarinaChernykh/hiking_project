@@ -109,7 +109,7 @@ docker-compose exec web python manage.py loaddata example.json
 1. Склонируйте репозиторий на локальный компьютер. Создайте виртуальное окружение (используйте python 3.11) и установите зависимости из файла requirements.txt
 ```
 git clone git@github.com:MarinaChernykh/hiking_project.git
-python -m -3.11 venv venv
+py -m -3.11 venv venv
 . venv/Scripts/activate
 python -m pip install --upgrade
 pip install -r hiking/requirements.txt
