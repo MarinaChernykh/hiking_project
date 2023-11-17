@@ -3,6 +3,8 @@
 <!DOCTYPE html>
 <html lang="ru">
   <head>
+    {% include "includes/yandex_metrika.html" %}
+    {% include "includes/google_analitics.html" %}
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Хайкинг и треккинг в&nbsp;горах Кавказа (Архыз, Домбай, Безенги, Приэльбрусье). Подробные описания маршрутов с&nbsp;картами и&nbsp;фотографиями. Рейтинги и&nbsp;отзывы о&nbsp;треках, которые помогут спланировать активный отдых.">
@@ -21,7 +23,6 @@
     <title>{% block title %}{% endblock title %}</title>
   </head>
   <body>
-    {% include "includes/yandex_metrika.html" %}
     <header class="top">
         {% block main_banner %}
           <img src="{% static "img/main.jpg" %}" alt="Горы" class="main-banner">
