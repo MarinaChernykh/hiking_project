@@ -10,7 +10,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.getenv('SECRET_KEY', 'some_default_key')
 
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 # ALLOWED_HOSTS = ['45.12.73.72', 'hi-hiking.ru', '127.0.0.1', 'localhost']
@@ -33,6 +33,8 @@ INSTALLED_APPS = [
     'core.apps.CoreConfig',
     'django.contrib.postgres',
     'debug_toolbar',
+    'django.contrib.sites',
+    'django.contrib.sitemaps',
 ]
 
 MIDDLEWARE = [
@@ -109,7 +111,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'ru'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Moscow'
 
 USE_I18N = True
 
@@ -121,8 +123,8 @@ USE_TZ = True
 
 
 STATIC_URL = '/static/'
-# STATICFILES_DIRS = (BASE_DIR / 'static',)
-STATIC_ROOT = BASE_DIR / 'static'
+STATICFILES_DIRS = (BASE_DIR / 'static',)
+# STATIC_ROOT = BASE_DIR / 'static'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
@@ -160,3 +162,5 @@ TRAILS_NUMBER_TRAIL_PAGE = 4
 
 COMMENTS_NUMBER_TRAIL_PAGE = 3
 COMMENTS_NUMBER_COMMENTS_PAGE = 5
+
+SITE_ID = 1

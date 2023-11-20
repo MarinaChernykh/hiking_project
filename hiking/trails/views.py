@@ -1,7 +1,7 @@
 from django.db.models import Avg, Count, F
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
-from django.contrib.postgres.search import SearchVector
+from django.contrib.postgres.search import SearchVector, SearchQuery, SearchRank
 from django.shortcuts import render, get_object_or_404, redirect
 from django.conf import settings
 
@@ -90,7 +90,7 @@ def add_comment(request, slug_trail):
     Creates new comment if user is authenticated or redirects to login.
     """
     trail = get_object_or_404(Trail, slug=slug_trail, is_published=True)
-    form = CommentForm(request.POST)
+    form = CommentForm(request.POST or None)
     if form.is_valid():
         comment = form.save(commit=False)
         comment.author = request.user
@@ -129,12 +129,21 @@ def trails_search(request):
         form = SearchForm(request.GET)
         if form.is_valid():
             query = form.cleaned_data['query']
-            results = (Trail.objects
-                       .filter(is_published=True)
-                       .annotate(search=SearchVector(
-                           'name', 'short_description', 'full_description',
-                           'start_point_description', 'aqua'),)
-                       .filter(search=query))
+            search_vector = (
+                SearchVector('name', weight='A', config='russian')
+                + SearchVector('short_description', weight='B', config='russian')
+                + SearchVector('full_description', weight='B', config='russian')
+                + SearchVector('start_point_description', weight='C', config='russian')
+                + SearchVector('aqua', weight='C', config='russian')
+            )
+            search_query = SearchQuery(query, config='russian')
+
+            results = (Trail.objects.filter(is_published=True)
+                       .annotate(search=search_vector,
+                                 rank=SearchRank(search_vector, search_query))
+                       .filter(search=search_query)
+                       .filter(rank__gte=0.3)
+                       .order_by('-rank'))
     context = {
         'form': form,
         'query': query,

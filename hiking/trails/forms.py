@@ -21,7 +21,7 @@ class CommentForm(forms.ModelForm):
         super().clean()
         ranking = self.cleaned_data.get('ranking')
         text = self.cleaned_data.get('text')
-        if ranking is None and text.strip() == '':
+        if ranking is None and (text.strip() == '' or text is None):
             raise ValidationError('Вы должны заполнить хотя бы одно поле')
 
 

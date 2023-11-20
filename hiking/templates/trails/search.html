@@ -1,6 +1,14 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}Результаты поиска{% endblock title %}
+
+{% block main_banner %}
+  <div class="main-banner-gradient">
+    <img src="{% static "img/search_result.jpg" %}" alt="Горы" class="main-banner">
+    <img src="{% static "img/search_result_mobile.jpg" %}" alt="Горы" class="main-banner-mobile">
+  </div>
+{% endblock main_banner %}
 
 {% block article_title %}
   <h1 class="top__title main-title">Результаты поиска</h1>
@@ -10,7 +18,8 @@
   <section class="search article center">
     {% if  query %}
     <h2 class="search__title title">
-        Результаты&nbsp;поиска по&nbsp;запросу "{{ query }}"
+        Результаты
+        поиска по&nbsp;запросу "{{ query }}"
     </h2>
       {% for trail in results %}
         <a href="{{ trail.get_absolute_url }}" class="search__result" target="_blank">
@@ -18,9 +27,10 @@
             {{ trail.name }}
           </p>
           <p class="search__result-text text">
-            {{ trail.short_description|truncatewords_html:30 }}
+            {{ trail.short_description|safe|truncatewords_html:30 }}
           </p>
         </a>
+
       {% empty %}
         <p class="search__no-result text center-text">
           По&nbsp;вашему запросу ничего не&nbsp;найдено.

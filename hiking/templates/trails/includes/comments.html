@@ -2,10 +2,7 @@
 <div class="comments__article article-text">
   <p class="text">
     <span class="text-bold">{{ comment.author.username }}</span>,
-    {% load tz %}
-    {% localtime on %}
-      {{ comment.created }}
-    {% endlocaltime %}
+    {{ comment.created }}
   </p>
   <p class="text">{{ comment.text }}</p>
   <p class="text">

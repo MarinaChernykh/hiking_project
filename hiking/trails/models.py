@@ -9,7 +9,24 @@ from django.urls import reverse
 User = get_user_model()
 
 
-class Region(models.Model):
+class BaseModel(models.Model):
+    """
+    Abstact model to add creation and update datetime.
+    """
+    created = models.DateTimeField(
+        'Дата создания',
+        auto_now_add=True
+    )
+    updated = models.DateTimeField(
+        'Дата изменения',
+        auto_now=True
+    )
+
+    class Meta:
+        abstract = True
+
+
+class Region(BaseModel):
     """Information about regions."""
     name = models.CharField(
         'Название региона',
@@ -64,7 +81,7 @@ class Region(models.Model):
         )
 
 
-class Trail(models.Model):
+class Trail(BaseModel):
     """Information about trails."""
 
     LEVEL_CHOICE = (
@@ -177,10 +194,6 @@ class Trail(models.Model):
         related_name='next',
         verbose_name='Следующий маршрут'
     )
-    created = models.DateTimeField(
-        'Дата создания статьи',
-        auto_now_add=True,
-    )
     is_published = models.BooleanField(
         'Статус публикации',
         default=False
@@ -238,7 +251,7 @@ class TrailPhoto(models.Model):
         verbose_name_plural = 'Фото маршрута'
 
 
-class Comment(models.Model):
+class Comment(BaseModel):
     """Contains users rankings and comments to trails."""
     RANK_CHOICE = (
         (1, '1 - Совсем не понравился'),
@@ -269,10 +282,6 @@ class Comment(models.Model):
         choices=RANK_CHOICE,
         blank=True,
         null=True,
-    )
-    created = models.DateTimeField(
-        'Дата публикации',
-        auto_now_add=True,
     )
     is_active = models.BooleanField(
         'Статус публикации',

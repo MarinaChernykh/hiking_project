@@ -2,7 +2,16 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib.sitemaps.views import sitemap
 
+from core.sitemaps import RegionSitemap, TrailSitemap, StaticPageSitemap
+
+
+sitemaps = {
+    'regions': RegionSitemap,
+    'trails': TrailSitemap,
+    'static_pages': StaticPageSitemap,
+}
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -10,6 +19,11 @@ urlpatterns = [
     path('auth/', include('django.contrib.auth.urls')),
     path('about/', include('about.urls', namespace='about')),
     path('', include('trails.urls', namespace='trails')),
+    path(
+        'sitemap.xml', sitemap,
+        {'sitemaps': sitemaps},
+        name='django.contrib.sitemaps.views.sitemap'
+    )
 ]
 
 handler403 = 'core.views.permission_denied'

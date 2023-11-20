@@ -14,21 +14,21 @@ class TrailPhotoInline(admin.TabularInline):
 
 @admin.register(Region)
 class AdminRegion(admin.ModelAdmin):
-    list_display = ['name', 'slug', 'main_image']
-    search_fields = ['name']
+    list_display = ('name', 'slug', 'main_image')
+    search_fields = ('name',)
     prepopulated_fields = {'slug': ('name',)}
     inlines = [RegionPhotoInline]
 
 
 @admin.register(Trail)
 class AdminTrail(admin.ModelAdmin):
-    list_display = [
+    list_display = (
         'name', 'region', 'level', 'distance', 'time',
         'elevation_gain', 'is_published', 'get_avg_ranking'
-    ]
-    list_editable = ['is_published']
-    list_filter = ['region', 'level', 'is_published']
-    search_fields = ['name', 'short_description', 'full_description']
+    )
+    list_editable = ('is_published',)
+    list_filter = ('region', 'level', 'is_published')
+    search_fields = ('name', 'short_description', 'full_description')
     prepopulated_fields = {'slug': ('name',)}
     inlines = [TrailPhotoInline]
 
@@ -46,13 +46,13 @@ class AdminTrail(admin.ModelAdmin):
 
 @admin.register(Comment)
 class AdminComment(admin.ModelAdmin):
-    list_display = [
+    list_display = (
         'trail', 'author', 'get_short_text', 'ranking',
         'created', 'is_active'
-    ]
-    list_editable = ['is_active']
-    list_filter = ['trail', 'author', 'ranking', 'is_active']
-    search_fields = ['text']
+    )
+    list_editable = ('is_active',)
+    list_filter = ('trail', 'author', 'ranking', 'is_active')
+    search_fields = ('text',)
 
     def get_short_text(self, obj):
         """Returns short version of comment text."""
