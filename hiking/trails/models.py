@@ -252,7 +252,7 @@ class TrailPhoto(models.Model):
 
 
 class Comment(BaseModel):
-    """Contains users rankings and comments to trails."""
+    """Contains users ratings and comments to trails."""
     RANK_CHOICE = (
         (1, '1 - Совсем не понравился'),
         (2, '2 - Скорее не понравился'),
@@ -304,3 +304,27 @@ class Comment(BaseModel):
 
     def __str__(self):
         return f'Автор: {self.author.username}, дата: {self.created}'
+
+
+class Favorite(models.Model):
+    """Contains users favorite trails."""
+    user = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name='favorite_trails',
+        verbose_name='Пользователь'
+    )
+    trail = models.ForeignKey(
+        Trail,
+        on_delete=models.CASCADE,
+        related_name='favorite',
+        verbose_name='Хочет пройти'
+    )
+
+    class Meta:
+        constraints = (
+            models.UniqueConstraint(
+                fields=('user', 'trail'),
+                name='unique_favorite',
+            ),
+        )

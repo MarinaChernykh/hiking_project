@@ -5,8 +5,9 @@ from django.contrib.postgres.search import SearchVector, SearchQuery, SearchRank
 from django.shortcuts import render, get_object_or_404, redirect
 from django.conf import settings
 
-from .models import Region, Trail
+from .models import Region, Trail, Favorite
 from .forms import CommentForm, SearchForm
+from .utils import get_page
 
 
 def index(request):
@@ -51,12 +52,14 @@ def trails_list(request, slug_region=None):
               .annotate(avg_rank=Avg('comments__ranking'))
               .order_by(F('avg_rank').desc(nulls_last=True))
               )
-    paginator = Paginator(trails, settings.TRAILS_NUMBER_ALL_TRAILS_PAGE)
-    page_number = request.GET.get('page')
-    page_obj = paginator.get_page(page_number)
+    favorites = []
+    if request.user.is_authenticated:
+        favorites = Favorite.objects.filter(user=request.user).values_list('trail', flat=True)
+    page_obj = get_page(request, trails, settings.TRAILS_NUMBER_ALL_TRAILS_PAGE)
     context = {
         'page_obj': page_obj,
         'region': region,
+        'favorites': favorites,
     }
     return render(request, 'trails/trails_list.html', context)
 
@@ -71,11 +74,15 @@ def trail_detail(request, slug_trail):
         Trail.objects.select_related('region').prefetch_related('photos'),
         slug=slug_trail, is_published=True
     )
+    favorite = (Favorite.objects.filter(user=request.user, trail=trail).exists()
+                if request.user.is_authenticated
+                else False)
     form = CommentForm()
     comments = trail.comments.filter(is_active=True).select_related('author')
     agregate_comments = comments.aggregate(Avg('ranking'), Count('id'))
     context = {
         'trail': trail,
+        'favorite': favorite,
         'average_rating': agregate_comments['ranking__avg'],
         'count': agregate_comments['id__count'],
         'comments': comments[:settings.COMMENTS_NUMBER_TRAIL_PAGE],
@@ -110,9 +117,7 @@ def comments_list(request, slug_trail):
         slug=slug_trail, is_published=True
     )
     comments = trail.comments.filter(is_active=True).select_related('author')
-    paginator = Paginator(comments, settings.COMMENTS_NUMBER_COMMENTS_PAGE)
-    page_number = request.GET.get('page')
-    page_obj = paginator.get_page(page_number)
+    page_obj = get_page(request, comments, settings.COMMENTS_NUMBER_COMMENTS_PAGE)
     context = {
         'trail': trail,
         'page_obj': page_obj,
@@ -150,3 +155,38 @@ def trails_search(request):
         'results': results,
     }
     return render(request, 'trails/search.html', context=context)
+
+
+@login_required
+def favorite_list(request):
+    """Current user's favorite trails list."""
+    trails = (Trail.objects
+              .filter(favorite__user=request.user, is_published=True)
+              .select_related('region')
+              .annotate(avg_rank=Avg('comments__ranking'))
+              .order_by(F('avg_rank').desc(nulls_last=True))
+            )
+    favorites = trails.values_list('id', flat=True)
+    page_obj = get_page(request, trails, settings.TRAILS_NUMBER_ALL_TRAILS_PAGE)
+    context = {
+        'page_obj': page_obj,
+        'favorites': favorites
+    }
+    return render(request, 'trails/favorite.html', context)
+
+
+@login_required
+def add_favorite(request, slug_trail):
+    """Add trail to current user's favorites."""
+    trail = get_object_or_404(Trail, slug=slug_trail, is_published=True)
+    Favorite.objects.get_or_create(user=request.user, trail=trail)
+    return redirect('trails:favorite_list')
+
+
+@login_required
+def remove_favorite(request, slug_trail):
+    """Remove trail from current user's favorites."""
+    trail = get_object_or_404(Trail, slug=slug_trail, is_published=True)
+    Favorite.objects.filter(user=request.user, trail=trail).delete()
+    redirect_path = request.META.get('HTTP_REFERER') or 'trails:favorite_list'
+    return redirect(redirect_path)

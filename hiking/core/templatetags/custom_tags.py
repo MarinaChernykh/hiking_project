@@ -1,14 +1,14 @@
 from django import template
 from django.db.models import Avg, F
 
-from trails.models import Trail
+from trails.models import Trail, Favorite
 
 
 register = template.Library()
 
 
-@register.inclusion_tag('trails/includes/top_trails_list.html')
-def show_top_trails(obj_number, region=None):
+@register.inclusion_tag('trails/includes/top_trails_list.html', takes_context=True)
+def show_top_trails(context, obj_number, region=None):
     """Creates tag to insert top-trails block."""
     if region:
         top_trails = Trail.objects.filter(is_published=True, region=region)
@@ -20,4 +20,12 @@ def show_top_trails(obj_number, region=None):
                   .annotate(avg_rank=Avg('comments__ranking'))
                   .order_by(
                       F('avg_rank').desc(nulls_last=True))[:obj_number])
-    return {'top_trails': top_trails, 'region': region}
+    user = context['request'].user
+    favorites = []
+    if user.is_authenticated:
+        favorites = Favorite.objects.filter(user=user).values_list('trail', flat=True)
+    return {
+        'top_trails': top_trails,
+        'region': region,
+        'favorites': favorites,
+    }

@@ -14,12 +14,14 @@
 
 .trail-card {
   width: 310px;
-  height: 450px;
+  height: 480px;
   border-radius: 15px;
   background: #FFF;
   box-shadow: 1px 2px 12px 1px rgba(0, 0, 0, 0.25);
   padding: 10px;
   transition: 0.5s;
+  display: flex;
+  flex-direction: column;
 }
 .trail-card:hover {
   box-shadow: 1px 2px 12px 1px rgba(0, 0, 0, 0.6);
@@ -83,7 +85,7 @@
   /* Горизонтальные мобильные (800-900) */
   .trail-card {
     width: 360px;
-    height: 490px;
+    height: 520px;
   }
   .filters {
     width: 740px;
@@ -97,7 +99,7 @@
   }
   .trail-card {
     width: 350px;
-    height: 480px;
+    height: 520px;
   }
   .filters {
     width: 700px;
@@ -110,7 +112,7 @@
   /* Iphone 13 pro horizontal */
   .trail-card {
     width: 300px;
-    height: 430px;
+    height: 470px;
   }
   .trails__cards {
     gap: 10px;
@@ -136,7 +138,7 @@
   }
   .trail-card {
     width: 350px;
-    height: 480px;
+    height: 505px;
   }
 
 }
@@ -148,7 +150,7 @@
   }
   .trail-card {
     width: 340px;
-    height: 480px;
+    height: 500px;
   }
   .filters {
     margin-top: 45px;
@@ -169,7 +171,7 @@
   }
   .trail-card {
     width: 310px;
-    height: 435px;
+    height: 480px;
     padding: 10px;
 
   }
