@@ -150,6 +150,8 @@ media/
 cert.crt
 cert.key
 
-dump.json
+full_dump.json
+trails_dump.json
 docker-compose-local.yaml
 .env.prod
+README_dev.md

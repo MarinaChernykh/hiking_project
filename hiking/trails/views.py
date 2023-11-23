@@ -1,11 +1,12 @@
 from django.db.models import Avg, Count, F
-from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
-from django.contrib.postgres.search import SearchVector, SearchQuery, SearchRank
+from django.contrib import messages
+from django.contrib.postgres.search import (
+    SearchVector, SearchQuery, SearchRank)
 from django.shortcuts import render, get_object_or_404, redirect
 from django.conf import settings
 
-from .models import Region, Trail, Favorite
+from .models import Region, Trail, Comment, Favorite
 from .forms import CommentForm, SearchForm
 from .utils import get_page
 
@@ -50,12 +51,16 @@ def trails_list(request, slug_region=None):
     trails = (trails
               .select_related('region')
               .annotate(avg_rank=Avg('comments__ranking'))
-              .order_by(F('avg_rank').desc(nulls_last=True))
+              .annotate(count_favorite=Count('favorite'))
+              .order_by(F('avg_rank').desc(nulls_last=True), '-count_favorite')
               )
     favorites = []
     if request.user.is_authenticated:
-        favorites = Favorite.objects.filter(user=request.user).values_list('trail', flat=True)
-    page_obj = get_page(request, trails, settings.TRAILS_NUMBER_ALL_TRAILS_PAGE)
+        favorites = (Favorite.objects
+                     .filter(user=request.user)
+                     .values_list('trail', flat=True))
+    page_obj = get_page(
+        request, trails, settings.TRAILS_NUMBER_ALL_TRAILS_PAGE)
     context = {
         'page_obj': page_obj,
         'region': region,
@@ -74,7 +79,8 @@ def trail_detail(request, slug_trail):
         Trail.objects.select_related('region').prefetch_related('photos'),
         slug=slug_trail, is_published=True
     )
-    favorite = (Favorite.objects.filter(user=request.user, trail=trail).exists()
+    favorite = (Favorite.objects
+                .filter(user=request.user, trail=trail).exists()
                 if request.user.is_authenticated
                 else False)
     form = CommentForm()
@@ -103,7 +109,36 @@ def add_comment(request, slug_trail):
         comment.author = request.user
         comment.trail = trail
         comment.save()
+        messages.success(request, 'Комментарий успешно сохранен.')
+    else:
+        messages.error(request, 'Возникла ошибка.  Комментарий не сохранен.')
     return redirect('trails:trail_detail', slug_trail=slug_trail)
+
+
+@login_required
+def edit_comment(request, slug_trail, pk):
+    comment = get_object_or_404(Comment, pk=pk, is_active=True)
+    if request.user != comment.author:
+        return redirect('trails:trail_detail', slug_trail)
+    form = CommentForm(request.POST or None, instance=comment)
+    if form.is_valid():
+        form.save()
+        messages.success(request, 'Изменения успешно сохранены.')
+        return redirect('trails:trail_detail', comment.trail.slug)
+    return render(request, 'trails/comment_edit.html', {'form': form})
+
+
+@login_required
+def delete_comment(request, slug_trail, pk):
+    comment = get_object_or_404(Comment, pk=pk, is_active=True)
+    if request.user != comment.author:
+        return redirect('trails:trail_detail', slug_trail)
+    form = CommentForm(instance=comment)
+    if request.method == 'POST':
+        comment.delete()
+        messages.success(request, 'Комментарий успешно удалён.')
+        return redirect('trails:trail_detail', slug_trail)
+    return render(request, 'trails/comment_delete.html', {'form': form})
 
 
 def comments_list(request, slug_trail):
@@ -117,7 +152,8 @@ def comments_list(request, slug_trail):
         slug=slug_trail, is_published=True
     )
     comments = trail.comments.filter(is_active=True).select_related('author')
-    page_obj = get_page(request, comments, settings.COMMENTS_NUMBER_COMMENTS_PAGE)
+    page_obj = get_page(
+        request, comments, settings.COMMENTS_NUMBER_COMMENTS_PAGE)
     context = {
         'trail': trail,
         'page_obj': page_obj,
@@ -135,11 +171,16 @@ def trails_search(request):
         if form.is_valid():
             query = form.cleaned_data['query']
             search_vector = (
-                SearchVector('name', weight='A', config='russian')
-                + SearchVector('short_description', weight='B', config='russian')
-                + SearchVector('full_description', weight='B', config='russian')
-                + SearchVector('start_point_description', weight='C', config='russian')
-                + SearchVector('aqua', weight='C', config='russian')
+                SearchVector(
+                    'name', weight='A', config='russian')
+                + SearchVector(
+                    'short_description', weight='B', config='russian')
+                + SearchVector(
+                    'full_description', weight='B', config='russian')
+                + SearchVector(
+                    'start_point_description', weight='C', config='russian')
+                + SearchVector(
+                    'aqua', weight='C', config='russian')
             )
             search_query = SearchQuery(query, config='russian')
 
@@ -165,9 +206,10 @@ def favorite_list(request):
               .select_related('region')
               .annotate(avg_rank=Avg('comments__ranking'))
               .order_by(F('avg_rank').desc(nulls_last=True))
-            )
+              )
     favorites = trails.values_list('id', flat=True)
-    page_obj = get_page(request, trails, settings.TRAILS_NUMBER_ALL_TRAILS_PAGE)
+    page_obj = get_page(
+        request, trails, settings.TRAILS_NUMBER_ALL_TRAILS_PAGE)
     context = {
         'page_obj': page_obj,
         'favorites': favorites
@@ -184,8 +226,8 @@ def add_favorite(request, slug_trail):
 
 
 @login_required
-def remove_favorite(request, slug_trail):
-    """Remove trail from current user's favorites."""
+def delete_favorite(request, slug_trail):
+    """Delete trail from current user's favorites."""
     trail = get_object_or_404(Trail, slug=slug_trail, is_published=True)
     Favorite.objects.filter(user=request.user, trail=trail).delete()
     redirect_path = request.META.get('HTTP_REFERER') or 'trails:favorite_list'

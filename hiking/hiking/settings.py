@@ -10,11 +10,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.getenv('SECRET_KEY', 'some_default_key')
 
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
-CSRF_TRUSTED_ORIGINS = ['https://45.12.73.72', 'https://hi-hiking.ru', 'http://127.0.0.1', 'https://127.0.0.1']
+CSRF_TRUSTED_ORIGINS = [
+    'https://45.12.73.72', 'https://hi-hiking.ru',
+    'http://127.0.0.1', 'https://127.0.0.1'
+]
 
 
 # Application definition
@@ -120,10 +123,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-
 STATIC_URL = '/static/'
-STATICFILES_DIRS = (BASE_DIR / 'static',)
-# STATIC_ROOT = BASE_DIR / 'static'
+if DEBUG:
+    STATICFILES_DIRS = (BASE_DIR / 'static',)
+else:
+    STATIC_ROOT = BASE_DIR / 'static'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
@@ -134,17 +138,17 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-COORDINATES_FORMAT = '^[-+]?([1-8]?\d(\.\d+)?|90(\.0+)?),\s*[-+]?(180(\.0+)?|((1[0-7]\d)|([1-9]?\d))(\.\d+)?)$'
+if DEBUG:
+    EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
+    EMAIL_FILE_PATH = BASE_DIR / 'sent_emails'
+else:
+    EMAIL_HOST = 'smtp.gmail.com'
+    EMAIL_PORT = 587
+    EMAIL_USE_TLS = True
+    EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER', 'your.email@gmail.com')
+    EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD', 'xxxx xxxx xxxx xxxx')
 
-
-LOGIN_URL = 'users:login'
-LOGIN_REDIRECT_URL = 'trails:index'
-LOGOUT_REDIRECT_URL = 'trails:index'
-
-EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
-EMAIL_FILE_PATH = BASE_DIR / 'sent_emails'
-
-CSRF_FAILURE_VIEW = 'core.views.csrf_failure'
+SITE_ID = 1
 
 INTERNAL_IPS = [
     '127.0.0.1',
@@ -152,8 +156,19 @@ INTERNAL_IPS = [
 
 AUTH_USER_MODEL = 'users.CustomUser'
 
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'users.authentication.EmailAuthBackend',
+]
 
-# Constants
+LOGIN_URL = 'users:login'
+LOGIN_REDIRECT_URL = 'trails:index'
+LOGOUT_REDIRECT_URL = 'trails:index'
+
+CSRF_FAILURE_VIEW = 'core.views.csrf_failure'
+
+
+# Paginator constants
 TRAILS_NUMBER_INDEX_PAGE = 8
 TRAILS_NUMBER_REGION_PAGE = 8
 TRAILS_NUMBER_ALL_TRAILS_PAGE = 12
@@ -162,4 +177,6 @@ TRAILS_NUMBER_TRAIL_PAGE = 4
 COMMENTS_NUMBER_TRAIL_PAGE = 3
 COMMENTS_NUMBER_COMMENTS_PAGE = 5
 
-SITE_ID = 1
+COORDINATES_FORMAT = (
+    '^[-+]?([1-8]?\d(\.\d+)?|90(\.0+)?),\s*[-+]?(180(\.0+)?|((1[0-7]\d)|([1-9]?\d))(\.\d+)?)$'
+)

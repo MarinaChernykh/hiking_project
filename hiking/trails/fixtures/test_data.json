@@ -4,7 +4,7 @@
       "pk": 1,
       "fields": {
          "created": "2023-11-20T15:38:09.090Z",
-         "updated": "2023-11-20T15:38:09.098Z",
+         "updated": "2023-11-21T20:40:14.556Z",
          "name": "Домбай",
          "slug": "dombay",
          "description_intro": "Описание региона Домбай",
@@ -21,7 +21,7 @@
       "pk": 2,
       "fields": {
          "created": "2023-11-20T15:38:09.090Z",
-         "updated": "2023-11-20T15:38:09.098Z",
+         "updated": "2023-11-21T19:12:42.868Z",
          "name": "Архыз",
          "slug": "arkhyz",
          "description_intro": "Описание региона Архыз",
@@ -38,7 +38,7 @@
       "pk": 3,
       "fields": {
          "created": "2023-11-20T15:38:09.090Z",
-         "updated": "2023-11-20T15:38:09.098Z",
+         "updated": "2023-11-21T20:42:46.153Z",
          "name": "Безенги",
          "slug": "bezengi",
          "description_intro": "Описание региона Безенги",
@@ -55,7 +55,7 @@
       "pk": 4,
       "fields": {
          "created": "2023-11-20T15:38:09.090Z",
-         "updated": "2023-11-20T15:38:09.098Z",
+         "updated": "2023-11-21T20:43:55.937Z",
          "name": "Приэльбрусье",
          "slug": "elbrus",
          "description_intro": "Описание региона Приэльбрусье",
@@ -72,7 +72,7 @@
       "pk": 1,
       "fields": {
          "created": "2023-10-23T21:47:51.063Z",
-         "updated": "2023-11-20T15:38:09.105Z",
+         "updated": "2023-11-21T20:08:47.895Z",
          "name": "Озеро Любви",
          "slug": "ozero-lyubvi",
          "short_description": "Короткое описание трека Озеро Любви",
@@ -91,7 +91,7 @@
          "mobile_image": "trails/main/ozero_lyubvi_main_mobile.jpg",
          "card_image": "trails/cards/ozero_lyubvi_main_mini.jpg",
          "previous_trail": null,
-         "next_trail": null,
+         "next_trail": 9,
          "is_published": true
       }
    },
@@ -100,7 +100,7 @@
       "pk": 2,
       "fields": {
          "created": "2023-10-24T12:40:03.622Z",
-         "updated": "2023-11-20T15:38:09.105Z",
+         "updated": "2023-11-21T20:23:38.347Z",
          "name": "Скала Карча-тёбе",
          "slug": "skala-karcha-tyobe",
          "short_description": "Короткое описание трека Скала Карча-тёбе",
@@ -128,7 +128,7 @@
       "pk": 3,
       "fields": {
          "created": "2023-10-24T13:23:52.464Z",
-         "updated": "2023-11-20T15:38:09.105Z",
+         "updated": "2023-11-21T19:18:23.703Z",
          "name": "Дуккинские озёра",
          "slug": "dukkinskie-ozyora",
          "short_description": "Короткое описание трека Дуккинские озёра",
@@ -156,7 +156,7 @@
       "pk": 4,
       "fields": {
          "created": "2023-10-31T08:19:54.758Z",
-         "updated": "2023-11-20T15:38:09.105Z",
+         "updated": "2023-11-21T20:31:48.264Z",
          "name": "Баритовый водопад",
          "slug": "baritoviy-vodopad",
          "short_description": "Короткое описание трека Баритовый водопад",
@@ -184,7 +184,7 @@
       "pk": 5,
       "fields": {
          "created": "2023-10-31T08:56:55.196Z",
-         "updated": "2023-11-20T15:38:09.105Z",
+         "updated": "2023-11-21T20:35:33.646Z",
          "name": "Хребет Абишира-Ахуба",
          "slug": "khrebet-abishira-ahuba",
          "short_description": "Короткое описание трека Хребет Абишира-Ахуба",
@@ -212,7 +212,7 @@
       "pk": 6,
       "fields": {
          "created": "2023-10-31T09:36:06.044Z",
-         "updated": "2023-11-20T15:38:09.105Z",
+         "updated": "2023-11-21T20:37:17.963Z",
          "name": "Алибекский водопад",
          "slug": "alibekskij-vodopad",
          "short_description": "Короткое описание трека Алибекский водопад",
@@ -229,7 +229,7 @@
          "route_image": "https://mapmagic.app/embed?routes=9rZgLW9",
          "main_image": "trails/main/alibekskiy_vodopad_main_16_9.jpg",
          "mobile_image": "trails/main/alibekskiy_vodopad_main_mobile.jpg",
-         "card_image": "trails/cards/alibekskiy_vodopad_main_mini_euHjAUx.jpg",
+         "card_image": "trails/cards/alibekskiy_vodopad_main_mini.jpg",
          "previous_trail": null,
          "next_trail": null,
          "is_published": true
@@ -240,7 +240,7 @@
       "pk": 7,
       "fields": {
          "created": "2023-10-31T10:28:46.182Z",
-         "updated": "2023-11-20T15:38:09.105Z",
+         "updated": "2023-11-21T20:36:57.350Z",
          "name": "Бадукские озера",
          "slug": "badukskie-ozera",
          "short_description": "Короткое описание трека Бадукские озера",
@@ -268,7 +268,7 @@
       "pk": 8,
       "fields": {
          "created": "2023-11-18T08:17:08.871Z",
-         "updated": "2023-11-20T15:38:09.105Z",
+         "updated": "2023-11-21T20:14:41.960Z",
          "name": "Водопад Чигордали",
          "slug": "vodopad-chigordali",
          "short_description": "Короткое описание трека Водопад Чигордали",
@@ -287,7 +287,7 @@
          "mobile_image": "trails/main/chigordali_vodopad_main_mobile.jpg",
          "card_image": "trails/cards/chigordali_vodopad_main_mini.jpg",
          "previous_trail": null,
-         "next_trail": null,
+         "next_trail": 9,
          "is_published": true
       }
    },
@@ -296,7 +296,7 @@
       "pk": 9,
       "fields": {
          "created": "2023-11-18T08:34:15.031Z",
-         "updated": "2023-11-20T15:38:09.105Z",
+         "updated": "2023-11-21T20:17:19.353Z",
          "name": "Водопад Казачий",
          "slug": "vodopad-kazachiy",
          "short_description": "Короткое описание трека Водопад Казачий",
@@ -324,7 +324,7 @@
       "pk": 10,
       "fields": {
          "created": "2023-11-18T10:13:48.430Z",
-         "updated": "2023-11-20T15:38:09.105Z",
+         "updated": "2023-11-21T20:05:05.270Z",
          "name": "Семицветное озеро",
          "slug": "semitsvetnoe-ozero",
          "short_description": "Короткое описание трека Семицветное озеро",
@@ -352,7 +352,7 @@
       "pk": 11,
       "fields": {
          "created": "2023-11-18T14:50:10.783Z",
-         "updated": "2023-11-20T15:38:09.105Z",
+         "updated": "2023-11-21T20:22:07.581Z",
          "name": "Озеро Орлёнок",
          "slug": "ozero-orlyonok",
          "short_description": "Короткое описание трека Озеро Орлёнок",
@@ -380,7 +380,7 @@
       "pk": 12,
       "fields": {
          "created": "2023-11-18T16:19:15.871Z",
-         "updated": "2023-11-20T15:38:09.105Z",
+         "updated": "2023-11-21T20:26:25.023Z",
          "name": "Гора Смирнова",
          "slug": "gora-smirnova",
          "short_description": "Короткое описание трека Гора Смирнова",

@@ -104,3 +104,49 @@ class CommentCreateFormTests(TestCase):
         self.assertEqual(Comment.objects.count(), comments_count)
         self.assertEqual(last_comment.ranking, 5)
         self.assertEqual(last_comment.text, '')
+
+    def test_edit_comment(self):
+        """Valid POST request edit comment."""
+        comments_count = Comment.objects.count()
+        form_data = {
+            'text': 'Измененный текст комментария',
+            'ranking': 4
+        }
+        response = self.authorized_client.post(
+            reverse(
+                'trails:edit_comment',
+                kwargs={'slug_trail': self.trail.slug, 'pk': self.comment.pk}),
+            data=form_data,
+            follow=True
+        )
+        self.assertRedirects(
+            response,
+            reverse('trails:trail_detail',
+                    kwargs={'slug_trail': self.trail.slug})
+        )
+        self.assertEqual(Comment.objects.count(), comments_count)
+        self.latest_comment = Comment.objects.latest('updated')
+        self.assertEqual(self.latest_comment.author.username, 'Test User')
+        self.assertEqual(
+            self.latest_comment.text, 'Измененный текст комментария')
+        self.assertEqual(self.latest_comment.ranking, 4)
+
+    def test_incorrect_edit_comment(self):
+        """Invalid POST request doesn't edit comment."""
+        comments_count = Comment.objects.count()
+        form_data = {
+            'text': '',
+            'ranking': ''
+        }
+        self.authorized_client.post(
+            reverse(
+                'trails:edit_comment',
+                kwargs={'slug_trail': self.trail.slug, 'pk': self.comment.pk}),
+            data=form_data,
+            follow=True
+        )
+        self.assertEqual(Comment.objects.count(), comments_count)
+        self.latest_comment = Comment.objects.latest('updated')
+        self.assertEqual(self.latest_comment.author.username, 'Test User')
+        self.assertEqual(self.latest_comment.text, '')
+        self.assertEqual(self.latest_comment.ranking, 5)

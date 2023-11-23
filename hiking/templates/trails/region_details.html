@@ -21,7 +21,7 @@
   <section class="article center">
     <main class="reg-intro">
       <p class="text article-text">
-        {{ region.description_intro|safe }}
+        {{ region.description_intro|safe|linebreaksbr }}
       </p>
     </main>
 
@@ -33,7 +33,7 @@
     <article class="reg-description">
       <h2 class="reg-description__title title">Немного географии</h2>
       <p class="text article-text">
-        {{ region.description_geo|safe }}
+        {{ region.description_geo|safe|linebreaksbr }}
       </p>
     </article>
 
@@ -44,7 +44,7 @@
     <article class="reg-description">
       <h2 class="reg-description__title title">Когда ехать</h2>
       <p class="text article-text">
-        {{ region.description_seasons|safe }}
+        {{ region.description_seasons|safe|linebreaksbr }}
       </p>
     </article>
 
@@ -55,7 +55,7 @@
     <article class="reg-description">
       <h2 class="reg-description__title title">Как добраться</h2>
       <p class="text article-text">
-        {{ region.description_transport|safe }}
+        {{ region.description_transport|safe|linebreaksbr }}
       </p>
     </article>
 
@@ -66,7 +66,7 @@
     <article class="reg-description">
       <h2 class="reg-description__title title">Где жить и питаться</h2>
       <p class="text article-text">
-        {{ region.description_accommodation|safe }}
+        {{ region.description_accommodation|safe|linebreaksbr }}
       </p>
     </article>
 

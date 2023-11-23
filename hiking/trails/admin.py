@@ -23,8 +23,8 @@ class AdminRegion(admin.ModelAdmin):
 @admin.register(Trail)
 class AdminTrail(admin.ModelAdmin):
     list_display = (
-        'name', 'region', 'level', 'distance', 'time',
-        'elevation_gain', 'is_published', 'get_avg_ranking'
+        'name', 'slug', 'region', 'level', 'distance', 'time',
+        'elevation_gain', 'is_published', 'get_avg_ranking',
     )
     list_editable = ('is_published',)
     list_filter = ('region', 'level', 'is_published')

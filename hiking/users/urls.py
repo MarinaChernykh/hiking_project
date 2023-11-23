@@ -1,7 +1,7 @@
 from django.contrib.auth import views
 from django.urls import path
 
-from .views import SignUp
+from .views import SignUp, CustomLoginView
 
 app_name = 'users'
 
@@ -10,7 +10,7 @@ urlpatterns = [
          SignUp.as_view(),
          name='signup'),
     path('login/',
-         views.LoginView.as_view(
+         CustomLoginView.as_view(
              template_name='users/login.html'),
          name='login'),
     path(

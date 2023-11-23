@@ -4,12 +4,18 @@
     <span class="text-bold">{{ comment.author.username }}</span>,
     {{ comment.created }}
   </p>
-  <p class="text">{{ comment.text }}</p>
+  <p class="text">{{ comment.text|linebreaksbr }}</p>
   <p class="text">
     <span class="text-bold">
       Оценка:
     </span>{% if comment.ranking %}{{ comment.ranking }} из 5{% else %}---{% endif %}
   </p>
+  {% if request.user == comment.author %}
+  <div class="comments__edit">
+    <a href="{% url "trails:edit_comment" trail.slug comment.pk %}" class="text comments__edit-link">Редактировать</a>
+    <a href="{% url "trails:delete_comment" trail.slug comment.pk %}" class="text comments__edit-link">Удалить</a>
+  </div>
+  {% endif %}
 </div>
 {% empty %}
   <p class="text center-text">Комментариев пока нет.</p>

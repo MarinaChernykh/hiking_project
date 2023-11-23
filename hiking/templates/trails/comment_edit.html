@@ -1,0 +1,26 @@
+{% extends "users/users_base.html" %}
+
+{% block title %}Редактировать комментарий{% endblock title %}
+
+{% block users_page_form %}
+  <div class="form-comments-edit__container">
+  {% include "users/includes/errors_check.html" %}
+  <form method="post" class="form-card__form-and-button">
+    {% load custom_filters %}
+    {% csrf_token %}
+    <div class="form-comments-edit__form">
+      {% for field in form %}
+        <div>
+          <label for="{{ field.id_for_label }}" class="form-comments-edit__label">
+            {{ field.label }}
+          </label>
+          {{ field|addclass:"form-comments-edit__input" }}
+        </div>
+      {% endfor %}
+    </div>
+    <div class="form-card__login-reset">
+      <input type="submit" value="Сохранить" class="comments-edit__button">
+    </div>
+  </form>
+  </div>
+{% endblock users_page_form %}

@@ -1,0 +1,24 @@
+{% extends "users/users_base.html" %}
+
+{% block title %}Удалить комментарий{% endblock title %}
+
+{% block users_page_form %}
+  <div class="form-comments-edit__container">
+  <form method="post" class="form-card__form-and-button">
+    {% csrf_token %}
+    <p class="text text-white-title">Вы уверены, что хотите удалить комментарий?<br><br></p>
+
+    <p class="text text-white">
+      {% with form.instance as data %}
+      {% if data.text %}
+         {{ data.text|truncatewords_html:15}}<br>
+      {% endif %}
+      {% if data.ranking %}
+        Оценка: {{ data.ranking}} из 5
+      {% endif %}
+      {% endwith %}
+    </p>
+    <input type="submit" value="Удалить" class="comments-edit__button">
+  </form>
+  </div>
+{% endblock users_page_form %}

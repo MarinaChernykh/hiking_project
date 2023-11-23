@@ -11,6 +11,7 @@
 /* users comments */
 @import url(./blocks/comments.css);
 @import url(./blocks/comments_form.css);
+@import url(./blocks/comments_edit.css);
 
 /* regions */
 @import url(./blocks/region.css);

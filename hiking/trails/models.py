@@ -293,12 +293,13 @@ class Comment(BaseModel):
         verbose_name_plural = 'Комментарии'
         ordering = ('-created',)
         indexes = [
-            models.Index(fields=['-created',])
+            models.Index(fields=['-created'])
         ]
         constraints = [
             models.CheckConstraint(
                 check=(~Q(text__exact='')) | Q(ranking__isnull=False),
-                name='not_both_empty'
+                name='not_both_empty',
+                violation_error_message='Вы должны заполнить хотя бы одно поле'
             )
         ]
 
